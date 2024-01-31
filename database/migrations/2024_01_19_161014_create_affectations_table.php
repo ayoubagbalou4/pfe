@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('affectations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('groupe_id')->constrained('groupes');
+            $table->string('Code_Groupe');
+            $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
             $table->foreignId('module_id')->constrained('modules');
-            $table->foreignId('formateur_id')->constrained('formateurs');
-
-            $table->timestamps();
+            $table->string('formateur_Matricule');
+            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');            $table->timestamps();
         });
     }
 

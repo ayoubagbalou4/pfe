@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('filiere__modules', function (Blueprint $table) {
-            $table->foreignId('filiere_id')->constrained('filieres');
+            $table->string('Code_Filiere');
+            $table->foreign('Code_Filiere')->references('Code_Filiere')->on('filieres');
             $table->foreignId('module_id')->constrained('modules');
-            $table->primary(['filiere_id','module_id']);
+            $table->primary(['Code_Filiere','module_id']);
             $table->timestamps();
         });
     }

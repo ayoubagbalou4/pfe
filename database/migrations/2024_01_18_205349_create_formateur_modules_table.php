@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('formateur_modules', function (Blueprint $table) {
-            $table->foreignId('formateur_id')->constrained('formateurs');
+            $table->string('formateur_Matricule');
+            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
             $table->foreignId('module_id')->constrained('modules');
-            $table->primary(['formateur_id','module_id']);
+            $table->primary(['formateur_Matricule', 'module_id']);
             $table->timestamps();
         });
     }

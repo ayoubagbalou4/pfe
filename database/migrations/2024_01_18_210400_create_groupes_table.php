@@ -14,15 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('groupes', function (Blueprint $table) {
-            $table->id();
-            $table->string('Code_Groupe');
+            $table->string('Code_Groupe')->primary();
             $table->string('Mode_de_Formation');
             $table->string('Nombre_Inscrits');
-            $table->string('Stagiaire_Responsable');
-            $table->string('Telephone_responsable');
-            $table->string('Adjoint_Responsable');
-            $table->string('Telephone_Adjoint');
-            $table->foreignId('filiere_id')->constrained('filieres');
+            $table->string('formateur_Matricule');
+            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
+            $table->string('Code_Filiere');
+            $table->foreign('Code_Filiere')->references('Code_Filiere')->on('filieres');
+            $table->string('Stagiaire_Responsable')->nullable();
+            $table->string('Telephone_responsable')->nullable();
+            $table->string('Adjoint_Responsable')->nullable();
+            $table->string('Telephone_Adjoint')->nullable();
             $table->timestamps();
         });
     }
