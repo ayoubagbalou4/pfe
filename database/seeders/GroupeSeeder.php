@@ -391,7 +391,7 @@ class GroupeSeeder extends Seeder
         ]);
         Groupe::create([
             "Code_Groupe" => "INFO101",
-            "Code_Filiere" => "AIG_INFO_TS",
+            "Code_Filiere" => "AG_INFO_TS",
             "Nombre_Inscrits" => "25",
             "Mode_de_Formation" => "Altérnée",
             "formateur_Matricule" => "8438",
@@ -402,7 +402,7 @@ class GroupeSeeder extends Seeder
         ]);
         Groupe::create([
             "Code_Groupe" => "INFO102",
-            "Code_Filiere" => "AIG_INFO_TS",
+            "Code_Filiere" => "AG_INFO_TS",
             "Nombre_Inscrits" => "23",
             "Mode_de_Formation" => "Altérnée",
             "formateur_Matricule" => "8438",
@@ -413,7 +413,7 @@ class GroupeSeeder extends Seeder
         ]);
         Groupe::create([
             "Code_Groupe" => "INFO201",
-            "Code_Filiere" => "AIG_INFO_TS",
+            "Code_Filiere" => "AG_INFO_TS",
             "Nombre_Inscrits" => "14",
             "Mode_de_Formation" => "Altérnée",
             "formateur_Matricule" => "13714",
@@ -424,7 +424,7 @@ class GroupeSeeder extends Seeder
         ]);
         Groupe::create([
             "Code_Groupe" => "INFO202",
-            "Code_Filiere" => "AIG_INFO_TS",
+            "Code_Filiere" => "AG_INFO_TS",
             "Nombre_Inscrits" => "15",
             "Mode_de_Formation" => "Altérnée",
             "formateur_Matricule" => "13714",

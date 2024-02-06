@@ -14,19 +14,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('modules', function (Blueprint $table) {
-            $table->id();
+            $table->string("Id_module")->primary();
             $table->string('code_module');
-            $table->date('annee');
+            $table->integer('annee');
             $table->string('Intitule_module');
-            $table->integer('MHP_S1');
-            $table->integer('MHSYN_S1');
-            $table->integer('MHP_S2');
-            $table->integer('MHSYN_S2');
-            $table->integer('MHT');
+            $table->decimal('MHP_S1');
+            $table->decimal('MHSYN_S1');
+            $table->decimal('MHP_S2');
+            $table->decimal('MHSYN_S2');
+            $table->decimal('MHT');
             $table->integer('Coef');
             $table->boolean('EFM_Regional');
-            $table->string('Nature_Evaluation');
-            $table->string('Metier_Formateur');
+            $table->string('Nature_Evaluation')->nullable();
+            $table->string('Metier_Formateur')->nullable();
             $table->boolean('Module_stage');
             $table->timestamps();
         });

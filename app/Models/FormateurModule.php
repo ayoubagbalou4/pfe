@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Filiere_Module extends Model
+class FormateurModule extends Model
 {
     use HasFactory;
 }

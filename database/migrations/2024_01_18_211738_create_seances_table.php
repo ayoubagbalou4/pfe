@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('Code_Groupe');
             $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
             $table->string('formateur_Matricule');
-            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');            $table->foreignId('module_id')->constrained('modules');
+            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
+            $table->string('Id_module');
+            $table->foreign('Id_module')->references('Id_module')->on('modules');
             $table->string('code_seance');
             $table->date('Date');
             $table->string('Jour_de_semaine');

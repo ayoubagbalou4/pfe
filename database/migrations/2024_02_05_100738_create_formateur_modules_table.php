@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('formateur_modules', function (Blueprint $table) {
             $table->string('formateur_Matricule');
             $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
-            $table->foreignId('module_id')->constrained('modules');
-            $table->primary(['formateur_Matricule', 'module_id']);
+            $table->string('Id_module');
+            $table->foreign('Id_module')->references('Id_module')->on('modules');
+            $table->primary(['formateur_Matricule', 'Id_module']);
             $table->timestamps();
         });
     }

@@ -115,11 +115,11 @@ class FiliereSeeder extends Seeder
             "Code_Filiere_Tronc_Commun" => "",
         ]);
         Filiere::create([
-            "Code_Filiere" => "AIG_INFO_TS",
+            "Code_Filiere" => "AG_INFO_TS",
             "Libelle_Filiere" => "Infographie",
             "Lib_Filiere_Arabe" => "الطبع المعلوماتي",
             "Creneau" => "CDJ",
-            "Code_Secteur" => "AIG",
+            "Code_Secteur" => "AG",
             "Secteur" => "Arts et industrie Graphiques",
             "Niveau_de_formation" => "TS",
             "Type_de_formation" => "Diplômante",

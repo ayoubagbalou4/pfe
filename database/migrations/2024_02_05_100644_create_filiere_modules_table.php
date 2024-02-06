@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('filiere__modules', function (Blueprint $table) {
+        Schema::create('filiere_modules', function (Blueprint $table) {
             $table->string('Code_Filiere');
             $table->foreign('Code_Filiere')->references('Code_Filiere')->on('filieres');
-            $table->foreignId('module_id')->constrained('modules');
-            $table->primary(['Code_Filiere','module_id']);
+            $table->string('Id_module');
+            $table->foreign('Id_module')->references('Id_module')->on('modules');
+            $table->primary(['Code_Filiere','Id_module']);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filiere__modules');
+        Schema::dropIfExists('filiere_modules');
     }
 };

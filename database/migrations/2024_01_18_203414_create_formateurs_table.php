@@ -17,17 +17,16 @@ return new class extends Migration
             $table->string('Matricule')->primary();
             $table->string('Nom_Formateur');
             $table->string('Abreviation');
-            $table->string('Telephone');
-            $table->string('MH_Statutaire');
+            $table->string('Telephone')->nullable();
+            $table->decimal('MH_Statutaire');
             $table->string('Statut');
             $table->string('Affectation');
             $table->boolean('Mutualise');
             $table->string('EFP_mutualise');
             $table->string('Email');
             $table->string('Id_Salle')->nullable();
-            // $table->foreign('Id_Salle')->references('Id_Salle')->on('salles');
-            $table->string('Color');
-            $table->string('Background_Color');
+            $table->string('Color')->nullable();
+            $table->string('Background_Color')->nullable();
             $table->timestamps();
         });
     }

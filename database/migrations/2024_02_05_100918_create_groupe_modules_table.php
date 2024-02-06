@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('groupe_modules', function (Blueprint $table) {
             $table->string('Code_Groupe');
             $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
-            $table->foreignId('module_id')->constrained('modules');
-            $table->primary(['Code_Groupe','module_id']);
+            $table->string('Id_module');
+            $table->foreign('Id_module')->references('Id_module')->on('modules');
+            $table->primary(['Code_Groupe','Id_module']);
             $table->timestamps();
         });
     }
