@@ -17,7 +17,7 @@ class FormateurSeeder extends Seeder
     {
         Formateur::create([
             "Matricule" => "8438",
-            "Nom_Formateur" => "",
+            "Nom_Formateur" => "RACHIDA ELAFIFI",
             "Abreviation" => "AFF",
             "Telephone" => "0606584774",
             "MH_Statutaire" => 26,
