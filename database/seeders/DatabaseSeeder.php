@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ModuleSeeder::class);
         $this->call(FiliereModuleSeeder::class);
         $this->call(AffectationSeeder::class);
+        $this->call(SeanceSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

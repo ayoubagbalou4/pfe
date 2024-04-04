@@ -8,6 +8,8 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './pages/Home'
 import ParGroupe from './SuiviPedagogique/AffectationModule/ParGroupe'
 import ParFormateur from './SuiviPedagogique/AffectationModule/ParFormateur'
+import ModuleNonAffectees from './SuiviPedagogique/AffectationModule/ModuleNonAffectees'
+import MHaffForateur from './SuiviPedagogique/AffectationModule/MHaffForateur'
 
 const App = () => {
   return (
@@ -19,7 +21,8 @@ const App = () => {
 
                 <Route path='/suivi/affectation/groupe' element={<ParGroupe />}/>
                 <Route path='/suivi/affectation/formateur' element={<ParFormateur />}/>
-
+                <Route path='/suivi/affectation/nonAffecte' element={<ModuleNonAffectees />}/>
+                <Route path='/suivi/affectation/MH_aff_Formateur' element={<MHaffForateur />}/>
             </Routes>
         </Context>
     </BrowserRouter>

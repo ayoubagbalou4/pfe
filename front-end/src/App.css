@@ -381,3 +381,9 @@ header {
 .parGroupe tr:hover {
     background-color: #e6e6e6;
 }
+.redEcart {
+    background-color: rgba(255, 0, 0, 0.455);
+    font-size:20px ;
+    font-weight: bold;
+    color: white;
+}
