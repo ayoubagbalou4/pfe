@@ -4,10 +4,10 @@ import { contextProvider } from '../../context/Context'
 
 const ParGroupe = () => {
 
-    const {groupes,filieres,filiereModules,affectations} = useContext(contextProvider)
+    const { groupes, filieres, filiereModules, affectations } = useContext(contextProvider)
 
-    const [filiere,setFiliere] = useState()
-    const [groupe,setGroupe] = useState()
+    const [filiere, setFiliere] = useState()
+    const [groupe, setGroupe] = useState()
 
 
     return (
@@ -20,7 +20,7 @@ const ParGroupe = () => {
                         Filiere : <select onChange={(e) => setFiliere(e.target.value)}>
                             <option value="" disabled selected>Choisir Filiere</option>
                             {
-                                filieres.map((filiere,index) => (
+                                filieres.map((filiere, index) => (
                                     <option value={filiere.Code_Filiere} key={index}>{filiere.Libelle_Filiere}</option>
                                 ))
                             }
@@ -31,9 +31,9 @@ const ParGroupe = () => {
                             <option value="" disabled selected>Choisir Groupe</option>
                             {
                                 groupes.filter(e => e.Code_Filiere == filiere)
-                                .map((groupe,index) => (
-                                    <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
-                                ))
+                                    .map((groupe, index) => (
+                                        <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
+                                    ))
                             }
                         </select>
                     </div>
@@ -55,21 +55,35 @@ const ParGroupe = () => {
                     </thead>
                     <tbody>
                         {
-                            filiereModules.filter(e=>e.Code_Filiere==filiere).map((m,index)=>
-                                (
-                                    <tr key={index}>
-                                    <td>{m.module.Id_module}</td>
-                                    <td>{m.module.code_module}</td>
-                                    <td>{affectations.find(a=>a.Id_module==m.module.Id_module).formateur.Nom_Formateur}</td>
-                                    <td>{m.module.MHP_S1}</td>
-                                    <td>{m.module.MHP_S2}</td>
-                                    <td>{m.module.MHSYN_S1}</td>
-                                    <td>{m.module.MHSYN_S2}</td>
-                                    <td>{m.module.Coef}</td>
-                                    <td>{m.module.EFM_Regional}</td>
-                                </tr>
-
-                                ))
+                            filiere ?
+                                filiereModules.filter(e => e.Code_Filiere == filiere)
+                                    .map((m, index) =>(
+                                        <tr key={index}>
+                                            <td>{m.module.Id_module}</td>
+                                            <td>{m.module.code_module}</td>
+                                            <td>{affectations.find(a => a.Id_module == m.module.Id_module).formateur.Nom_Formateur}</td>
+                                            <td>{m.module.MHP_S1}</td>
+                                            <td>{m.module.MHP_S2}</td>
+                                            <td>{m.module.MHSYN_S1}</td>
+                                            <td>{m.module.MHSYN_S2}</td>
+                                            <td>{m.module.Coef}</td>
+                                            <td>{m.module.EFM_Regional}</td>
+                                        </tr>
+                                    ))
+                            :
+                            filiereModules.map((m, index) =>(
+                                        <tr key={index}>
+                                            <td>{m.module.Id_module}</td>
+                                            <td>{m.module.code_module}</td>
+                                            <td>{affectations.find(a => a.Id_module == m.module.Id_module).formateur.Nom_Formateur}</td>
+                                            <td>{m.module.MHP_S1}</td>
+                                            <td>{m.module.MHP_S2}</td>
+                                            <td>{m.module.MHSYN_S1}</td>
+                                            <td>{m.module.MHSYN_S2}</td>
+                                            <td>{m.module.Coef}</td>
+                                            <td>{m.module.EFM_Regional}</td>
+                                        </tr>
+                                    ))
                         }
 
                     </tbody>

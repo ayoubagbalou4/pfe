@@ -341,7 +341,7 @@ header {
     display: flex;
 }
 .selectFiliere div {
-    width: 40%;
+    width: 47%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -380,4 +380,13 @@ header {
 }
 .parGroupe tr:hover {
     background-color: #e6e6e6;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+::-webkit-scrollbar-thumb {
+    background: #566573;
 }
