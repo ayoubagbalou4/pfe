@@ -381,6 +381,7 @@ header {
 .parGroupe tr:hover {
     background-color: #e6e6e6;
 }
+<<<<<<< HEAD
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -389,4 +390,11 @@ header {
 }
 ::-webkit-scrollbar-thumb {
     background: #566573;
+=======
+.redEcart {
+    background-color: rgba(255, 0, 0, 0.455);
+    font-size:20px ;
+    font-weight: bold;
+    color: white;
+>>>>>>> 5b58fffb98a3c7c91676bd93b71e8782034ff39f
 }

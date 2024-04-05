@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('seances', function (Blueprint $table) {
             $table->id();
-            $table->string('Id_Salle');
+            $table->string('Id_Salle')->nullable();
             $table->foreign('Id_Salle')->references('Id_Salle')->on('salles');
             $table->string('Code_Groupe');
             $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->integer('MH');
             $table->time('Horaire_debut');
             $table->time('Horaire_fin');
-            $table->enum('Type_seance',['A distance','Presentiel']);
+            $table->enum('Type_seance',['A DISTANCE','PRESENTIEL']);
             $table->timestamps();
         });
     }

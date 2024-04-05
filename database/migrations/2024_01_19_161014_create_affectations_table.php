@@ -19,8 +19,9 @@ return new class extends Migration
             $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
             $table->string('Id_module');
             $table->foreign('Id_module')->references('Id_module')->on('modules');
-            $table->string('formateur_Matricule');
-            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');            $table->timestamps();
+            $table->string('formateur_Matricule')->nullable();
+            $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
+            $table->timestamps();
         });
     }
 

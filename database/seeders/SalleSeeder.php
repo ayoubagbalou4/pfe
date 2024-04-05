@@ -80,7 +80,7 @@ class SalleSeeder extends Seeder
         );
         Salle::create(
             [
-                "Id_Salle" => "CRS5",
+                "Id_Salle" => "COURS5",
                 "Nom_Salle" => "Cours 5",
                 "Etage" => "RDC",
                 "Capacite" => "25",

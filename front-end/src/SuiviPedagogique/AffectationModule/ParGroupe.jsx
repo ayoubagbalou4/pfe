@@ -9,6 +9,10 @@ const ParGroupe = () => {
     const [filiere, setFiliere] = useState()
     const [groupe, setGroupe] = useState()
 
+    const handleChoisirFiliere = (e) => {
+        setFiliere(e.target.value)
+        setGroupe('')
+    }
 
     return (
         <>
@@ -17,7 +21,7 @@ const ParGroupe = () => {
                 <h1>Affecation des modules </h1>
                 <div className="selectFiliere">
                     <div>
-                        Filiere : <select onChange={(e) => setFiliere(e.target.value)}>
+                        Filiere : <select onChange={handleChoisirFiliere}>
                             <option value="" disabled selected>Choisir Filiere</option>
                             {
                                 filieres.map((filiere, index) => (
@@ -27,7 +31,7 @@ const ParGroupe = () => {
                         </select>
                     </div>
                     <div>
-                        Groupe : <select onChange={(e) => setGroupe(e.target.value)}>
+                        Groupe : <select value={groupe} onChange={(e) => setGroupe(e.target.value)}>
                             <option value="" disabled selected>Choisir Groupe</option>
                             {
                                 groupes.filter(e => e.Code_Filiere == filiere)
@@ -38,7 +42,7 @@ const ParGroupe = () => {
                         </select>
                     </div>
                 </div>
-                <p>Modules Affectes : <span>13</span></p>
+                <p>Modules Affectes : <span>{affectations.filter(a=> a.Code_Groupe == groupe).length}</span></p>
                 <table>
                     <thead>
                         <tr>
@@ -55,6 +59,7 @@ const ParGroupe = () => {
                     </thead>
                     <tbody>
                         {
+<<<<<<< HEAD
                             filiere ?
                                 filiereModules.filter(e => e.Code_Filiere == filiere)
                                     .map((m, index) =>(
@@ -84,11 +89,28 @@ const ParGroupe = () => {
                                             <td>{m.module.EFM_Regional}</td>
                                         </tr>
                                     ))
+=======
+                            filiereModules.filter(e=>e.Code_Filiere==filiere).map((m,index)=>
+                                (
+                                    <tr key={index}>
+                                    <td>{m.module.Id_module}</td>
+                                    <td>{m.module.code_module}</td>
+                                    <td>{groupe ? affectations.find(a=>a.Id_module==m.module.Id_module && a.Code_Groupe == groupe)?.formateur.Nom_Formateur : "Choisir Un Groupe"}</td>
+                                    <td>{m.module.MHP_S1}</td>
+                                    <td>{m.module.MHP_S2}</td>
+                                    <td>{m.module.MHSYN_S1}</td>
+                                    <td>{m.module.MHSYN_S2}</td>
+                                    <td>{m.module.Coef}</td>
+                                    <td>{m.module.EFM_Regional}</td>
+                                </tr>
+
+                                ))
+>>>>>>> 5b58fffb98a3c7c91676bd93b71e8782034ff39f
                         }
 
                     </tbody>
                 </table>
-                <p>Modules Non Affectes : <span>1</span></p>
+                <p>Modules Non Affectes : <span>{affectations.filter(a=> a.Code_Groupe.includes(!groupe)).length}</span></p>
             </div>
         </>
     )
