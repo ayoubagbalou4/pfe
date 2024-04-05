@@ -106,7 +106,25 @@ const Context = ({ children }) => {
         getFiliereModules()
     } ,[])
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules }
+    const [seances,setSeances] = useState([])
+    const [loadingSeances,setLoadingSeances] = useState([])
+    const getSeances = async () => {
+        setLoadingSeances(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/seances')
+            setSeances(response.data.seances)
+            setLoadingSeances(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSeances(false)
+        }
+    }
+    useEffect(() => {
+        getSeances()
+    } ,[])
+
+
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances }
     return (
         <contextProvider.Provider value={values}>
             {children}

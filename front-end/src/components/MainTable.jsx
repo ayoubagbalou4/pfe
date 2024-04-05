@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import GroupeLigne from './GroupeLigne'
-import arr from './../arr'
-
-console.log(arr.dev102.lundi['1s1'])
+import { contextProvider } from '../context/Context'
+import Line from './Line';
 
 const MainTable = () => {
-
+    const {seances,groupes}=useContext(contextProvider);
+    console.log(seances)
 
 
   return (
     <div class="main_table">
         <table>
             <tr>
-                <th>25/02/2024</th>
+                <th>{seances[0]?.Date}</th>
                 <th>Semaine</th>
                 <th>Lundi</th>
                 <th>Mardi</th>
@@ -86,10 +86,13 @@ const MainTable = () => {
                     </table>
                 </td>
             </tr>
+{/*
+           <Line groupe="DEVOWFS201"/> */}
+           {groupes.map((e,index)=>(
+            <Line bg={e.Code_Filiere} key={index} groupe={e.Code_Groupe}/>
+           ))}
 
-            <GroupeLigne groupe="dev102"  />
-            <GroupeLigne groupe="dev101"  />
-            <GroupeLigne groupe="dev103"  />
+
             </table>
         </div>
   )

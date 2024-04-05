@@ -10,11 +10,20 @@ class SeanceController extends Controller
 {
     public function index()
     {
-        $seances = Seance::with('formateur','module')->get();
+        $seances = Seance::with('formateur', 'module')->get();
         return response()->json([
             'seances' => $seances
         ], 200);
     }
-
     
+    public function seanceParDate()
+    {
+        $seances = Seance::selectRaw('Date as date, No_Semaine_Calendrier as semaine')
+            ->groupBy('Date', 'No_Semaine_Calendrier')
+            ->get();
+
+        return response()->json([
+            'seanceParDate' => $seances
+        ], 200);
+    }
 }

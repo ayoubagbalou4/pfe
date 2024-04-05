@@ -32,3 +32,4 @@ Route::apiResource('filieres', FiliereController::class);
 Route::apiResource('groupes', GroupeController::class);
 Route::apiResource('filiereModules', FiliereModuleController::class);
 Route::apiResource('seances', SeanceController::class);
+Route::get('seanceParDate', [SeanceController::class,"seanceParDate"]);

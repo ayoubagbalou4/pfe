@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('Jour_de_semaine');
             $table->integer('No_Semaine_Calendrier');
             $table->integer('No_Semaine_DRIF');
-            $table->integer('MH');
+            $table->float('MH');
             $table->time('Horaire_debut');
             $table->time('Horaire_fin');
             $table->enum('Type_seance',['A DISTANCE','PRESENTIEL']);
