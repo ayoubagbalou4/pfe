@@ -15,15 +15,27 @@ class SeanceController extends Controller
             'seances' => $seances
         ], 200);
     }
-    
+
     public function seanceParDate()
     {
-        $seances = Seance::selectRaw('Date as date, No_Semaine_Calendrier as semaine')
-            ->groupBy('Date', 'No_Semaine_Calendrier')
+        $seances = Seance::selectRaw('No_Semaine_Calendrier as semaine,
+                                  MIN(Date) AS firstDayOfWeek,
+                                  MAX(Date) AS lastDayOfWeek')
+            ->groupBy('No_Semaine_Calendrier')
             ->get();
 
         return response()->json([
             'seanceParDate' => $seances
         ], 200);
     }
+    public function realisationModulesParGrp()
+    {
+        $seances = Seance::selectRaw('SUM(MH) as somme ,Code_Groupe,Id_module ')
+            ->groupBy('Code_Groupe','Id_module')
+            ->get();
+        return response()->json([
+            'realisationModulesParGrp' => $seances
+        ], 200);
+    }
+
 }

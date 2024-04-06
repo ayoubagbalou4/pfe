@@ -11,6 +11,7 @@ import ParFormateur from './SuiviPedagogique/AffectationModule/ParFormateur'
 import ModuleNonAffectees from './SuiviPedagogique/AffectationModule/ModuleNonAffectees'
 import MHaffForateur from './SuiviPedagogique/AffectationModule/MHaffForateur'
 import RealisationFormateurParSemaine from './SuiviPedagogique/AffectationModule/RealisationFormateurParSemaine'
+import ParGroupeModule from './SuiviPedagogique/AffectationModule/ParGroupeModule'
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
                 <Route path='/' element={<Home />}/>
 
                 <Route path='/suivi/affectation/groupe' element={<ParGroupe />}/>
+                <Route path='/suivi/affectation/groupeModule' element={<ParGroupeModule />}/>
                 <Route path='/suivi/affectation/formateur' element={<ParFormateur />}/>
                 <Route path='/suivi/affectation/nonAffecte' element={<ModuleNonAffectees />}/>
                 <Route path='/suivi/affectation/MH-aff-Formateur' element={<MHaffForateur />}/>

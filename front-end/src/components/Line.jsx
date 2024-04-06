@@ -7,7 +7,7 @@ const Line = (props) => {
 
     const {seances}=useContext(contextProvider);
 
-    const seanceParGroupe = seances.filter(seance => seance.Code_Groupe == groupe)
+    const seanceParGroupe = seances.filter(seance => seance.Code_Groupe == groupe && seance.No_Semaine_Calendrier == 37)
 
     const seancesLundi = seanceParGroupe.filter(seance => seance.Jour_de_semaine == "LUNDI")
     const seanceMardi = seanceParGroupe.filter(seance => seance.Jour_de_semaine == "MARDI")

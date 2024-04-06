@@ -123,8 +123,59 @@ const Context = ({ children }) => {
         getSeances()
     } ,[])
 
+    const [semaines,setsemaines] = useState([])
+    const [loadingsemaines,setLoadingsemaines] = useState([])
+    const getsemaines = async () => {
+        setLoadingsemaines(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/seanceParDate')
+            setsemaines(response.data.seanceParDate)
+            setLoadingsemaines(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingsemaines(false)
+        }
+    }
+    useEffect(() => {
+        getsemaines()
+    } ,[])
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances }
+    const [modules,setModules] = useState([])
+    const [loadingModules,setLoadingModules] = useState([])
+    const getmodules = async () => {
+        setLoadingModules(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/modules')
+            setModules(response.data.modules)
+            setLoadingModules(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingModules(false)
+        }
+    }
+    useEffect(() => {
+        getmodules()
+    } ,[])
+    const [realisationMHT,setrealisationMHT] = useState([])
+    const [loadingrealisationMHT,setLoadingrealisationMHT] = useState([])
+    const getrealisationMHT = async () => {
+        setLoadingrealisationMHT(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/realisationModulesParGrp')
+            setrealisationMHT(response.data.realisationModulesParGrp)
+            setLoadingrealisationMHT(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingrealisationMHT(false)
+        }
+    }
+    useEffect(() => {
+        getrealisationMHT()
+    } ,[])
+
+
+
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances ,semaines, modules,realisationMHT}
     return (
         <contextProvider.Provider value={values}>
             {children}
