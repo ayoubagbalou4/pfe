@@ -9,40 +9,87 @@ const ParGroupe = () => {
     const [filiere, setFiliere] = useState()
     const [groupe, setGroupe] = useState()
 
-    const handleChoisirFiliere = (e) => {
-        setFiliere(e.target.value)
+    const [afficherSelect, setAfficherSelect] = useState(false)
+    const [afficherSelect1, setAfficherSelect1] = useState(false)
+    const [searchFiliere, setSearchFiliere] = useState('')
+    const [searchGroupe, setSearchGroupe] = useState('')
+
+    const handleSelected = (filiere) => {
+        setFiliere(filiere)
+        setAfficherSelect(false)
         setGroupe('')
     }
+    const handleSelected1 = (groupe) => {
+        setGroupe(groupe)
+        setAfficherSelect1(false)
+    }
+
+
 
     return (
         <>
             <Navbar />
             <div className='parGroupe'>
                 <h1>Affecation des modules </h1>
-                <div className="selectFiliere">
-                    <div>
-                        Filiere : <select onChange={handleChoisirFiliere}>
-                            <option value="" disabled selected>Choisir Filiere</option>
-                            {
-                                filieres.map((filiere, index) => (
-                                    <option value={filiere.Code_Filiere} key={index}>{filiere.Libelle_Filiere}</option>
-                                ))
-                            }
-                        </select>
+                <div className="choisir_inputs two">
+                    <div className="choisir_input_box3 select">
+                        <p>Filiere</p>
+                        <div onClick={() => setAfficherSelect(!afficherSelect)} className="select-btn1">
+                            <span>{filiere ? filiere.Libelle_Filiere : "Selectioner un Filiere"}</span>
+                            <i className="uil uil-angle-down"></i>
+                        </div>
+                        {
+                            afficherSelect &&
+                            <div className="content">
+                                <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input onChange={(e) => setSearchFiliere(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        filieres.map((e, index) => {
+                                            if (e.Libelle_Filiere.toLowerCase().includes(searchFiliere.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected(e)} key={index}>{e.Libelle_Filiere}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
-                    <div>
-                        Groupe : <select value={groupe} onChange={(e) => setGroupe(e.target.value)}>
-                            <option value="" disabled selected>Choisir Groupe</option>
-                            {
-                                groupes.filter(e => e.Code_Filiere == filiere)
-                                    .map((groupe, index) => (
-                                        <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
-                                    ))
-                            }
-                        </select>
+                    <div className="choisir_input_box3 select">
+                        <p>Groupe</p>
+                        <div onClick={() => setAfficherSelect1(!afficherSelect1)} className="select-btn1">
+                            <span>{groupe ? groupe.Code_Groupe : "Selectioner un Groupe"}</span>
+                            <i className="uil uil-angle-down"></i>
+                        </div>
+                        {
+                            afficherSelect1 &&
+                            <div className="content">
+                                <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input onChange={(e) => setSearchGroupe(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        groupes.filter(e => e.Code_Filiere == filiere.Code_Filiere)
+                                        .map((groupe, index) => {
+                                            if (groupe.Code_Filiere.toLowerCase().includes(searchGroupe.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected1(groupe)} key={index}>{groupe.Code_Groupe}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
-                <p>Modules Affectes : <span>{affectations.filter(a => a.Code_Groupe == groupe).length}</span></p>
+
+                <p>Modules Affectes : <span>{groupe && affectations.filter(a => a.Code_Groupe == groupe.Code_Groupe).length}</span></p>
                 <table>
                     <thead>
                         <tr>
@@ -60,7 +107,7 @@ const ParGroupe = () => {
                     <tbody>
                         {
                             filiere ?
-                                filiereModules.filter(e => e.Code_Filiere == filiere)
+                                filiereModules.filter(e => e.Code_Filiere == filiere.Code_Filiere)
                                     .map((m, index) => (
                                         <tr key={index}>
                                             <td>{m.module.Id_module}</td>
@@ -91,7 +138,7 @@ const ParGroupe = () => {
 
                     </tbody>
                 </table>
-                <p>Modules Non Affectes : <span>{affectations.filter(a => a.Code_Groupe.includes(!groupe)).length}</span></p>
+                <p>Modules Non Affectes : <span>{groupe && affectations.filter(a => a.Code_Groupe.includes(!groupe.Code_Groupe)).length}</span></p>
             </div>
         </>
     )

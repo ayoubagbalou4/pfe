@@ -8,9 +8,19 @@ const ParGroupeModule = () => {
     const [filiere, setFiliere] = useState()
     const [groupe, setGroupe] = useState()
 
-    const handleChoisirFiliere = (e) => {
-        setFiliere(e.target.value)
+    const [afficherSelect, setAfficherSelect] = useState(false)
+    const [afficherSelect1, setAfficherSelect1] = useState(false)
+    const [searchFiliere, setSearchFiliere] = useState('')
+    const [searchGroupe, setSearchGroupe] = useState('')
+
+    const handleSelected = (filiere) => {
+        setFiliere(filiere)
+        setAfficherSelect(false)
         setGroupe('')
+    }
+    const handleSelected1 = (groupe) => {
+        setGroupe(groupe)
+        setAfficherSelect1(false)
     }
 
 
@@ -19,27 +29,62 @@ const ParGroupeModule = () => {
             <Navbar />
             <div className='parGroupe'>
                 <h1>Affecation des modules </h1>
-                <div className="selectFiliere">
-                    <div>
-                        Filiere : <select onChange={handleChoisirFiliere}>
-                            <option value="" disabled selected>Choisir Filiere</option>
-                            {
-                                filieres.map((filiere, index) => (
-                                    <option value={filiere.Code_Filiere} key={index}>{filiere.Libelle_Filiere}</option>
-                                ))
-                            }
-                        </select>
+                <div className="choisir_inputs">
+                    <div className="choisir_input_box3 select">
+                        <p>Filiere</p>
+                        <div onClick={() => setAfficherSelect(!afficherSelect)} className="select-btn1">
+                            <span>{filiere ? filiere.Libelle_Filiere : "Selectioner un Filiere"}</span>
+                            <i className="uil uil-angle-down"></i>
+                        </div>
+                        {
+                            afficherSelect &&
+                            <div className="content">
+                                <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input onChange={(e) => setSearchFiliere(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        filieres.map((e, index) => {
+                                            if (e.Libelle_Filiere.toLowerCase().includes(searchFiliere.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected(e)} key={index}>{e.Libelle_Filiere}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
-                    <div>
-                        Groupe : <select value={groupe} onChange={(e) => setGroupe(e.target.value)}>
-                            <option value="" disabled selected>Choisir Groupe</option>
-                            {
-                                groupes.filter(e => e.Code_Filiere == filiere)
-                                    .map((groupe, index) => (
-                                        <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
-                                    ))
-                            }
-                        </select>
+                    <div className="choisir_input_box3 select">
+                        <p>Groupe</p>
+                        <div onClick={() => setAfficherSelect1(!afficherSelect1)} className="select-btn1">
+                            <span>{groupe ? groupe.Code_Groupe : "Selectioner un Groupe"}</span>
+                            <i className="uil uil-angle-down"></i>
+                        </div>
+                        {
+                            afficherSelect1 &&
+                            <div className="content">
+                                <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input onChange={(e) => setSearchGroupe(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        filiere &&
+                                        groupes.filter(e => e.Code_Filiere == filiere.Code_Filiere)
+                                        .map((groupe, index) => {
+                                            if (groupe.Code_Filiere.toLowerCase().includes(searchGroupe.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected1(groupe)} key={index}>{groupe.Code_Groupe}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
 
@@ -61,7 +106,8 @@ const ParGroupeModule = () => {
                     </thead>
                     <tbody>
                         {
-                                filiereModules.filter(e => e.Code_Filiere == filiere)
+                            filiere && 
+                                filiereModules.filter(e => e.Code_Filiere == filiere.Code_Filiere)
                                     .map((m, index) => (
                                         <tr key={index}>
                                             <td>{m.module.code_module}</td>
@@ -69,7 +115,7 @@ const ParGroupeModule = () => {
                                             <td>{m.module.MHT}</td>
                                             <td>{parseInt(m.module.MHP_S1) + parseInt(m.module.MHP_S2)}</td>
                                             <td>{parseInt(m.module.MHSYN_S1) + parseInt(m.module.MHSYN_S2)}</td>
-<td>{groupe ? realisationMHT.find(r => r.Code_Groupe == groupe && r.Id_module == m.Id_module)?.somme : '--'}</td>
+<td>{groupe ? realisationMHT.find(r => r.Code_Groupe == groupe.Code_Groupe && r.Id_module == m.Id_module)?.somme : '--'}</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
