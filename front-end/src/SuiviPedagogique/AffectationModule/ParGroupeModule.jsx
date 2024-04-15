@@ -23,6 +23,19 @@ const ParGroupeModule = () => {
         setAfficherSelect1(false)
     }
 
+    const somme = (Id_module) => {
+        const sommeG = realisationMHT.find(r => r.Code_Groupe == groupe.Code_Groupe && r.Id_module == Id_module)?.somme
+        return sommeG
+    }
+    const sommeP = (Id_module) => {
+        const sommeP = realisationMHT.find(r => r.Code_Groupe == groupe.Code_Groupe && r.Id_module == Id_module)?.sommeP
+        return sommeP
+    }
+    const sommeD = (Id_module) => {
+        const sommeD = realisationMHT.find(r => r.Code_Groupe == groupe.Code_Groupe && r.Id_module == Id_module)?.sommeD
+        return sommeD
+    }
+
 
   return (
     <>
@@ -106,21 +119,22 @@ const ParGroupeModule = () => {
                     </thead>
                     <tbody>
                         {
-                            filiere && 
+                            filiere &&
                                 filiereModules.filter(e => e.Code_Filiere == filiere.Code_Filiere)
                                     .map((m, index) => (
                                         <tr key={index}>
                                             <td>{m.module.code_module}</td>
                                             <td>{m.module.Intitule_module}</td>
                                             <td>{m.module.MHT}</td>
-                                            <td>{parseInt(m.module.MHP_S1) + parseInt(m.module.MHP_S2)}</td>
-                                            <td>{parseInt(m.module.MHSYN_S1) + parseInt(m.module.MHSYN_S2)}</td>
-<td>{groupe ? realisationMHT.find(r => r.Code_Groupe == groupe.Code_Groupe && r.Id_module == m.Id_module)?.somme : '--'}</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+    <td>{parseInt(m.module.MHP_S1) + parseInt(m.module.MHP_S2)}</td>
+    <td>{parseInt(m.module.MHSYN_S1) + parseInt(m.module.MHSYN_S2)}</td>
+<td>{somme(m.Id_module)} </td>
+<td>{sommeP(m.Id_module)} </td>
+<td>{sommeD(m.Id_module)} </td>
+<td>{somme(m.Id_module) > 0 ? Math.round(somme(m.Id_module) / m.module.MHT * 100) : 0} %</td>
+<td>{sommeP(m.Id_module) > 0 ? Math.round(sommeP(m.Id_module) / (parseInt(m.module.MHP_S1) + parseInt(m.module.MHP_S2)) * 100) : 0} %</td>
+<td>{sommeD(m.Id_module) > 0 ? Math.round(sommeD(m.Id_module) / (parseInt(m.module.MHSYN_S1) + parseInt(m.module.MHSYN_S2)) * 100) : 0} %</td>
+
                                         </tr>
                                     ))}
 

@@ -173,13 +173,11 @@ const Context = ({ children }) => {
         getrealisationMHT()
     } ,[])
 
-
-
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances ,semaines, modules,realisationMHT}
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT}
     return (
         <contextProvider.Provider value={values}>
-            {children}
-        </contextProvider.Provider>
+          {children}
+        </contextProvider.Provider> 
     )
 }
 
