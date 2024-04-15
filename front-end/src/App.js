@@ -20,7 +20,6 @@ const App = () => {
         <Context>
             <Routes>
                 <Route path='/' element={<Home />}/>
-
                 <Route path='/suivi/affectation/groupe' element={<ParGroupe />}/>
                 <Route path='/suivi/affectation/groupeModule' element={<ParGroupeModule />}/>
                 <Route path='/suivi/affectation/formateur' element={<ParFormateur />}/>
