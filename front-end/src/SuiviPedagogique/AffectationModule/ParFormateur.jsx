@@ -8,9 +8,17 @@ const ParFormateur = () => {
     const [totalsync, setTotalSync] = useState();
     const {formateurs,affectations,filiereModules} = useContext(contextProvider);
 
+    const [afficherSelect, setAfficherSelect] = useState(false)
+    const [searchFormateur, setSearchFormateur] = useState('')
+
+    const handleSelected = (formateur) => {
+        setFormateur(formateur)
+        setAfficherSelect(false)
+    }
+
     useEffect(()=>{
         let total=0;
-        affectations.filter(f => f.formateur_Matricule == formateur).map((e)=>{
+        affectations.filter(f => f.formateur_Matricule == formateur.Matricule).map((e)=>{
             let t = parseInt(e.module.MHP_S1+e.module.MHP_S2)
             total+=t
         })
@@ -19,7 +27,7 @@ const ParFormateur = () => {
 
     useEffect(()=>{
         let totalSync=0;
-        affectations.filter(f => f.formateur_Matricule == formateur).map((e)=>{
+        affectations.filter(f => f.formateur_Matricule == formateur.Matricule).map((e)=>{
             let t = parseInt(e.module.MHSYN_S1+e.module.MHSYN_S2)
             totalSync+=t
         })
@@ -32,19 +40,39 @@ const ParFormateur = () => {
             <Navbar />
             <div className='parGroupe'>
                 <h1>Affecation des modules Par Formateur</h1>
-                <div className="selectFiliere">
-                    <div>
-                        Formateur : <select onChange={(e) => setFormateur(e.target.value)}>
-                            <option value="" disabled selected>Choisir Formateur</option>
-                            {
-                                formateurs.map((formateur, index) => (
-                                    <option value={formateur.Matricule} key={index}>{formateur.Nom_Formateur}</option>
-                                ))
-                            }
-                        </select>
+
+                <div className="choisir_inputs two">
+                    <div className="choisir_input_box3 select">
+                        <p>Formateur</p>
+                        <div onClick={() => setAfficherSelect(!afficherSelect)} className="select-btn1">
+                            <span>{formateur ? formateur.Nom_Formateur : "Selectioner un Formateur"}</span>
+                            <i className="uil uil-angle-down"></i>
+                        </div>
+                        {
+                            afficherSelect &&
+                            <div className="content">
+                                <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input onChange={(e) => setSearchFormateur(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        formateurs.map((e, index) => {
+                                            if (e.Nom_Formateur.toLowerCase().includes(searchFormateur.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected(e)} key={index}>{e.Nom_Formateur}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
-                <p>Affectation Mode Pesentiel: <span>{affectations.filter(a => a.formateur_Matricule == formateur).length}</span></p>
+
+
+                <p>Affectation Mode Pesentiel: <span>{formateur && affectations.filter(a => a.formateur_Matricule == formateur.Matricule).length}</span></p>
                 <table>
                     <thead>
                         <tr>
@@ -61,7 +89,7 @@ const ParFormateur = () => {
                     <tbody>
                         {
                             formateur ?
-                                affectations.filter(f => f.formateur_Matricule == formateur)
+                                affectations.filter(f => f.formateur_Matricule == formateur.Matricule)
                                     .map((formateur, index) =>
                                     (
                                         <tr key={index}>
@@ -93,7 +121,7 @@ const ParFormateur = () => {
                 <p>Total MH affectée en présentiel : <span>{total}</span></p>
                 <br /><br />
 
-                <p>Affectation Mode à distance: <span>{affectations.filter(a => a.formateur_Matricule == formateur).length}</span></p>
+                <p>Affectation Mode à distance: <span>{formateur && affectations.filter(a => a.formateur_Matricule == formateur.Matricule).length}</span></p>
                 <table>
                     <thead>
                         <tr>
@@ -104,13 +132,12 @@ const ParFormateur = () => {
                             <th>Code Module</th>
                             <th>Module</th>
                             <th>MH Affectee</th>
-
                         </tr>
                     </thead>
                     <tbody>
                         {
                             formateur ?
-                                affectations.filter(f => f.formateur_Matricule == formateur)
+                                affectations.filter(f => f.formateur_Matricule == formateur.Matricule)
                                     .map((formateur, index) =>
                                     (
                                         <tr key={index}>
