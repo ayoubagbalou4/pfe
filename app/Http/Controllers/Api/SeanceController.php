@@ -30,7 +30,9 @@ class SeanceController extends Controller
     }
     public function realisationModulesParGrp()
     {
-        $seances = Seance::selectRaw('SUM(MH) as somme ,Code_Groupe,Id_module ')
+        $seances = Seance::selectRaw('SUM(MH) as somme ,Code_Groupe,Id_module,
+        SUM(CASE WHEN Type_seance = "PRESENTIEL" THEN MH ELSE 0 END) as sommeP,
+        SUM(CASE WHEN Type_seance = "A DISTANCE" THEN MH ELSE 0 END) as sommeD')
             ->groupBy('Code_Groupe','Id_module')
             ->get();
         return response()->json([

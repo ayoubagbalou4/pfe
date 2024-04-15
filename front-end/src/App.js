@@ -1,17 +1,15 @@
 import React from 'react'
-import Navbar from './components/Navbar'
 import './App.css'
-import CreerSeance from './components/CreerSeance'
-import MainTable from './components/MainTable'
 import Context from './context/Context'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import Home from './pages/Home'
 import ParGroupe from './SuiviPedagogique/AffectationModule/ParGroupe'
 import ParFormateur from './SuiviPedagogique/AffectationModule/ParFormateur'
 import ModuleNonAffectees from './SuiviPedagogique/AffectationModule/ModuleNonAffectees'
 import MHaffForateur from './SuiviPedagogique/AffectationModule/MHaffForateur'
 import RealisationFormateurParSemaine from './SuiviPedagogique/AffectationModule/RealisationFormateurParSemaine'
 import ParGroupeModule from './SuiviPedagogique/AffectationModule/ParGroupeModule'
+import ApTotalGroupe from './SuiviPedagogique/ApTotalGroupe'
+import Home from './pages/Home'
 
 const App = () => {
   return (
@@ -26,6 +24,7 @@ const App = () => {
                 <Route path='/suivi/affectation/nonAffecte' element={<ModuleNonAffectees />}/>
                 <Route path='/suivi/affectation/MH-aff-Formateur' element={<MHaffForateur />}/>
                 <Route path='/suivi/Realisation-Formateur-ParSemaine' element={<RealisationFormateurParSemaine />}/>
+                <Route path='/suivi/ApTotaleGroupe' element={<ApTotalGroupe />}/>
             </Routes>
         </Context>
     </BrowserRouter>
