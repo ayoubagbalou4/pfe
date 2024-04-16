@@ -123,12 +123,78 @@ const Context = ({ children }) => {
         getSeances()
     } ,[])
 
+    const [semaines,setsemaines] = useState([])
+    const [loadingsemaines,setLoadingsemaines] = useState([])
+    const getsemaines = async () => {
+        setLoadingsemaines(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/seanceParDate')
+            setsemaines(response.data.seanceParDate)
+            setLoadingsemaines(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingsemaines(false)
+        }
+    }
+    useEffect(() => {
+        getsemaines()
+    } ,[])
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances }
+    const [modules,setModules] = useState([])
+    const [loadingModules,setLoadingModules] = useState([])
+    const getmodules = async () => {
+        setLoadingModules(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/modules')
+            setModules(response.data.modules)
+            setLoadingModules(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingModules(false)
+        }
+    }
+    useEffect(() => {
+        getmodules()
+    } ,[])
+    const [realisationMHT,setrealisationMHT] = useState([])
+    const [loadingrealisationMHT,setLoadingrealisationMHT] = useState([])
+    const getrealisationMHT = async () => {
+        setLoadingrealisationMHT(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/realisationModulesParGrp')
+            setrealisationMHT(response.data.realisationModulesParGrp)
+            setLoadingrealisationMHT(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingrealisationMHT(false)
+        }
+    }
+    useEffect(() => {
+        getrealisationMHT()
+    } ,[])
+    const [semaineNumber,setSemaineNumber] = useState([])
+    const [loadingSemaineNumber,setLoadingSemaineNumber] = useState([])
+    const getsemaineNumber = async () => {
+        setLoadingSemaineNumber(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/semaineNumber')
+            setSemaineNumber(response.data.semaineNumber)
+            setLoadingSemaineNumber(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSemaineNumber(false)
+        }
+    }
+    useEffect(() => {
+        getsemaineNumber()
+    } ,[])
+    
+
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber}
     return (
         <contextProvider.Provider value={values}>
-            {children}
-        </contextProvider.Provider>
+          {children}
+        </contextProvider.Provider> 
     )
 }
 

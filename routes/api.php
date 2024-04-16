@@ -5,8 +5,10 @@ use App\Http\Controllers\Api\FiliereController;
 use App\Http\Controllers\Api\FiliereModuleController;
 use App\Http\Controllers\Api\FormateurController;
 use App\Http\Controllers\Api\GroupeController;
+use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SalleController;
 use App\Http\Controllers\Api\SeanceController;
+use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +34,7 @@ Route::apiResource('filieres', FiliereController::class);
 Route::apiResource('groupes', GroupeController::class);
 Route::apiResource('filiereModules', FiliereModuleController::class);
 Route::apiResource('seances', SeanceController::class);
+Route::apiResource('modules', ModuleController::class);
 Route::get('seanceParDate', [SeanceController::class,"seanceParDate"]);
+Route::get('realisationModulesParGrp', [SeanceController::class,"realisationModulesParGrp"]);
+Route::get('semaineNumber', [SeanceController::class,"semaineNumber"]);

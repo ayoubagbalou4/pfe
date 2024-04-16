@@ -45,7 +45,6 @@ const CreerSeance = () => {
                 <div className="choisir_input_box1 select">
                     <p>Formateur</p>
                     <div onClick={() => setAfficherSelect(!afficherSelect)} className="select-btn1">
-
                         <span> {formateur ? formateur.Nom_Formateur : "Selectioner un Formateur"}</span>
                         <i className="uil uil-angle-down"></i>
                     </div>
