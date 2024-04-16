@@ -5,7 +5,7 @@ import GroupeSeance from './GroupeSeance'
 
 const MainTable = () => {
 
-    const { seances, groupes, setSeances ,formateurs } = useContext(contextProvider);
+    const { seances, groupes, setSeances, formateurs } = useContext(contextProvider);
 
 
     const getSeanceParGroupe = (groupe, codeSeance) => {
@@ -15,19 +15,28 @@ const MainTable = () => {
         if (seanceParCodeSeance) {
             const formateur = seanceParCodeSeance.formateur.Abreviation;
             const module = seanceParCodeSeance.module.code_module;
-            const salle = seanceParCodeSeance.Id_Salle;
+            const salle = seanceParCodeSeance.Id_Salle !== null ? seanceParCodeSeance.Id_Salle : 'A dis';
             const bg = formateurs.find(f => f.Matricule == seanceParCodeSeance.formateur_Matricule)?.Background_Color;
             const color = formateurs.find(f => f.Matricule == seanceParCodeSeance.formateur_Matricule)?.Color;
             const id = seanceParCodeSeance.id;
             return { code_seance: codeSeance, formateur, module, salle, id, bg, color } || '';
         } else {
-            const emptyObject = { id: Math.floor(Math.random() * 2500000), Code_Groupe: groupe, code_seance: codeSeance, formateur: "", module: "", salle: "" };
-            seances.push(emptyObject);
-            return emptyObject;
+            const emptyObject = {
+                id: Math.floor(Math.random() * 205000),
+                Code_Groupe: groupe,
+                code_seance: codeSeance,
+                formateur: "",
+                module: "",
+                salle: ""
+            };
+            if(seances.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)){
+                return emptyObject;
+            } else {
+                seances.push(emptyObject);
+                return emptyObject;
+            }
         }
     };
-
-    console.log(getSeanceParGroupe('DEVOWFS201','2S3'))
 
 
     const handleDragStart = (e, index) => {
@@ -35,7 +44,10 @@ const MainTable = () => {
         e.dataTransfer.effectAllowed = 'move';
     };
 
+    // const x = seances.filter(seance => seance.Code_Groupe == 'CMOSE101' && seance.code_seance == '1S3')
+    // console.log(x)
 
+    // console.log(seances)
 
     return (
         <>
@@ -121,7 +133,7 @@ const MainTable = () => {
                     {
                         groupes.map((groupe) => (
                             <tr>
-                                <td>{groupe.Code_Groupe}</td>
+                                <td className={groupe.Code_Filiere}>{groupe.Code_Groupe}</td>
                                 <td className="nested_table_td_two">
                                     <table>
                                         <tr><td>Foramteur</td></tr>
