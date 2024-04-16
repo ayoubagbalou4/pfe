@@ -121,7 +121,7 @@ const MainTable = () => {
                     {
                         groupes.map((groupe) => (
                             <tr>
-                                <td>{groupe.Code_Groupe}</td>
+                                <td className={groupe.Code_Filiere}>{groupe.Code_Groupe}</td>
                                 <td className="nested_table_td_two">
                                     <table>
                                         <tr><td>Foramteur</td></tr>
