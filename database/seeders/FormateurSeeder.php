@@ -27,8 +27,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "RACHIDA.ELAFIFI@ofppt-edu.ma",
             "Id_Salle" => "SINFO",
-            "Color" => "#FF5733",
-            "Background_Color" => "#FF0000"
+            "Color" => "#FAFAD2",
+            "Background_Color" => "	#800000"
 
         ]);
         Formateur::create([
@@ -43,8 +43,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "AMAL.RIAD@ofppt-edu.ma",
             "Id_Salle" => "SN2",
-            "Color" => "#33FF57",
-            "Background_Color" => "#0000FF"
+            "Color" => "#D2691E",
+            "Background_Color" => "#F5DEB3"
 
         ]);
         Formateur::create([
@@ -59,8 +59,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "MERIEM.ELBEGGAR@ofppt-edu.ma",
             "Id_Salle" => "SID5",
-            "Color" => "#5733FF",
-            "Background_Color" => "#00FF00"
+            "Color" => "#FFE4E1",
+            "Background_Color" => "#BC8F8F"
 
         ]);
         Formateur::create([
@@ -75,8 +75,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "YOUSSEF.YAZIDIALAOUI@ofppt-edu.ma",
             "Id_Salle" => "SDD3",
-            "Color" => "#FF3366",
-            "Background_Color" => "#FFFF00"
+            "Color" => "#778899",
+            "Background_Color" => "#B0C4DE"
 
         ]);
         Formateur::create([
@@ -91,8 +91,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "ABDELALI.RHAZOUANI@ofppt-edu.ma",
             "Id_Salle" => "SDD5",
-            "Color" => "#66FF33",
-            "Background_Color" => "#FFA500"
+            "Color" => "#D8BFD8",
+            "Background_Color" => "#800080"
 
         ]);
         Formateur::create([
@@ -107,8 +107,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "MOUNIA.NAAMANY@ofppt-edu.ma",
             "Id_Salle" => "SDD2",
-            "Color" => "#3366FF",
-            "Background_Color" => "#800080"
+            "Color" => "#87CEFA",
+            "Background_Color" => "#0000CD"
 
         ]);
         Formateur::create([
@@ -123,8 +123,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "MOHAMEDKARIM.AZEGGOUAR@ofppt-edu.ma",
             "Id_Salle" => "SDD1",
-            "Color" => "#FFCC33",
-            "Background_Color" => "#FFC0CB"
+            "Color" => "#2F4F4F",
+            "Background_Color" => "#00CED1"
 
         ]);
         Formateur::create([
@@ -139,8 +139,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "SANAE.MOUMNI@ofppt-edu.ma",
             "Id_Salle" => "SID1",
-            "Color" => "#33FFCC",
-            "Background_Color" => "#964B00"
+            "Color" => "#00FF00",
+            "Background_Color" => "#006400"
 
         ]);
         Formateur::create([
@@ -155,8 +155,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "SAFAE.JMOULA@ofppt-edu.ma",
             "Id_Salle" => "SID2",
-            "Color" => "#CC33FF",
-            "Background_Color" => "#808080"
+            "Color" => "#FFA07A",
+            "Background_Color" => "#FF4500"
 
         ]);
         Formateur::create([
@@ -171,8 +171,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "JIHANE.HAJJAJ@ofppt-edu.ma",
             "Id_Salle" => "SID2",
-            "Color" => "#FF9933",
-            "Background_Color" => "#FFFFFF"
+            "Color" => "#8B0000",
+            "Background_Color" => "#CD5C5C"
 
         ]);
         Formateur::create([
@@ -187,8 +187,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "ABDELLAH.ZOKRI@ofppt-edu.ma",
             "Id_Salle" => "SID4",
-            "Color" => "#33FF99",
-            "Background_Color" => "#000000"
+            "Color" => "#F0FFF0",
+            "Background_Color" => "#708090"
 
         ]);
         Formateur::create([
@@ -203,8 +203,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "OTHMAN.GUEDDALI@ofppt-edu.ma",
             "Id_Salle" => "SL1",
-            "Color" => "#9933FF",
-            "Background_Color" => "#40E0D0"
+            "Color" => "#fecdd3",
+            "Background_Color" => "#e11d48"
 
         ]);
         Formateur::create([
@@ -219,8 +219,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "LAILA.HARRAK@ofppt-edu.ma",
             "Id_Salle" => "SN1",
-            "Color" => "#FF6633",
-            "Background_Color" => "#4B0082"
+            "Color" => "#4a044e",
+            "Background_Color" => "#f0abfc"
 
         ]);
         Formateur::create([
@@ -235,8 +235,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "SIHAM.AKHAZZANELIMRANI@ofppt-edu.ma",
             "Id_Salle" => "SL1",
-            "Color" => "#33FF66",
-            "Background_Color" => "#00FFFF"
+            "Color" => "#0097A7",
+            "Background_Color" => "#006064"
 
         ]);
         Formateur::create([
@@ -251,8 +251,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "ASSIA.ZIANE@ofppt-edu.ma",
             "Id_Salle" => "SL3",
-            "Color" => "#6633FF",
-            "Background_Color" => "#FF00FF"
+            "Color" => "#FFD180",
+            "Background_Color" => "#F57C00"
 
         ]);
         Formateur::create([
@@ -267,8 +267,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "ABDERRAHIM.BADA@ofppt-edu.ma",
             "Id_Salle" => "SN1",
-            "Color" => "#FF33CC",
-            "Background_Color" => "#808000"
+            "Color" => "#A1887F",
+            "Background_Color" => "#6D4C41"
 
         ]);
         Formateur::create([
@@ -283,8 +283,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "HICHAM.ELGHAILANI@ofppt-edu.ma",
             "Id_Salle" => "SID3",
-            "Color" => "#CC33FF",
-            "Background_Color" => "#FA8072"
+            "Color" => "#1A237E",
+            "Background_Color" => "#8C9EFF"
 
         ]);
         Formateur::create([
@@ -299,7 +299,7 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "MERYEM.SANDI@ofppt-edu.ma",
             "Id_Salle" => "SID3",
-            "Color" => "#CCFF33",
+            "Color" => "#880d1e",
             "Background_Color" => "#FFD700"
 
         ]);
@@ -315,8 +315,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "FIRDAOUS.ELKHALOUI@ofppt-edu.ma",
             "Id_Salle" => "SL2",
-            "Color" => "#33CCFF",
-            "Background_Color" => "#C0C0C0"
+            "Color" => "#293241",
+            "Background_Color" => "#9c6644"
 
         ]);
         Formateur::create([
@@ -331,8 +331,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "BOUCHRA.ELAKEL@ofppt-edu.ma",
             "Id_Salle" => "SDD1",
-            "Color" => "#FF3333",
-            "Background_Color" => "#E6E6FA"
+            "Color" => "#2f3e46",
+            "Background_Color" => "#6a994e"
 
         ]);
         Formateur::create([
@@ -379,7 +379,7 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "ANASS.BOUYBANIN@ofppt-edu.ma",
             "Id_Salle" => "SID1",
-            "Color" => "#FFCC99",
+            "Color" => "#bc4749",
             "Background_Color" => "#FFC87C"
 
         ]);
@@ -696,8 +696,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "AICHA.BOUFARES@ofppt-edu.ma",
             "Id_Salle" => "",
-            "Color" => "#CC33FF",
-            "Background_Color" => "#4169E1"
+            "Color" => "#d90429",
+            "Background_Color" => "#003049"
 
         ]);
         Formateur::create([
@@ -712,8 +712,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "RACHIDA.RGUIOUI@ofppt-edu.ma",
             "Id_Salle" => "",
-            "Color" => "",
-            "Background_Color" => "#50C878"
+            "Color" => "#EEE8AA",
+            "Background_Color" => "#556B2F"
 
         ]);
         Formateur::create([
@@ -728,8 +728,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "CHAHID.NOUINOU@ofppt-edu.ma",
             "Id_Salle" => "",
-            "Color" => "#CC33FF",
-            "Background_Color" => "#CD5C5C"
+            "Color" => "#000080",
+            "Background_Color" => "#1E90FF"
 
         ]);
         Formateur::create([
@@ -744,8 +744,8 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "SAMIR.ALLACH@ofppt-edu.ma",
             "Id_Salle" => "",
-            "Color" => "",
-            "Background_Color" => "#708090"
+            "Color" => "#8B008B",
+            "Background_Color" => "#6A5ACD"
 
         ]);
     }

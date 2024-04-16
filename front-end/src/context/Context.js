@@ -172,8 +172,25 @@ const Context = ({ children }) => {
     useEffect(() => {
         getrealisationMHT()
     } ,[])
+    const [semaineNumber,setSemaineNumber] = useState([])
+    const [loadingSemaineNumber,setLoadingSemaineNumber] = useState([])
+    const getsemaineNumber = async () => {
+        setLoadingSemaineNumber(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/semaineNumber')
+            setSemaineNumber(response.data.semaineNumber)
+            setLoadingSemaineNumber(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSemaineNumber(false)
+        }
+    }
+    useEffect(() => {
+        getsemaineNumber()
+    } ,[])
+    
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT}
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber}
     return (
         <contextProvider.Provider value={values}>
           {children}

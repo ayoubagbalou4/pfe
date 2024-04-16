@@ -13,7 +13,7 @@ const GroupeSeance = (props) => {
   const handleDrop = (oldIndex, newIndex) => {
     const newSeances = [...seances]
     const oldItem = seances.find(item => item.id == oldIndex) ? seances.find(item => item.id == oldIndex) : {}
-    const newItem = seances.find(item => item.id == newIndex)
+    const newItem = seances.find(item => item.id == newIndex) ? seances.find(item => item.id == newIndex) : {}
 
     const oldItemTemp = oldItem['code_seance']
     oldItem['code_seance'] = newItem['code_seance']
@@ -31,10 +31,27 @@ const GroupeSeance = (props) => {
     oldItem['Date'] = newItem['Date']
     newItem['Date'] = oldDateTemp
 
+    // const oldDateDebutTemp = oldItem['Horaire_debut']
+    // oldItem['Horaire_debut'] = newItem['Horaire_debut']
+    // newItem['Horaire_debut'] = oldDateDebutTemp
+
+    // const oldHoraireFinTemp = oldItem['Horaire_fin']
+    // oldItem['Horaire_fin'] = newItem['Horaire_fin']
+    // newItem['Horaire_fin'] = oldHoraireFinTemp
+
+    // const oldTypeSeanceTemp = oldItem['Type_seance']
+    // oldItem['Type_seance'] = newItem['Type_seance']
+    // newItem['Type_seance'] = oldTypeSeanceTemp
+
     newSeances.splice(seances.indexOf(newItem), 1, oldItem)
     newSeances.splice(seances.indexOf(oldItem), 1, newItem)
 
     setSeances(newSeances)
+
+    // console.log(oldIndex)
+    // console.log(newIndex)
+    // console.log(oldItem)
+    // console.log(newItem)
 
   };
 

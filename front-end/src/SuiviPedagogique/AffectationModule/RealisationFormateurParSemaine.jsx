@@ -6,12 +6,9 @@ const RealisationFormateurParSemaine = () => {
 
     const { formateurs, seances, semaines } = useContext(contextProvider);
 
-    console.log(seances)
-
     const [semaine, setSemaine] = useState()
     const [afficherSelect, setAfficherSelect] = useState(false)
     const [searchSemaine, setSearchSemaine] = useState('')
-
 
     const calculeMHHebdo = (formateur) => {
         let count = 0
@@ -26,7 +23,6 @@ const RealisationFormateurParSemaine = () => {
         setSemaine(semaine)
         setAfficherSelect(false)
     }
-
 
     return (
         <>
