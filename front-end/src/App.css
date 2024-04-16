@@ -182,6 +182,7 @@ header {
     border-top: 0 !important;
     border-left: 0 !important;
     border-bottom: 0 !important;
+    cursor: grab;
 }
 
 .nested_table_td_four table td {

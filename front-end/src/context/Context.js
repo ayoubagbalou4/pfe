@@ -123,6 +123,23 @@ const Context = ({ children }) => {
         getSeances()
     } ,[])
 
+    const [seancesParSemaine,setSeancesParSemaine] = useState([])
+    const [loadingSeancesParSemaine,setLoadingSeancesParSemaine] = useState([])
+    const getSeancesParSemaine = async () => {
+        setLoadingSeancesParSemaine(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/seancesParSemaine/37')
+            setSeancesParSemaine(response.data.seancesParSemaine)
+            setLoadingSeancesParSemaine(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSeancesParSemaine(false)
+        }
+    }
+    useEffect(() => {
+        getSeancesParSemaine()
+    } ,[])
+
     const [semaines,setsemaines] = useState([])
     const [loadingsemaines,setLoadingsemaines] = useState([])
     const getsemaines = async () => {
@@ -188,13 +205,13 @@ const Context = ({ children }) => {
     useEffect(() => {
         getsemaineNumber()
     } ,[])
-    
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber}
+
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine}
     return (
         <contextProvider.Provider value={values}>
           {children}
-        </contextProvider.Provider> 
+        </contextProvider.Provider>
     )
 }
 

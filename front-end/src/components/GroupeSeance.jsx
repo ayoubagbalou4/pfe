@@ -3,7 +3,7 @@ import { contextProvider } from '.././context/Context'
 
 const GroupeSeance = (props) => {
 
-  const { seances, setSeances } = useContext(contextProvider)
+  const { seancesParSemaine, setSeancesParSemaine } = useContext(contextProvider)
 
   const handleDragStart = (e, index) => {
     e.dataTransfer.setData('index', index);
@@ -11,9 +11,9 @@ const GroupeSeance = (props) => {
   };
 
   const handleDrop = (oldIndex, newIndex) => {
-    const newSeances = [...seances]
-    const oldItem = seances.find(item => item.id == oldIndex) ? seances.find(item => item.id == oldIndex) : {}
-    const newItem = seances.find(item => item.id == newIndex) ? seances.find(item => item.id == newIndex) : {}
+    const newSeances = [...seancesParSemaine]
+    const oldItem = seancesParSemaine.find(item => item.id == oldIndex) ? seancesParSemaine.find(item => item.id == oldIndex) : {}
+    const newItem = seancesParSemaine.find(item => item.id == newIndex) ? seancesParSemaine.find(item => item.id == newIndex) : {}
 
     const oldItemTemp = oldItem['code_seance']
     oldItem['code_seance'] = newItem['code_seance']
@@ -43,10 +43,10 @@ const GroupeSeance = (props) => {
     // oldItem['Type_seance'] = newItem['Type_seance']
     // newItem['Type_seance'] = oldTypeSeanceTemp
 
-    newSeances.splice(seances.indexOf(newItem), 1, oldItem)
-    newSeances.splice(seances.indexOf(oldItem), 1, newItem)
+    newSeances.splice(seancesParSemaine.indexOf(newItem), 1, oldItem)
+    newSeances.splice(seancesParSemaine.indexOf(oldItem), 1, newItem)
 
-    setSeances(newSeances)
+    setSeancesParSemaine(newSeances)
 
     // console.log(oldIndex)
     // console.log(newIndex)

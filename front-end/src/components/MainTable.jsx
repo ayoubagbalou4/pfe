@@ -5,34 +5,35 @@ import GroupeSeance from './GroupeSeance'
 
 const MainTable = () => {
 
-    const { seances, groupes, setSeances, formateurs } = useContext(contextProvider);
+    const { seancesParSemaine, groupes, setSeancesParSemaine, formateurs } = useContext(contextProvider);
 
 
     const getSeanceParGroupe = (groupe, codeSeance) => {
-        const seanceParGroupe = seances.filter(seance => seance.Code_Groupe == groupe && seance.No_Semaine_Calendrier == 37);
+        const seanceParGroupe = seancesParSemaine.filter(seance => seance.Code_Groupe == groupe && seance.No_Semaine_Calendrier == 37);
         const seanceParCodeSeance = seanceParGroupe.find(seance => seance.code_seance == codeSeance);
 
         if (seanceParCodeSeance) {
             const formateur = seanceParCodeSeance.formateur.Abreviation;
             const module = seanceParCodeSeance.module.code_module;
             const salle = seanceParCodeSeance.Id_Salle !== null ? seanceParCodeSeance.Id_Salle : 'A dis';
-            const bg = formateurs.find(f => f.Matricule == seanceParCodeSeance.formateur_Matricule)?.Background_Color;
-            const color = formateurs.find(f => f.Matricule == seanceParCodeSeance.formateur_Matricule)?.Color;
+            const bg = seanceParCodeSeance.formateur.Background_Color;
+            const color = seanceParCodeSeance.formateur.Color;
             const id = seanceParCodeSeance.id;
             return { code_seance: codeSeance, formateur, module, salle, id, bg, color } || '';
         } else {
-            const emptyObject = {
-                id: Math.floor(Math.random() * 205000),
-                Code_Groupe: groupe,
-                code_seance: codeSeance,
-                formateur: "",
-                module: "",
-                salle: ""
-            };
-            if(seances.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)){
-                return emptyObject;
+            const seanceFind = seancesParSemaine.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)
+            if (seanceFind) {
+                return seanceFind;
             } else {
-                seances.push(emptyObject);
+                const emptyObject = {
+                    id: Math.floor(Math.random() * 205000),
+                    Code_Groupe: groupe,
+                    code_seance: codeSeance,
+                    formateur: "",
+                    module: "",
+                    salle: ""
+                };
+                seancesParSemaine.push(emptyObject);
                 return emptyObject;
             }
         }
@@ -44,8 +45,6 @@ const MainTable = () => {
         e.dataTransfer.effectAllowed = 'move';
     };
 
-    // const x = seances.filter(seance => seance.Code_Groupe == 'CMOSE101' && seance.code_seance == '1S3')
-    // console.log(x)
 
     // console.log(seances)
 

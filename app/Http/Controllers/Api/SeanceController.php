@@ -15,6 +15,13 @@ class SeanceController extends Controller
             'seances' => $seances
         ], 200);
     }
+    public function seancesParSemaine($semaine)
+    {
+        $seancesParSemaine = Seance::where('No_Semaine_Calendrier',$semaine)->with('formateur', 'module')->get();
+        return response()->json([
+            'seancesParSemaine' => $seancesParSemaine
+        ], 200);
+    }
 
     public function seanceParDate()
     {
