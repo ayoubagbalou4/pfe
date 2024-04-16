@@ -37,3 +37,4 @@ Route::apiResource('seances', SeanceController::class);
 Route::apiResource('modules', ModuleController::class);
 Route::get('seanceParDate', [SeanceController::class,"seanceParDate"]);
 Route::get('realisationModulesParGrp', [SeanceController::class,"realisationModulesParGrp"]);
+Route::get('semaineNumber', [SeanceController::class,"semaineNumber"]);

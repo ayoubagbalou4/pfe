@@ -10,6 +10,8 @@ import RealisationFormateurParSemaine from './SuiviPedagogique/AffectationModule
 import ParGroupeModule from './SuiviPedagogique/AffectationModule/ParGroupeModule'
 import ApTotalGroupe from './SuiviPedagogique/ApTotalGroupe'
 import Home from './pages/Home'
+import RealisationFormateur from './SuiviPedagogique/RealisationFormateur'
+import AvancementProgramme from './SuiviPedagogique/AvancementProgramme'
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
                 <Route path='/suivi/affectation/MH-aff-Formateur' element={<MHaffForateur />}/>
                 <Route path='/suivi/Realisation-Formateur-ParSemaine' element={<RealisationFormateurParSemaine />}/>
                 <Route path='/suivi/ApTotaleGroupe' element={<ApTotalGroupe />}/>
+                <Route path='/suivi/RealisationFormateur' element={<RealisationFormateur />}/>
+                <Route path='/suivi/AvancementProgramme' element={<AvancementProgramme />}/>
             </Routes>
         </Context>
     </BrowserRouter>

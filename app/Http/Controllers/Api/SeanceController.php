@@ -39,5 +39,13 @@ class SeanceController extends Controller
             'realisationModulesParGrp' => $seances
         ], 200);
     }
+    public function semaineNumber(){
+        $semaine = Seance::selectRaw('No_Semaine_Calendrier as number')
+            ->groupBy('No_Semaine_Calendrier')
+            ->get();
+        return response()->json([
+            'semaineNumber' => $semaine
+        ], 200);
+    }
 
 }
