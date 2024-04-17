@@ -207,7 +207,18 @@ const Context = ({ children }) => {
     } ,[])
 
 
-    const [seanceGenerate,setSeanceGenerate] = useState({})
+    const [seanceGenerate,setSeanceGenerate] = useState({
+            "id": 13752599,
+            "Id_Salle": "SDD1",
+            "Code_Groupe": "DEVOWFS201",
+            "formateur": "AKB",
+            "code_seance": "2S1",
+            "Date": "2023-09-05",
+            "Jour_de_semaine": "MARDI",
+            "module": "M201",
+            "bg": "#FF9966",
+            "color": "#E6E6FA",
+    })
 
 
     const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,seanceGenerate,setSeanceGenerate}

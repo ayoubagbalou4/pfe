@@ -11,17 +11,17 @@ const MainTable = () => {
     const getSeanceParGroupe = (groupe, codeSeance) => {
 
         const seanceParGroupe = seancesParSemaine.filter(seance => seance.Code_Groupe == groupe);
-    
+
         const seanceParCodeSeance = seanceParGroupe.find(seance => seance.code_seance == codeSeance);
 
         if (seanceParCodeSeance) {
-            const formateur = seanceParCodeSeance.formateur.Abreviation;
-            const module = seanceParCodeSeance.module.code_module;
-            const salle = seanceParCodeSeance.Id_Salle !== null ? seanceParCodeSeance.Id_Salle : 'A dis';
-            const bg = seanceParCodeSeance.formateur.Background_Color;
-            const color = seanceParCodeSeance.formateur.Color;
+            const formateur = seanceParCodeSeance.formateur.Abreviation ? seanceParCodeSeance.formateur.Abreviation : seanceParCodeSeance.formateur;
+            const module = seanceParCodeSeance.module.code_module ? seanceParCodeSeance.module.code_module : seanceParCodeSeance.module;
+            const Id_Salle = seanceParCodeSeance.Id_Salle !== null ? seanceParCodeSeance.Id_Salle : 'A dis';
+            const bg = seanceParCodeSeance.formateur.Background_Color ? seanceParCodeSeance.formateur.Background_Color : seanceParCodeSeance.bg;
+            const color = seanceParCodeSeance.formateur.Color ? seanceParCodeSeance.formateur.Color : seanceParCodeSeance.color;
             const id = seanceParCodeSeance.id;
-            return { code_seance: codeSeance, formateur, module, salle, id, bg, color } || '';
+            return { code_seance: codeSeance, formateur, module, Id_Salle, id, bg, color , Code_Groupe : groupe } || '';
         } else {
 
             const seanceFind = seancesParSemaine.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)
@@ -34,7 +34,7 @@ const MainTable = () => {
                     code_seance: codeSeance,
                     formateur: "",
                     module: "",
-                    salle: ""
+                    Id_Salle: ""
                 };
                 seancesParSemaine.push(emptyObject);
                 return emptyObject;
@@ -43,10 +43,9 @@ const MainTable = () => {
     };
 
 
-    const handleDragStart = (e, index) => {
-        e.dataTransfer.setData('index', index);
-        e.dataTransfer.effectAllowed = 'move';
-    };
+    const details = (groupe,codeSeance) => {
+        console.log(getSeanceParGroupe(groupe,codeSeance))
+    }
 
 
 
@@ -145,12 +144,12 @@ const MainTable = () => {
 
                                 <td className="nested_table_td_three">
                                     <table>
-                                        <tr>
+                                        <tr onClick={() => details(groupe.Code_Groupe,'1S1')}>
             {<GroupeSeance
                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S1').id}
                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S1').formateur}
                 module={getSeanceParGroupe(groupe.Code_Groupe, '1S1').module}
-                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S1').salle}
+                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S1').Id_Salle}
                 bg={getSeanceParGroupe(groupe.Code_Groupe, '1S1').bg}
                 color={getSeanceParGroupe(groupe.Code_Groupe, '1S1').color}
             />}
@@ -158,7 +157,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S2').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '1S2').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S2').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S2').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '1S2').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '1S2').color}
                                             />}
@@ -166,7 +165,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S3').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S3').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '1S3').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S3').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S3').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '1S3').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '1S3').color}
                                             />}
@@ -174,7 +173,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S4').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S4').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '1S4').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S4').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S4').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '1S4').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '1S4').color}
                                             />}
@@ -188,7 +187,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '2S1').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '2S1').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '2S1').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S1').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S1').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '2S1').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '2S1').color}
                                             />}
@@ -196,7 +195,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '2S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '2S2').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '2S2').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S2').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S2').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '2S2').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '2S2').color}
                                             />}
@@ -204,7 +203,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '2S3').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '2S3').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '2S3').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S3').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S3').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '2S3').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '2S3').color}
                                             />}
@@ -212,7 +211,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '2S4').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '2S4').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '2S4').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S4').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '2S4').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '2S4').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '2S4').color}
                                             />}
@@ -226,7 +225,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '3S1').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '3S1').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '3S1').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S1').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S1').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '3S1').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '3S1').color}
                                             />}
@@ -234,7 +233,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '3S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '3S2').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '3S2').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S2').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S2').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '3S2').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '3S2').color}
                                             />}
@@ -242,7 +241,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '3S3').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '3S3').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '3S3').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S3').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S3').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '3S3').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '3S3').color}
                                             />}
@@ -250,7 +249,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '3S4').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '3S4').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '3S4').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S4').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '3S4').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '3S4').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '3S4').color}
                                             />}
@@ -264,7 +263,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '4S1').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '4S1').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '4S1').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S1').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S1').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '4S1').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '4S1').color}
                                             />}
@@ -272,7 +271,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '4S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '4S2').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '4S2').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S2').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S2').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '4S2').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '4S2').color}
                                             />}
@@ -280,7 +279,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '4S3').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '4S3').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '4S3').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S3').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S3').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '4S3').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '4S3').color}
                                             />}
@@ -288,7 +287,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '4S4').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '4S4').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '4S4').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S4').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '4S4').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '4S4').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '4S4').color}
                                             />}
@@ -302,7 +301,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '5S1').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '5S1').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '5S1').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S1').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S1').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '5S1').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '5S1').color}
                                             />}
@@ -310,7 +309,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '5S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '5S2').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '5S2').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S2').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S2').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '5S2').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '5S2').color}
                                             />}
@@ -318,7 +317,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '5S3').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '5S3').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '5S3').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S3').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S3').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '5S3').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '5S3').color}
                                             />}
@@ -326,7 +325,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '5S4').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '5S4').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '5S4').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S4').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '5S4').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '5S4').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '5S4').color}
                                             />}
@@ -340,7 +339,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '6S1').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '6S1').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '6S1').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S1').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S1').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '6S1').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '6S1').color}
                                             />}
@@ -348,7 +347,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '6S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '6S2').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '6S2').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S2').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S2').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '6S2').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '6S2').color}
                                             />}
@@ -356,7 +355,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '6S3').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '6S3').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '6S3').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S3').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S3').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '6S3').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '6S3').color}
                                             />}
@@ -364,7 +363,7 @@ const MainTable = () => {
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '6S4').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '6S4').formateur}
                                                 module={getSeanceParGroupe(groupe.Code_Groupe, '6S4').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S4').salle}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '6S4').Id_Salle}
                                                 bg={getSeanceParGroupe(groupe.Code_Groupe, '6S4').bg}
                                                 color={getSeanceParGroupe(groupe.Code_Groupe, '6S4').color}
                                             />}
