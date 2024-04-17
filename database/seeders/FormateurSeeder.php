@@ -299,7 +299,7 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "MERYEM.SANDI@ofppt-edu.ma",
             "Id_Salle" => "SID3",
-            "Color" => "#CCFF33",
+            "Color" => "#880d1e",
             "Background_Color" => "#FFD700"
 
         ]);
@@ -379,7 +379,7 @@ class FormateurSeeder extends Seeder
             "EFP_mutualise" => "ISTA NTIC TANGER",
             "Email" => "ANASS.BOUYBANIN@ofppt-edu.ma",
             "Id_Salle" => "SID1",
-            "Color" => "#FFCC99",
+            "Color" => "#bc4749",
             "Background_Color" => "#FFC87C"
 
         ]);
