@@ -12,6 +12,7 @@ import ApTotalGroupe from './SuiviPedagogique/ApTotalGroupe'
 import Home from './pages/Home'
 import RealisationFormateur from './SuiviPedagogique/RealisationFormateur'
 import AvancementProgramme from './SuiviPedagogique/AvancementProgramme'
+import EmploiTemps from './pages/EmploiTemps'
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path='/suivi/ApTotaleGroupe' element={<ApTotalGroupe />}/>
                 <Route path='/suivi/RealisationFormateur' element={<RealisationFormateur />}/>
                 <Route path='/suivi/AvancementProgramme' element={<AvancementProgramme />}/>
+                <Route path='/EmploiTemps' element={<EmploiTemps/>}/>
             </Routes>
         </Context>
     </BrowserRouter>

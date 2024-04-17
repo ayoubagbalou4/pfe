@@ -9,7 +9,9 @@ const MainTable = () => {
 
 
     const getSeanceParGroupe = (groupe, codeSeance) => {
-        const seanceParGroupe = seancesParSemaine.filter(seance => seance.Code_Groupe == groupe && seance.No_Semaine_Calendrier == 37);
+
+        const seanceParGroupe = seancesParSemaine.filter(seance => seance.Code_Groupe == groupe);
+    
         const seanceParCodeSeance = seanceParGroupe.find(seance => seance.code_seance == codeSeance);
 
         if (seanceParCodeSeance) {
@@ -21,6 +23,7 @@ const MainTable = () => {
             const id = seanceParCodeSeance.id;
             return { code_seance: codeSeance, formateur, module, salle, id, bg, color } || '';
         } else {
+
             const seanceFind = seancesParSemaine.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)
             if (seanceFind) {
                 return seanceFind;
@@ -46,7 +49,6 @@ const MainTable = () => {
     };
 
 
-    // console.log(seances)
 
     return (
         <>
@@ -144,14 +146,14 @@ const MainTable = () => {
                                 <td className="nested_table_td_three">
                                     <table>
                                         <tr>
-                                            {<GroupeSeance
-                                                index={getSeanceParGroupe(groupe.Code_Groupe, '1S1').id}
-                                                formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S1').formateur}
-                                                module={getSeanceParGroupe(groupe.Code_Groupe, '1S1').module}
-                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S1').salle}
-                                                bg={getSeanceParGroupe(groupe.Code_Groupe, '1S1').bg}
-                                                color={getSeanceParGroupe(groupe.Code_Groupe, '1S1').color}
-                                            />}
+            {<GroupeSeance
+                index={getSeanceParGroupe(groupe.Code_Groupe, '1S1').id}
+                formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S1').formateur}
+                module={getSeanceParGroupe(groupe.Code_Groupe, '1S1').module}
+                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S1').salle}
+                bg={getSeanceParGroupe(groupe.Code_Groupe, '1S1').bg}
+                color={getSeanceParGroupe(groupe.Code_Groupe, '1S1').color}
+            />}
                                             {<GroupeSeance
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S2').formateur}
@@ -179,7 +181,6 @@ const MainTable = () => {
                                         </tr>
                                     </table>
                                 </td>
-
                                 <td className="nested_table_td_three">
                                     <table>
                                         <tr>

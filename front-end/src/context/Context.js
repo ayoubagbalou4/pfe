@@ -128,7 +128,7 @@ const Context = ({ children }) => {
     const getSeancesParSemaine = async () => {
         setLoadingSeancesParSemaine(true)
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/seancesParSemaine/37')
+            const response = await axios.get('http://127.0.0.1:8000/api/seancesParSemaine/38')
             setSeancesParSemaine(response.data.seancesParSemaine)
             setLoadingSeancesParSemaine(false)
         } catch (error) {
@@ -207,7 +207,10 @@ const Context = ({ children }) => {
     } ,[])
 
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine}
+    const [seanceGenerate,setSeanceGenerate] = useState({})
+
+
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,seanceGenerate,setSeanceGenerate}
     return (
         <contextProvider.Provider value={values}>
           {children}
