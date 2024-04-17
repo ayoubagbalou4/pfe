@@ -31,17 +31,17 @@ const GroupeSeance = (props) => {
     oldItem['Date'] = newItem['Date']
     newItem['Date'] = oldDateTemp
 
-    // const oldDateDebutTemp = oldItem['Horaire_debut']
-    // oldItem['Horaire_debut'] = newItem['Horaire_debut']
-    // newItem['Horaire_debut'] = oldDateDebutTemp
+    const oldDateDebutTemp = oldItem['Horaire_debut']
+    oldItem['Horaire_debut'] = newItem['Horaire_debut']
+    newItem['Horaire_debut'] = oldDateDebutTemp
 
-    // const oldHoraireFinTemp = oldItem['Horaire_fin']
-    // oldItem['Horaire_fin'] = newItem['Horaire_fin']
-    // newItem['Horaire_fin'] = oldHoraireFinTemp
+    const oldHoraireFinTemp = oldItem['Horaire_fin']
+    oldItem['Horaire_fin'] = newItem['Horaire_fin']
+    newItem['Horaire_fin'] = oldHoraireFinTemp
 
-    // const oldTypeSeanceTemp = oldItem['Type_seance']
-    // oldItem['Type_seance'] = newItem['Type_seance']
-    // newItem['Type_seance'] = oldTypeSeanceTemp
+    const oldTypeSeanceTemp = oldItem['Type_seance']
+    oldItem['Type_seance'] = newItem['Type_seance']
+    newItem['Type_seance'] = oldTypeSeanceTemp
 
     newSeances.splice(seancesParSemaine.indexOf(newItem), 1, oldItem)
     newSeances.splice(seancesParSemaine.indexOf(oldItem), 1, newItem)
