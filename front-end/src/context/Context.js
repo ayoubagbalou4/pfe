@@ -123,12 +123,14 @@ const Context = ({ children }) => {
         getSeances()
     } ,[])
 
+
+    const [nSemaine,setNSemaine] = useState(36)
     const [seancesParSemaine,setSeancesParSemaine] = useState([])
-    const [loadingSeancesParSemaine,setLoadingSeancesParSemaine] = useState([])
+    const [loadingSeancesParSemaine,setLoadingSeancesParSemaine] = useState(false)
     const getSeancesParSemaine = async () => {
         setLoadingSeancesParSemaine(true)
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/seancesParSemaine/38')
+            const response = await axios.get(`http://127.0.0.1:8000/api/seancesParSemaine/${nSemaine}`)
             setSeancesParSemaine(response.data.seancesParSemaine)
             setLoadingSeancesParSemaine(false)
         } catch (error) {
@@ -140,22 +142,22 @@ const Context = ({ children }) => {
         getSeancesParSemaine()
     } ,[])
 
-    const [semaines,setsemaines] = useState([])
-    const [loadingsemaines,setLoadingsemaines] = useState([])
-    const getsemaines = async () => {
-        setLoadingsemaines(true)
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/seanceParDate')
-            setsemaines(response.data.seanceParDate)
-            setLoadingsemaines(false)
-        } catch (error) {
-            console.log(error)
-            setLoadingsemaines(false)
-        }
-    }
-    useEffect(() => {
-        getsemaines()
-    } ,[])
+    // const [semaines,setsemaines] = useState([])
+    // const [loadingsemaines,setLoadingsemaines] = useState([])
+    // const getsemaines = async () => {
+    //     setLoadingsemaines(true)
+    //     try {
+    //         const response = await axios.get('http://127.0.0.1:8000/api/seanceParDate')
+    //         setsemaines(response.data.seanceParDate)
+    //         setLoadingsemaines(false)
+    //     } catch (error) {
+    //         console.log(error)
+    //         setLoadingsemaines(false)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getsemaines()
+    // } ,[])
 
     const [modules,setModules] = useState([])
     const [loadingModules,setLoadingModules] = useState([])
@@ -189,6 +191,7 @@ const Context = ({ children }) => {
     useEffect(() => {
         getrealisationMHT()
     } ,[])
+
     const [semaineNumber,setSemaineNumber] = useState([])
     const [loadingSemaineNumber,setLoadingSemaineNumber] = useState([])
     const getsemaineNumber = async () => {
@@ -207,21 +210,26 @@ const Context = ({ children }) => {
     } ,[])
 
 
-    const [seanceGenerate,setSeanceGenerate] = useState({
-            "id": 13752599,
-            "Id_Salle": "SDD1",
-            "Code_Groupe": "DEVOWFS201",
-            "formateur": "AKB",
-            "code_seance": "2S1",
-            "Date": "2023-09-05",
-            "Jour_de_semaine": "MARDI",
-            "module": "M201",
-            "bg": "#FF9966",
-            "color": "#E6E6FA",
-    })
+    const [semaines,setSemaines] = useState([])
+    const [loadingSemaines,setLoadingSemaines] = useState([])
+    const getSemaines = async () => {
+        setLoadingSemaines(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/semaines')
+            setSemaines(response.data.semaines)
+            setLoadingSemaines(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSemaines(false)
+        }
+    }
+    useEffect(() => {
+        getSemaines()
+    } ,[])
 
+    const [seanceGenerate,setSeanceGenerate] = useState({})
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,seanceGenerate,setSeanceGenerate}
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,seanceGenerate,setSeanceGenerate,setNSemaine,getSeancesParSemaine,loadingSeancesParSemaine,nSemaine}
     return (
         <contextProvider.Provider value={values}>
           {children}

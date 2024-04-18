@@ -13,6 +13,8 @@ import Home from './pages/Home'
 import RealisationFormateur from './SuiviPedagogique/RealisationFormateur'
 import AvancementProgramme from './SuiviPedagogique/AvancementProgramme'
 import EmploiTemps from './pages/EmploiTemps'
+import EmploiTempsFormateur from './pages/EmploiTempsFormateur'
+import OccupationSalle from './pages/OccupationSalle'
 
 const App = () => {
   return (
@@ -31,6 +33,8 @@ const App = () => {
                 <Route path='/suivi/RealisationFormateur' element={<RealisationFormateur />}/>
                 <Route path='/suivi/AvancementProgramme' element={<AvancementProgramme />}/>
                 <Route path='/EmploiTemps' element={<EmploiTemps/>}/>
+                <Route path='/EmploiTempsFormateur' element={<EmploiTempsFormateur/>}/>
+                <Route path='/OcupationSalle' element={<OccupationSalle/>}/>
             </Routes>
         </Context>
     </BrowserRouter>

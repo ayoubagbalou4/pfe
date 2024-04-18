@@ -8,7 +8,22 @@ const CreerSeance = () => {
         affectations,
         seanceGenerate,
         setSeanceGenerate,
+        semaines,
+        setNSemaine,
+        getSeancesParSemaine,
+        nSemaine
     } = useContext(contextProvider);
+
+    const [semaine, setSemaine] = useState()
+    const [afficherSelect0, setAfficherSelect0] = useState(false)
+    const [searchSemaine, setSearchSemaine] = useState('')
+
+    const handleSelected0 = (semaine) => {
+        setSemaine(semaine)
+        setAfficherSelect0(false)
+        setNSemaine(semaine.semaine)
+        getSeancesParSemaine()
+    }
 
     const [searchFormateur, setSearchFormateur] = useState("");
     const [searchSalle, setSearchSalle] = useState("");
@@ -61,8 +76,37 @@ const CreerSeance = () => {
 
     return (
         <div className="choisir_section">
-            <h3>Chosir la semaine pour elaborer son tableau</h3>
+            {nSemaine}
+            <div className="choisir_inputs two">
+                <div className="choisir_input_box3 select">
+                            <p>No Semaine Calendrier</p>
+                            <div onClick={() => setAfficherSelect0(!afficherSelect0)} className="select-btn1">
+                                <span>{semaine ?  `S - ${semaine.semaine} (${semaine.firstDayOfWeek} - ${semaine.lastDayOfWeek}` : "Chosir la semaine pour elaborer son tableau"}</span>
+                                <i className="uil uil-angle-down"></i>
+                            </div>
+                            {
+                                afficherSelect0 &&
+                                <div className="content">
+                                    <div className="search">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <input onChange={(e) => setSearchSemaine(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                    </div>
+                                    <ul className="options1">
+                                        {
+                                            semaines.map((s, index) => (
+                                                <li onClick={() => handleSelected0(s)} key={index}>
+                                                    S - {s.semaine} ({s.firstDayOfWeek} - {s.lastDayOfWeek})
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                </div>
+            </div>
+
             <div className="choisir_inputs">
+
                 <div className="choisir_input_box1 select">
                     <p>Formateur</p>
                     <div
@@ -233,14 +277,14 @@ const CreerSeance = () => {
                     >
                         <tr>
                             <th>
-                                {seanceGenerate ? seanceGenerate.formateur : "Foramteur"}
+                                {seanceGenerate.id ? seanceGenerate.formateur : "Foramteur"}
                             </th>
                         </tr>
                         <tr>
-                            <th>{seanceGenerate ? seanceGenerate.Id_Salle : "Salle"}</th>
+                            <th>{seanceGenerate.id ? seanceGenerate.Id_Salle : "Salle"}</th>
                         </tr>
                         <tr>
-                            <th>{seanceGenerate ? seanceGenerate.module : "Module"}</th>
+                            <th>{seanceGenerate.id ? seanceGenerate.module : "Module"}</th>
                         </tr>
                     </table>
                 </div>

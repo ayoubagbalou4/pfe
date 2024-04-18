@@ -5,15 +5,13 @@ import GroupeSeance from './GroupeSeance'
 
 const MainTable = () => {
 
-    const { seancesParSemaine, groupes, setSeancesParSemaine, formateurs } = useContext(contextProvider);
-
+    const { seancesParSemaine, groupes, setSeancesParSemaine, formateurs , getSeancesParSemaine} = useContext(contextProvider);
 
     const getSeanceParGroupe = (groupe, codeSeance) => {
 
+
         const seanceParGroupe = seancesParSemaine.filter(seance => seance.Code_Groupe == groupe);
-
         const seanceParCodeSeance = seanceParGroupe.find(seance => seance.code_seance == codeSeance);
-
         if (seanceParCodeSeance) {
             const formateur = seanceParCodeSeance.formateur.Abreviation ? seanceParCodeSeance.formateur.Abreviation : seanceParCodeSeance.formateur;
             const module = seanceParCodeSeance.module.code_module ? seanceParCodeSeance.module.code_module : seanceParCodeSeance.module;
@@ -23,7 +21,6 @@ const MainTable = () => {
             const id = seanceParCodeSeance.id;
             return { code_seance: codeSeance, formateur, module, Id_Salle, id, bg, color , Code_Groupe : groupe } || '';
         } else {
-
             const seanceFind = seancesParSemaine.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)
             if (seanceFind) {
                 return seanceFind;

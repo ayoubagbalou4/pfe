@@ -3,7 +3,7 @@ import { contextProvider } from "../context/Context";
 
 const Emploi = (props) => {
 
-    const { seancesParSemaine , seances, groupes , affectations } = useContext(contextProvider);
+    const { seancesParSemaine , seances, groupes , affectations  } = useContext(contextProvider);
 
 
     const getSeance = (groupe,codeSeance) => {
@@ -47,93 +47,214 @@ const Emploi = (props) => {
                 </tr>
                 <tr>
                     <td>Lundi</td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'1S1')?.bg,color:getSeance(props.groupe,'1S1')?.color}} >
-                        {getSeance(props.groupe,'1S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S1')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'1S2')?.bg,color:getSeance(props.groupe,'1S2')?.color}} >
-                        {getSeance(props.groupe,'1S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S2')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'1S3')?.bg,color:getSeance(props.groupe,'1S3')?.color}} >
-                        {getSeance(props.groupe,'1S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S3')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'1S4')?.bg,color:getSeance(props.groupe,'1S4')?.color}} >
-                        {getSeance(props.groupe,'1S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S4')?.module}
-                    </td>
+                    {
+                        getSeance(props.groupe,'1S1')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'1S1')?.bg,color:getSeance(props.groupe,'1S1')?.color}} >
+                            {getSeance(props.groupe,'1S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S1')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'1S2')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'1S2')?.bg,color:getSeance(props.groupe,'1S2')?.color}} >
+                            {getSeance(props.groupe,'1S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S2')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'1S3')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'1S3')?.bg,color:getSeance(props.groupe,'1S3')?.color}} >
+                            {getSeance(props.groupe,'1S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S3')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'1S4')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'1S4')?.bg,color:getSeance(props.groupe,'1S4')?.color}} >
+                            {getSeance(props.groupe,'1S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'1S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'1S4')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    
                 </tr>
                 <tr>
                     <td>Mardi</td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'2S1')?.bg,color:getSeance(props.groupe,'2S1')?.color}} >
-                        {getSeance(props.groupe,'2S1')?.formateur}<br /> <hr /> {getSeance(props.groupe,'2S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S1')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'2S2')?.bg,color:getSeance(props.groupe,'2S2')?.color}} >
-                        {getSeance(props.groupe,'2S2')?.formateur}<br /> <hr /> {getSeance(props.groupe,'2S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S2')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'2S3')?.bg,color:getSeance(props.groupe,'2S3')?.color}} >
-                        {getSeance(props.groupe,'2S3')?.formateur}<br /> <hr /> {getSeance(props.groupe,'2S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S3')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'2S4')?.bg,color:getSeance(props.groupe,'2S4')?.color}} >
-                        {getSeance(props.groupe,'2S4')?.formateur}<br /> <hr /> {getSeance(props.groupe,'2S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S4')?.module}
-                    </td>
+                    {
+                        getSeance(props.groupe,'2S1')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'2S1')?.bg,color:getSeance(props.groupe,'2S1')?.color}} >
+                            {getSeance(props.groupe,'2S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'2S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S1')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'2S2')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'2S2')?.bg,color:getSeance(props.groupe,'2S2')?.color}} >
+                            {getSeance(props.groupe,'2S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'2S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S2')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'2S3')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'2S3')?.bg,color:getSeance(props.groupe,'2S3')?.color}} >
+                            {getSeance(props.groupe,'2S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'2S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S3')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'2S4')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'2S4')?.bg,color:getSeance(props.groupe,'2S4')?.color}} >
+                            {getSeance(props.groupe,'2S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'2S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'2S4')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
                 </tr>
                 <tr>
                     <td>Mercredi</td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'3S1')?.bg,color:getSeance(props.groupe,'3S1')?.color}} >
-                        {getSeance(props.groupe,'3S1')?.formateur}<br /> <hr /> {getSeance(props.groupe,'3S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S1')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'3S2')?.bg,color:getSeance(props.groupe,'3S2')?.color}} >
-                        {getSeance(props.groupe,'3S2')?.formateur}<br /> <hr /> {getSeance(props.groupe,'3S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S2')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'3S3')?.bg,color:getSeance(props.groupe,'3S3')?.color}} >
-                        {getSeance(props.groupe,'3S3')?.formateur}<br /> <hr /> {getSeance(props.groupe,'3S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S3')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'3S4')?.bg,color:getSeance(props.groupe,'3S4')?.color}} >
-                        {getSeance(props.groupe,'3S4')?.formateur}<br /> <hr /> {getSeance(props.groupe,'3S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S4')?.module}
-                    </td>
+                    {
+                        getSeance(props.groupe,'3S1')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'3S1')?.bg,color:getSeance(props.groupe,'3S1')?.color}} >
+                            {getSeance(props.groupe,'3S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'3S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S1')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'3S2')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'3S2')?.bg,color:getSeance(props.groupe,'3S2')?.color}} >
+                            {getSeance(props.groupe,'3S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'3S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S2')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'3S3')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'3S3')?.bg,color:getSeance(props.groupe,'3S3')?.color}} >
+                            {getSeance(props.groupe,'3S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'3S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S3')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'3S4')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'3S4')?.bg,color:getSeance(props.groupe,'3S4')?.color}} >
+                            {getSeance(props.groupe,'3S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'3S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'3S4')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
                 </tr>
                 <tr>
                     <td>Jeudi</td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'4S1')?.bg,color:getSeance(props.groupe,'4S1')?.color}} >
-                        {getSeance(props.groupe,'4S1')?.formateur}<br /> <hr /> {getSeance(props.groupe,'4S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S1')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'4S2')?.bg,color:getSeance(props.groupe,'4S2')?.color}} >
-                        {getSeance(props.groupe,'4S2')?.formateur}<br /> <hr /> {getSeance(props.groupe,'4S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S2')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'4S3')?.bg,color:getSeance(props.groupe,'4S3')?.color}} >
-                        {getSeance(props.groupe,'4S3')?.formateur}<br /> <hr /> {getSeance(props.groupe,'4S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S3')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'4S4')?.bg,color:getSeance(props.groupe,'4S4')?.color}} >
-                        {getSeance(props.groupe,'4S4')?.formateur}<br /> <hr /> {getSeance(props.groupe,'4S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S4')?.module}
-                    </td>
+                    {
+                        getSeance(props.groupe,'4S1')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'4S1')?.bg,color:getSeance(props.groupe,'4S1')?.color}} >
+                            {getSeance(props.groupe,'4S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'4S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S1')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'4S2')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'4S2')?.bg,color:getSeance(props.groupe,'4S2')?.color}} >
+                            {getSeance(props.groupe,'4S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'4S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S2')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'4S3')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'4S3')?.bg,color:getSeance(props.groupe,'4S3')?.color}} >
+                            {getSeance(props.groupe,'4S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'4S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S3')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'4S4')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'4S4')?.bg,color:getSeance(props.groupe,'4S4')?.color}} >
+                            {getSeance(props.groupe,'4S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'4S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'4S4')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
                 </tr>
                 <tr>
                     <td>Vendredi</td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'5S1')?.bg,color:getSeance(props.groupe,'5S1')?.color}} >
-                        {getSeance(props.groupe,'5S1')?.formateur}<br /> <hr /> {getSeance(props.groupe,'5S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S1')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'5S2')?.bg,color:getSeance(props.groupe,'5S2')?.color}} >
-                        {getSeance(props.groupe,'5S2')?.formateur}<br /> <hr /> {getSeance(props.groupe,'5S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S2')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'5S3')?.bg,color:getSeance(props.groupe,'5S3')?.color}} >
-                        {getSeance(props.groupe,'5S3')?.formateur}<br /> <hr /> {getSeance(props.groupe,'5S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S3')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'5S4')?.bg,color:getSeance(props.groupe,'5S4')?.color}} >
-                        {getSeance(props.groupe,'5S4')?.formateur}<br /> <hr /> {getSeance(props.groupe,'5S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S4')?.module}
-                    </td>
+                    {
+                        getSeance(props.groupe,'5S1')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'5S1')?.bg,color:getSeance(props.groupe,'5S1')?.color}} >
+                            {getSeance(props.groupe,'5S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'5S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S1')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'5S2')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'5S2')?.bg,color:getSeance(props.groupe,'5S2')?.color}} >
+                            {getSeance(props.groupe,'5S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'5S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S2')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'5S3')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'5S3')?.bg,color:getSeance(props.groupe,'5S3')?.color}} >
+                            {getSeance(props.groupe,'5S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'5S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S3')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'5S4')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'5S4')?.bg,color:getSeance(props.groupe,'5S4')?.color}} >
+                            {getSeance(props.groupe,'5S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'5S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S4')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
                 </tr>
                 <tr>
                     <td>Samedi</td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'6S1')?.bg,color:getSeance(props.groupe,'6S1')?.color}} >
-                        {getSeance(props.groupe,'6S1')?.formateur}<br /> <hr /> {getSeance(props.groupe,'6S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S1')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'6S2')?.bg,color:getSeance(props.groupe,'6S2')?.color}} >
-                        {getSeance(props.groupe,'6S2')?.formateur}<br /> <hr /> {getSeance(props.groupe,'6S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S2')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'6S3')?.bg,color:getSeance(props.groupe,'6S3')?.color}} >
-                        {getSeance(props.groupe,'6S3')?.formateur}<br /> <hr /> {getSeance(props.groupe,'6S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S3')?.module}
-                    </td>
-                    <td style={{backgroundColor:getSeance(props.groupe,'6S4')?.bg,color:getSeance(props.groupe,'6S4')?.color}} >
-                        {getSeance(props.groupe,'6S4')?.formateur}<br /> <hr /> {getSeance(props.groupe,'6S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S4')?.module}
-                    </td>
+                    {
+                        getSeance(props.groupe,'6S1')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'6S1')?.bg,color:getSeance(props.groupe,'6S1')?.color}} >
+                            {getSeance(props.groupe,'6S1')?.formateur} <br /> <hr /> {getSeance(props.groupe,'6S1')?.salle} <br /> <hr /> {getSeance(props.groupe,'5S1')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'6S2')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'6S2')?.bg,color:getSeance(props.groupe,'6S2')?.color}} >
+                            {getSeance(props.groupe,'6S2')?.formateur} <br /> <hr /> {getSeance(props.groupe,'6S2')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S2')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'6S3')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'6S3')?.bg,color:getSeance(props.groupe,'6S3')?.color}} >
+                            {getSeance(props.groupe,'6S3')?.formateur} <br /> <hr /> {getSeance(props.groupe,'6S3')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S3')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
+                    {
+                        getSeance(props.groupe,'6S4')?.id ? 
+                        <td style={{backgroundColor:getSeance(props.groupe,'6S4')?.bg,color:getSeance(props.groupe,'6S4')?.color}} >
+                            {getSeance(props.groupe,'6S4')?.formateur} <br /> <hr /> {getSeance(props.groupe,'6S4')?.salle} <br /> <hr /> {getSeance(props.groupe,'6S4')?.module}
+                        </td>
+                        : 
+                        <td></td> 
+                    }
                 </tr>
             </table>
         </fieldset>
