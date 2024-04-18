@@ -44,20 +44,20 @@ const CreerSeance = () => {
             formateur: formateur.Abreviation,
             color: formateur.Color,
             bg: formateur.Background_Color,
-            salle: salle,
+            Id_Salle: salle,
             module: module.code_module
         };
         setSeanceGenerate(x);
     };
 
+
+
     const handleDragStart = (e, index) => {
-        e.dataTransfer.setData("index", index);
-        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData('index', seanceGenerate.id);
+        e.dataTransfer.effectAllowed = 'move';
     };
 
-    const allowDrop = (e) => {
-        e.preventDefault();
-    };
+
 
     return (
         <div className="choisir_section">
@@ -224,28 +224,23 @@ const CreerSeance = () => {
                 <div className="choisir_input_box">
                     <table
                         style={{
-                            backgroundColor: formateur?.Background_Color,
-                            color: formateur?.Color,
+                            backgroundColor: seanceGenerate?.bg,
+                            color: seanceGenerate?.color,
                             cursor: seanceGenerate.id ? "grab" : "not-allowed",
                         }}
                         draggable={seanceGenerate.id ? "true" : "false"}
-                        onDragStart={(event) =>
-                            handleDragStart(event, seanceGenerate.id)
-                        }
-                        onDragOver={allowDrop}
+                        onDragStart={handleDragStart}
                     >
                         <tr>
                             <th>
-                                {formateur
-                                    ? formateur.Abreviation
-                                    : "Foramteur"}
+                                {seanceGenerate.id ? seanceGenerate.formateur : "Foramteur"}
                             </th>
                         </tr>
                         <tr>
-                            <th>{salle ? salle : "Salle"}</th>
+                            <th>{seanceGenerate.id ? seanceGenerate.Id_Salle : "Salle"}</th>
                         </tr>
                         <tr>
-                            <th>{module ? module : "Module"}</th>
+                            <th>{seanceGenerate.id ? seanceGenerate.module : "Module"}</th>
                         </tr>
                     </table>
                 </div>

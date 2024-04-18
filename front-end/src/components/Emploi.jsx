@@ -5,10 +5,9 @@ const Emploi = (props) => {
 
     const { seancesParSemaine , seances, groupes , affectations } = useContext(contextProvider);
 
-
     const getSeance = (groupe,codeSeance) => {
         const seanceParGroupe = seancesParSemaine.filter(seance => seance.Code_Groupe == groupe);
-    
+
         const seanceParCodeSeance = seanceParGroupe.find(seance => seance.code_seance == codeSeance);
 
         if (seanceParCodeSeance) {

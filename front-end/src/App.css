@@ -540,3 +540,11 @@ header {
 .itemsEmploi h4 span {
     color: #566573;
 }
+
+.fieldsetOne tr:nth-child(even) {
+    background-color: white;
+}
+
+.parGroupe tr:hover {
+    background-color: white;
+}

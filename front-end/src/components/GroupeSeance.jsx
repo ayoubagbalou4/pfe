@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { contextProvider } from ".././context/Context";
+import Swal from 'sweetalert2'
 
 const GroupeSeance = (props) => {
     const { seancesParSemaine, setSeancesParSemaine, seanceGenerate } =
@@ -11,23 +12,10 @@ const GroupeSeance = (props) => {
     };
 
     const handleDrop = (oldIndex, newIndex) => {
-        const newSeances = [...seancesParSemaine];
+        // const newSeances = [...seancesParSemaine];
 
-        const oldItem = seanceGenerate;
-        // const oldItem = seancesParSemaine.find((item) => item.id == oldIndex)
-        //     ? seancesParSemaine.find((item) => item.id == oldIndex)
-        //     : {};
-        const newItem = seancesParSemaine.find((item) => item.id == newIndex)
-            ? seancesParSemaine.find((item) => item.id == newIndex)
-            : {};
-
-        const oldItemTemp = newItem["code_seance"];
-        oldItem["code_seance"] = oldItemTemp;
-        newItem["code_seance"] = ''
-
-        const oldCodeGroupeTemp = newItem["Code_Groupe"];
-        oldItem["Code_Groupe"] = oldCodeGroupeTemp;
-        newItem["Code_Groupe"] = ''
+        const oldItem = seancesParSemaine.find(item => item.id == oldIndex) ? seancesParSemaine.find(item => item.id == oldIndex) : seanceGenerate
+        const newItem = seancesParSemaine.find(item => item.id == newIndex)
 
         // const oldItemTemp = oldItem['code_seance']
         // oldItem['code_seance'] = newItem['code_seance']
@@ -37,17 +25,17 @@ const GroupeSeance = (props) => {
         // oldItem['Code_Groupe'] = newItem['Code_Groupe']
         // newItem['Code_Groupe'] = oldCodeGroupeTemp
 
-    const oldDateDebutTemp = oldItem['Horaire_debut']
-    oldItem['Horaire_debut'] = newItem['Horaire_debut']
-    newItem['Horaire_debut'] = oldDateDebutTemp
+        // const oldDateDebutTemp = oldItem['Horaire_debut']
+        // oldItem['Horaire_debut'] = newItem['Horaire_debut']
+        // newItem['Horaire_debut'] = oldDateDebutTemp
 
-    const oldHoraireFinTemp = oldItem['Horaire_fin']
-    oldItem['Horaire_fin'] = newItem['Horaire_fin']
-    newItem['Horaire_fin'] = oldHoraireFinTemp
+        // const oldHoraireFinTemp = oldItem['Horaire_fin']
+        // oldItem['Horaire_fin'] = newItem['Horaire_fin']
+        // newItem['Horaire_fin'] = oldHoraireFinTemp
 
-    const oldTypeSeanceTemp = oldItem['Type_seance']
-    oldItem['Type_seance'] = newItem['Type_seance']
-    newItem['Type_seance'] = oldTypeSeanceTemp
+        // const oldTypeSeanceTemp = oldItem['Type_seance']
+        // oldItem['Type_seance'] = newItem['Type_seance']
+        // newItem['Type_seance'] = oldTypeSeanceTemp
 
         // const oldHoraireFinTemp = oldItem['Horaire_fin']
         // oldItem['Horaire_fin'] = newItem['Horaire_fin']
@@ -58,20 +46,38 @@ const GroupeSeance = (props) => {
         // newItem['Type_seance'] = oldTypeSeanceTemp
 
 
-        newSeances.splice(newSeances.indexOf(newItem), 1,oldItem);
-        // newSeances.splice(newSeances.indexOf(oldItem), 1,newItem);
 
-        console.log('oldIndex',oldIndex);
-        console.log('newIndex',newIndex);
-        console.log('oldItem',oldItem);
-        console.log('newItem',newItem);
+        Swal.fire({
+            title: "Choisir ton Option?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Dupliquer",
+            denyButtonText: `Remplacer`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newSeances = [...seancesParSemaine];
+                newSeances.splice(newSeances.indexOf(oldItem), 0,oldItem);
+                newSeances.splice(newSeances.indexOf(newItem), 1,oldItem);
+                setSeancesParSemaine(newSeances)
+            } else if (result.isDenied) {
+                const newSeances = [...seancesParSemaine];
+                // newSeances.splice(newSeances.indexOf(newItem), 1, oldItem);
+                // newSeances.splice(newSeances.indexOf(oldItem), 1, newItem);
+                setSeancesParSemaine(newSeances)
+            }
+        });
 
-        setSeancesParSemaine(newSeances)
     };
 
     const allowDrop = (e) => {
         e.preventDefault();
     };
+
+    const details = (id) => {
+        const x = seancesParSemaine.find(item => item.id == id)
+        console.log(x)
+    };
+
 
     return (
         <td
@@ -85,6 +91,7 @@ const GroupeSeance = (props) => {
                 handleDrop(oldIndex, newIndex);
             }}
             onDragOver={allowDrop}
+            onClick={() => details(props.index)}
         >
             <table
                 className={props.formateur}
