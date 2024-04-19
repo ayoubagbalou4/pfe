@@ -12,18 +12,25 @@ const GroupeSeance = (props) => {
     };
 
     const handleDrop = (oldIndex, newIndex) => {
-        // const newSeances = [...seancesParSemaine];
 
         const oldItem = seancesParSemaine.find(item => item.id == oldIndex) ? seancesParSemaine.find(item => item.id == oldIndex) : seanceGenerate
         const newItem = seancesParSemaine.find(item => item.id == newIndex)
 
-        // const oldItemTemp = oldItem['code_seance']
-        // oldItem['code_seance'] = newItem['code_seance']
-        // newItem['code_seance'] = oldItemTemp
+        const oldItemTemp = oldItem['code_seance']
+        oldItem['code_seance'] = newItem['code_seance']
+        newItem['code_seance'] = oldItemTemp
 
-        // const oldCodeGroupeTemp = oldItem['Code_Groupe']
-        // oldItem['Code_Groupe'] = newItem['Code_Groupe']
-        // newItem['Code_Groupe'] = oldCodeGroupeTemp
+        const oldCodeGroupeTemp = oldItem['Code_Groupe']
+        oldItem['Code_Groupe'] = newItem['Code_Groupe']
+        newItem['Code_Groupe'] = oldCodeGroupeTemp
+
+        // const oldJourSemaineTemp = oldItem['Jour_de_semaine']
+        // oldItem['Jour_de_semaine'] = newItem['Jour_de_semaine']
+        // newItem['Jour_de_semaine'] = oldJourSemaineTemp
+
+        // const oldDateTemp = oldItem['Date']
+        // oldItem['Date'] = newItem['Date']
+        // newItem['Date'] = oldDateTemp
 
         // const oldDateDebutTemp = oldItem['Horaire_debut']
         // oldItem['Horaire_debut'] = newItem['Horaire_debut']
@@ -36,11 +43,28 @@ const GroupeSeance = (props) => {
         // const oldTypeSeanceTemp = oldItem['Type_seance']
         // oldItem['Type_seance'] = newItem['Type_seance']
         // newItem['Type_seance'] = oldTypeSeanceTemp
+        Swal.fire({
+            title: "Choisir ton Option?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Dupliquer",
+            denyButtonText: 'Remplacer'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const newSeances = [...seancesParSemaine];
+                newSeances.splice(newSeances.indexOf(newItem), 1, oldItem);
+                setSeancesParSemaine(newSeances)
+            } else if (result.isDenied) {
+                const newSeances = [...seancesParSemaine];
+                newSeances.splice(newSeances.indexOf(newItem), 1, oldItem);
+                newSeances.splice(newSeances.indexOf(oldItem), 1, newItem);
+                setSeancesParSemaine(newSeances)
+            }
+        });
 
-
-        newSeances.splice(seancesParSemaine.indexOf(newItem), 1, oldItem)
-        newSeances.splice(seancesParSemaine.indexOf(oldItem), 1, newItem)
-        setSeancesParSemaine(newSeances)
+        // newSeances.splice(seancesParSemaine.indexOf(newItem), 1, oldItem)
+        // newSeances.splice(seancesParSemaine.indexOf(oldItem), 1, newItem)
+        // setSeancesParSemaine(newSeances)
 
         console.log('oldIndex', oldIndex)
         console.log('newIndex', newIndex)

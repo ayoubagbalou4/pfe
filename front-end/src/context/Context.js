@@ -140,7 +140,7 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getSeancesParSemaine()
-    } ,[])
+    } ,[nSemaine])
 
     // const [semaines,setsemaines] = useState([])
     // const [loadingsemaines,setLoadingsemaines] = useState([])
