@@ -528,12 +528,17 @@ header {
     padding: 30px;
     border: 2px solid #566573;
     border-radius: 10px;
+    text-align: center;
+}
+.fieldsetTwo legend {
+    display: inline-block;
 }
 
 .itemsEmploi {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    text-align: left;
 }
 .itemsEmploi h4 {
     width: 50%;
@@ -580,8 +585,108 @@ header {
 
 .loaderDiv {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* formAdmin */
+
+.formAdmin {
+    width: calc(100% - 60px);
+    margin: 10px auto 0 auto;
+    margin: 30px;
+    padding: 30px;
+}
+.formAdmin h1 {
+    text-align: center;
+    color: #566573;
+    margin-bottom: 30px;
+}
+.formAdmin form {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1%;
+}
+.formAdmin form div {
+    margin: 9px 0;
+    width: 32.6%;
+    position: relative;
+}
+.formAdmin p {
+    font-size: 15px;
+    text-transform: capitalize;
+    margin-bottom: 3px;
+    color: #566573;
+    font-weight: bold;
+}
+.formAdmin input , .formAdmin textarea , .formAdmin select {
+    padding: 12px;
+    width: 100%;
+    outline: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+    border: 2px solid #e6e6e6;
+}
+.formAdmin input:focus , .formAdmin textarea:focus , .formAdmin select:focus {
+    border: 2px solid #566573;
+}
+.formAdmin button {
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #566573;
+    color: white;
+    outline: 0;
+    border: 0;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.colorInput {
+    width: fit-content !important;
+}
+
+.formAdmin table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+    overflow-x: scroll;
+}
+
+.formAdmin th, .formAdmin td {
+    border: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+.formAdmin th {
+    background-color: #f2f2f2;
+    padding: 15px;
+    white-space: nowrap;
+}
+
+.formAdmin td {
+    padding: 10px;
+}
+
+.formAdmin tr:hover {
+    background-color: #e6e6e6;
+}
+.formAdmin table button {
+    width: fit-content !important;
+}
+.formAdmin table .delete {
+    background-color: #FF5555;
+    margin: 0 2px;
+}
+.formAdmin table .update {
+    background-color: #3498db;
+    margin: 0 2px;
+}
+.singleLoader {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }

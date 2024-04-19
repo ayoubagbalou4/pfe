@@ -15,6 +15,11 @@ import AvancementProgramme from './SuiviPedagogique/AvancementProgramme'
 import EmploiTemps from './pages/EmploiTemps'
 import EmploiTempsFormateur from './pages/EmploiTempsFormateur'
 import OccupationSalle from './pages/OccupationSalle'
+import AjouterFourmateur from './pages/formateurs/AjouterFourmateur'
+import Formateurs from './pages/formateurs/Formateurs'
+import EditFormateur from './pages/formateurs/EditFormateur'
+import AjouterAffectation from './pages/affectations/AjouterAffectation'
+import Affectations from './pages/affectations/Affectations'
 
 const App = () => {
   return (
@@ -35,6 +40,14 @@ const App = () => {
                 <Route path='/EmploiTemps' element={<EmploiTemps/>}/>
                 <Route path='/EmploiTempsFormateur' element={<EmploiTempsFormateur/>}/>
                 <Route path='/OcupationSalle' element={<OccupationSalle/>}/>
+
+                <Route path='/formateurs/AjouterFourmateur' element={<AjouterFourmateur/>}/>
+                <Route path='/formateurs' element={<Formateurs/>}/>
+                <Route path='/formateurs/EditFormateur/:matricule' element={<EditFormateur/>}/>
+
+                <Route path='/affectations/AjouterAffectation' element={<AjouterAffectation/>}/>
+                <Route path='/affectations' element={<Affectations/>}/>
+
             </Routes>
         </Context>
     </BrowserRouter>
