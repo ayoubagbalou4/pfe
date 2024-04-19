@@ -40,7 +40,9 @@ const MainTable = () => {
     };
 
 
-
+    const details = (groupe,codeSeance) => {
+        console.log(getSeanceParGroupe(groupe,codeSeance))
+    }
 
 
 
@@ -139,7 +141,7 @@ const MainTable = () => {
 
                                 <td className="nested_table_td_three">
                                     <table>
-                                        <tr>
+                                        <tr onClick={() => details(groupe.Code_Groupe,'1S1')}>
             {<GroupeSeance
                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S1').id}
                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S1').formateur}

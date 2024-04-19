@@ -210,19 +210,24 @@ const Context = ({ children }) => {
     } ,[])
 
 
-    const [seanceGenerate,setSeanceGenerate] = useState({
-            "id": 13752599,
-            "Id_Salle": "SDD1",
-            "Code_Groupe": "DEVOWFS201",
-            "formateur": "AKB",
-            "code_seance": "2S1",
-            "Date": "2023-09-05",
-            "Jour_de_semaine": "MARDI",
-            "module": "M201",
-            "bg": "#FF9966",
-            "color": "#E6E6FA",
-    })
+    const [semaines,setSemaines] = useState([])
+    const [loadingSemaines,setLoadingSemaines] = useState([])
+    const getSemaines = async () => {
+        setLoadingSemaines(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/semaines')
+            setSemaines(response.data.semaines)
+            setLoadingSemaines(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSemaines(false)
+        }
+    }
+    useEffect(() => {
+        getSemaines()
+    } ,[])
 
+    const [seanceGenerate,setSeanceGenerate] = useState({})
 
     const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,seanceGenerate,setSeanceGenerate,setNSemaine,getSeancesParSemaine,loadingSeancesParSemaine,nSemaine}
     return (
