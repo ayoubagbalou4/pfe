@@ -67,6 +67,7 @@ header {
     width: 40%;
     text-align: center;
     position: relative;
+    z-index: 999;
 }
 
 .choisir_input_box.select,
@@ -548,19 +549,15 @@ header {
 .parGroupe tr:hover {
     background-color: white;
 }
-.btn {
+.btnDownload {
     background-color: #566573;
     border: none;
     color: white;
-    padding: 12px 30px;
+    padding: 12px;
     cursor: pointer;
-    font-size: 20px;
-  }
-  
-  
-  .btn:hover {
-    background-color: RoyalBlue;
-  }
+    text-transform: capitalize;
+    border-radius: 5px;
+}
   .loader {
     width: 48px;
     height: 48px;
@@ -579,7 +576,7 @@ header {
     100% {
         transform: rotate(360deg);
     }
-    } 
+    }
 
 .loaderDiv {
     width: 100%;

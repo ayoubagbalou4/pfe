@@ -22,7 +22,6 @@ const CreerSeance = () => {
         setSemaine(semaine)
         setAfficherSelect0(false)
         setNSemaine(semaine.semaine)
-        getSeancesParSemaine()
     }
 
     const [searchFormateur, setSearchFormateur] = useState("");
@@ -76,7 +75,6 @@ const CreerSeance = () => {
 
     return (
         <div className="choisir_section">
-            {nSemaine}
             <div className="choisir_inputs two">
                 <div className="choisir_input_box3 select">
                             <p>No Semaine Calendrier</p>
