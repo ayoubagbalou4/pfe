@@ -26,7 +26,7 @@ const EmploiTempsFormateur = () => {
     const [afficherSelect1, setAfficherSelect1] = useState(false)
     const [searchFormateur, setSearchFormateur] = useState('')
 
-    
+
     const handleSelected1 = (formateur) => {
         setFormateur(formateur)
         setAfficherSelect1(false)
@@ -106,7 +106,7 @@ const EmploiTempsFormateur = () => {
                 </div>
             </div>
 
-                <button className="btn" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
+            <button className="btnDownload" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
             <div ref={pdfRef}>
             {!formateur ? formateurs.map((formateur) => (
                 <EmploiFormateur
@@ -116,7 +116,7 @@ const EmploiTempsFormateur = () => {
                     annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
                 />
             ))
-            : 
+            :
             <>
             <EmploiFormateur
                     nomFormateur={formateur.Nom_Formateur}

@@ -15,7 +15,11 @@ import AvancementProgramme from './SuiviPedagogique/AvancementProgramme'
 import EmploiTemps from './pages/EmploiTemps'
 import EmploiTempsFormateur from './pages/EmploiTempsFormateur'
 import OccupationSalle from './pages/OccupationSalle'
-import BarChart from './components/BarChart'
+import StatistiquesFormateur from './components/StatistiquesFormateur'
+import StatistiquesGroupe from './components/StatistiquesGroupe'
+import StatistiqueSemaineAct from './components/StatistiqueSemaineAct'
+import Dashbord from './pages/Dashbord'
+import Box from './pages/Box'
 
 
 const App = () => {
@@ -37,7 +41,11 @@ const App = () => {
                 <Route path='/EmploiTemps' element={<EmploiTemps/>}/>
                 <Route path='/EmploiTempsFormateur' element={<EmploiTempsFormateur/>}/>
                 <Route path='/OcupationSalle' element={<OccupationSalle/>}/>
-                <Route path='/example' element={<BarChart/>}/>
+                <Route path='/StatistiquesFormateur' element={<StatistiquesFormateur/>}/>
+                <Route path='/StatistiquesGroupe' element={<StatistiquesGroupe/>}/>
+                <Route path='/StatistiqueSemaineAct' element={<StatistiqueSemaineAct/>}/>
+                <Route path='/Dashbord' element={<Dashbord/>}/>
+              
                
             </Routes>
         </Context>

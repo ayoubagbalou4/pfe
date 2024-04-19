@@ -67,6 +67,7 @@ header {
     width: 40%;
     text-align: center;
     position: relative;
+    z-index: 999;
 }
 
 .choisir_input_box.select,
@@ -548,19 +549,15 @@ header {
 .parGroupe tr:hover {
     background-color: white;
 }
-.btn {
+.btnDownload {
     background-color: #566573;
     border: none;
     color: white;
-    padding: 12px 30px;
+    padding: 12px;
     cursor: pointer;
-    font-size: 20px;
-  }
-  
-  
-  .btn:hover {
-    background-color: RoyalBlue;
-  }
+    text-transform: capitalize;
+    border-radius: 5px;
+}
   .loader {
     width: 48px;
     height: 48px;
@@ -579,7 +576,7 @@ header {
     100% {
         transform: rotate(360deg);
     }
-    } 
+    }
 
 .loaderDiv {
     width: 100%;
@@ -587,4 +584,194 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.containerDahboard {
+    display: flex;
+}
+
+.aside {
+    width: 20%;
+    background-color: #566573;
+    position: fixed;
+    height: 100vh;
+}
+
+.main {
+    width: 80%;
+    position: relative;
+    left: 20%;
+}
+
+nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 35px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 80%;
+    top: 0;
+    z-index: 99;
+}
+
+nav .header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.menuClick {
+    display: none;
+    background: #e6e6e6;
+    position: absolute;
+    right: 20px;
+    z-index: 999;
+    opacity: 1;
+    transition: 0.3s display ease-in;
+    top: 65px;
+}
+
+.menuClick a {
+    display: block;
+
+    padding: 10px 20px;
+    color: black;
+    z-index: 999;
+}
+
+.menuClick a:hover {
+    background-color: #eee;
+}
+
+.menuClick a:nth-child(1) {
+    border-bottom: 1px solid gray;
+}
+
+.logout {
+    cursor: pointer;
+    margin: 0 2px;
+    width: 45px;
+    height: 45px;
+}
+
+.logout img {
+    clip-path: circle();
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.brand {
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 19px 0;
+}
+
+.brand span {
+    color: white;
+}
+
+/* linksSide */
+.linksSide {
+    margin: 10px 0;
+}
+
+.linksSide a {
+    color: white;
+    display: block;
+    padding: 15px 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 12px;
+    width: 100%;
+}
+
+.linksSide a i {
+    font-size: 22px;
+    padding-right: 15px;
+}
+
+.linksSide a:hover, .linksSide a.active {
+    background-color: white;
+    color: black;
+}
+
+.linksSide .item:hover::before,
+.linksSide .active::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px white;
+    pointer-events: none;
+}
+
+.linksSide a:hover::after,
+.linksSide .active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px white;
+    pointer-events: none;
+}
+
+.content {
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.boxs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boxs a {
+    width: 30%;
+    margin-right: 1%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    border-radius: 5%;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px 0;
+    color: white;
+    text-align: center;
+}
+
+.boxs a i {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.boxs a:nth-child(1) {
+    background-color: #6775D8;
+}
+
+.boxs a:nth-child(2) {
+    background-color:  #D667D8;
+}
+
+.boxs a:nth-child(3) {
+    background-color: #3a7b2e;
+}
+
+.boxs a:nth-child(4) {
+    background-color: #D667D8;
+}
+
+.box:nth-child(5) {
+    background-color: #D86778;
 }

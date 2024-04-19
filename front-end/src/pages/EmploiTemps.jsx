@@ -26,7 +26,7 @@ const EmploiTemps = () => {
     const [afficherSelect1, setAfficherSelect1] = useState(false)
     const [searchGroupe, setSearchGroupe] = useState('')
 
-    
+
     const handleSelected1 = (groupe) => {
         setGroupe(groupe)
         setAfficherSelect1(false)
@@ -34,8 +34,8 @@ const EmploiTemps = () => {
 
     const downloadPDF = () => {
         const input = pdfRef.current;
-    
-    
+
+
         html2canvas(input, { scale: 2 }) // Adjust scale as needed for better resolution
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
@@ -47,17 +47,17 @@ const EmploiTemps = () => {
                 const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
                 const imgX = (pdfWidth - imgWidth * ratio) / 2;
                 const imgY = 30;
-    
+
                 pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
                 pdf.save("emploi_temp_Groupes.pdf");
-    
+
             })
             .catch((error) => {
                 console.error('Error generating PDF:', error);
 
             });
     };
-    
+
 
     return (
         <div className="parGroupe">
@@ -79,7 +79,7 @@ const EmploiTemps = () => {
                         <div className="content">
                             <div className="search">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input onChange={(e) =>setSearchGroupe(e.target.value)}
+                                <input onChange={(e) => setSearchGroupe(e.target.value)}
                                     className="input1"
                                     spellcheck="false"
                                     type="text"
@@ -111,24 +111,24 @@ const EmploiTemps = () => {
                     )}
                 </div>
             </div>
-            <button className="btn" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
+            <button className="btnDownload" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
 
             <div ref={pdfRef}>
 
-            {!groupe ? groupes.map((groupe) => (
-                <Emploi
-                    groupe={groupe.Code_Groupe}
-                    masseHoraire={calculeMHHebdoGroupe(groupe)}
-                    annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
-                />
-            ))
-            : 
-            <Emploi
-                    groupe={groupe}
-                    masseHoraire={calculeMHHebdoGroupe(groupe)}
-                    annee={affectations.find((aff) => aff.Code_Groupe == groupe)?.module.annee}
-                />
-        }
+                {!groupe ? groupes.map((groupe) => (
+                    <Emploi
+                        groupe={groupe.Code_Groupe}
+                        masseHoraire={calculeMHHebdoGroupe(groupe)}
+                        annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
+                    />
+                ))
+                    :
+                    <Emploi
+                        groupe={groupe}
+                        masseHoraire={calculeMHHebdoGroupe(groupe)}
+                        annee={affectations.find((aff) => aff.Code_Groupe == groupe)?.module.annee}
+                    />
+                }
             </div>
         </div>
     );
