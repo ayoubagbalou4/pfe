@@ -2,22 +2,35 @@ import React, { useContext } from 'react'
 // import Navbar from '../components/Navbar'
 import { contextProvider } from '../context/Context';
 import SeanceSalle from '../components/SeanceSalle';
+import Navbar from '../components/Navbar';
+import Loader from '../components/Loader';
 
 const OccupationSalle = () => {
-  const { salles,  seancesParSemaine } = useContext(contextProvider);
-
+  const { salles,  seancesParSemaine , loadingSeancesParSemaine} = useContext(contextProvider);
+ 
 
   const salleSeances=(salle,codeSeance)=>{
-    let occupation= seancesParSemaine.find(e=>e.Id_Salle==salle && e.code_seance==codeSeance)
-    
-    return occupation
+    let occupation= seancesParSemaine.filter(e=>e.Id_Salle==salle && e.code_seance==codeSeance)
+    console.log(occupation)
+    if(occupation.length>0){
+        return occupation.length
+    }
+    else{
+        return 0
+    }
   }
 
 
   console.log(salleSeances('SDD1','1S1'))
   return (
     <>
-
+         <Navbar/>
+       {
+          loadingSeancesParSemaine ? 
+          <Loader />
+          :
+         <>
+      
     <div class="main_table">
         <table>
             <tr>
@@ -179,6 +192,9 @@ const OccupationSalle = () => {
 
         </table>
     </div>
+         </>
+        }
+  
 </>
   )
 }
