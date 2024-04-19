@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(FiliereModuleSeeder::class);
         $this->call(AffectationSeeder::class);
         $this->call(SeanceSeeder::class);
+        $this->call(SemaineSeeder::class);
 
         // \App\Models\User::factory(10)->create();
 

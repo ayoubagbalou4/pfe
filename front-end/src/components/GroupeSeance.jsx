@@ -37,35 +37,15 @@ const GroupeSeance = (props) => {
         // oldItem['Type_seance'] = newItem['Type_seance']
         // newItem['Type_seance'] = oldTypeSeanceTemp
 
-        // const oldHoraireFinTemp = oldItem['Horaire_fin']
-        // oldItem['Horaire_fin'] = newItem['Horaire_fin']
-        // newItem['Horaire_fin'] = oldHoraireFinTemp
 
-        // const oldTypeSeanceTemp = oldItem['Type_seance']
-        // oldItem['Type_seance'] = newItem['Type_seance']
-        // newItem['Type_seance'] = oldTypeSeanceTemp
+        newSeances.splice(seancesParSemaine.indexOf(newItem), 1, oldItem)
+        newSeances.splice(seancesParSemaine.indexOf(oldItem), 1, newItem)
+        setSeancesParSemaine(newSeances)
 
-
-
-        Swal.fire({
-            title: "Choisir ton Option?",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: "Dupliquer",
-            denyButtonText: `Remplacer`
-        }).then((result) => {
-            if (result.isConfirmed) {
-                const newSeances = [...seancesParSemaine];
-                newSeances.splice(newSeances.indexOf(oldItem), 0,oldItem);
-                newSeances.splice(newSeances.indexOf(newItem), 1,oldItem);
-                setSeancesParSemaine(newSeances)
-            } else if (result.isDenied) {
-                const newSeances = [...seancesParSemaine];
-                // newSeances.splice(newSeances.indexOf(newItem), 1, oldItem);
-                // newSeances.splice(newSeances.indexOf(oldItem), 1, newItem);
-                setSeancesParSemaine(newSeances)
-            }
-        });
+        console.log('oldIndex', oldIndex)
+        console.log('newIndex', newIndex)
+        console.log('oldItem', oldItem)
+        console.log('newItem', newItem)
 
     };
 

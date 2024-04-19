@@ -1,20 +1,20 @@
 import React, { useContext, useRef, useState } from "react";
 import { contextProvider } from "../context/Context";
-import Emploi from "../components/Emploi";
 import html2canvas from 'html2canvas';
 import jsPdf from 'jspdf';
+import EmploiFormateur from "../components/EmploiFormateur";
 
 
-const EmploiTemps = () => {
+const EmploiTempsFormateur = () => {
 
     const pdfRef = useRef();
-    const { seancesParSemaine, seances, groupes, affectations } =
+    const { seancesParSemaine, formateurs, affectations } =
         useContext(contextProvider);
 
-    const calculeMHHebdoGroupe = (groupe) => {
+    const calculeMHHebdoGroupe = (formateur) => {
         let count = 0;
         seancesParSemaine
-            .filter((seance) => seance.Code_Groupe === groupe)
+            .filter((seance) => seance.formateur_Matricule == formateur.Matricule)
             .map((e) => {
                 count += e.MH;
             });
@@ -22,21 +22,19 @@ const EmploiTemps = () => {
     };
 
 
-    const [groupe, setGroupe] = useState()
+    const [formateur, setFormateur] = useState()
     const [afficherSelect1, setAfficherSelect1] = useState(false)
-    const [searchGroupe, setSearchGroupe] = useState('')
+    const [searchFormateur, setSearchFormateur] = useState('')
 
     
-    const handleSelected1 = (groupe) => {
-        setGroupe(groupe)
+    const handleSelected1 = (formateur) => {
+        setFormateur(formateur)
         setAfficherSelect1(false)
     }
 
     const downloadPDF = () => {
         const input = pdfRef.current;
-    
-    
-        html2canvas(input, { scale: 2 }) // Adjust scale as needed for better resolution
+        html2canvas(input)
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPdf('p', 'mm', 'a4', true);
@@ -47,31 +45,27 @@ const EmploiTemps = () => {
                 const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
                 const imgX = (pdfWidth - imgWidth * ratio) / 2;
                 const imgY = 30;
-    
                 pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-                pdf.save("emploi_temp_Groupes.pdf");
-    
+                pdf.save("emploi_temps_Formateurs.pdf");
             })
             .catch((error) => {
                 console.error('Error generating PDF:', error);
-
             });
     };
-    
 
     return (
         <div className="parGroupe">
             <div className="choisir_inputs two">
                 <div className="choisir_input_box3 select">
-                    <p>Groupe</p>
+                    <p>Formateur</p>
                     <div
                         onClick={() => setAfficherSelect1(!afficherSelect1)}
                         className="select-btn1"
                     >
                         <span ref={pdfRef}>
-                            {groupe
-                                ? groupe
-                                : "Selectioner un Groupe"}
+                            {formateur
+                                ? formateur.Nom_Formateur
+                                : "Selectioner un Formateur"}
                         </span>
                         <i className="uil uil-angle-down"></i>
                     </div>
@@ -79,7 +73,7 @@ const EmploiTemps = () => {
                         <div className="content">
                             <div className="search">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input onChange={(e) =>setSearchGroupe(e.target.value)}
+                                <input onChange={(e) =>setSearchFormateur(e.target.value)}
                                     className="input1"
                                     spellcheck="false"
                                     type="text"
@@ -87,21 +81,21 @@ const EmploiTemps = () => {
                                 />
                             </div>
                             <ul className="options1">
-                                {groupes
-                                    .map((groupe, index) => {
+                                {formateurs
+                                    .map((formateur, index) => {
                                         if (
-                                            groupe.Code_Filiere.toLowerCase().includes(
-                                                searchGroupe.toLowerCase()
+                                            formateur.Nom_Formateur.toLowerCase().includes(
+                                                searchFormateur.toLowerCase()
                                             )
                                         ) {
                                             return (
                                                 <li
                                                     onClick={() =>
-                                                        handleSelected1(groupe.Code_Groupe)
+                                                        handleSelected1(formateur)
                                                     }
                                                     key={index}
                                                 >
-                                                    {groupe.Code_Groupe}
+                                                    {formateur.Nom_Formateur}
                                                 </li>
                                             );
                                         }
@@ -111,27 +105,30 @@ const EmploiTemps = () => {
                     )}
                 </div>
             </div>
-            <button className="btn" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
 
+                <button className="btn" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
             <div ref={pdfRef}>
-
-            {!groupe ? groupes.map((groupe) => (
-                <Emploi
-                    groupe={groupe.Code_Groupe}
-                    masseHoraire={calculeMHHebdoGroupe(groupe)}
-                    annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
+            {!formateur ? formateurs.map((formateur) => (
+                <EmploiFormateur
+                    nomFormateur={formateur.Nom_Formateur}
+                    formateur={formateur.Matricule}
+                    masseHoraire={calculeMHHebdoGroupe(formateur)}
+                    annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
                 />
             ))
             : 
-            <Emploi
-                    groupe={groupe}
-                    masseHoraire={calculeMHHebdoGroupe(groupe)}
-                    annee={affectations.find((aff) => aff.Code_Groupe == groupe)?.module.annee}
+            <>
+            <EmploiFormateur
+                    nomFormateur={formateur.Nom_Formateur}
+                    formateur={formateur.Matricule}
+                    masseHoraire={calculeMHHebdoGroupe(formateur)}
+                    annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
                 />
+            </>
         }
             </div>
         </div>
     );
 };
 
-export default EmploiTemps;
+export default EmploiTempsFormateur;
