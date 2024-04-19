@@ -15,6 +15,8 @@ import AvancementProgramme from './SuiviPedagogique/AvancementProgramme'
 import EmploiTemps from './pages/EmploiTemps'
 import EmploiTempsFormateur from './pages/EmploiTempsFormateur'
 import OccupationSalle from './pages/OccupationSalle'
+import BarChart from './components/BarChart'
+
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
                 <Route path='/EmploiTemps' element={<EmploiTemps/>}/>
                 <Route path='/EmploiTempsFormateur' element={<EmploiTempsFormateur/>}/>
                 <Route path='/OcupationSalle' element={<OccupationSalle/>}/>
+                <Route path='/example' element={<BarChart/>}/>
+               
             </Routes>
         </Context>
     </BrowserRouter>
