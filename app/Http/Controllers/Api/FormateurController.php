@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Formateur;
+use App\Models\Seance;
 use Illuminate\Http\Request;
 
 class FormateurController extends Controller
@@ -13,6 +14,60 @@ class FormateurController extends Controller
         $formateurs = Formateur::all();
         return response()->json([
             'formateurs' => $formateurs
-        ],200);
+        ], 200);
+    }
+<<<<<<< HEAD
+
+    public function store(Request $request)
+    {
+        Formateur::create($request->all());
+        return response()->json([], 200);
+    }
+
+    public function show($id)
+    {
+        $formateur = Formateur::where('Matricule',$id)->first();
+        return response()->json([
+            'formateur' => $formateur
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        Formateur::where('Matricule',$id)->delete();
+        return response('', 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $formateur = Formateur::where('Matricule',$id);
+        $formateur->update([
+            'Matricule' => $request->Matricule,
+            'Nom_Formateur' => $request->Nom_Formateur,
+            'Abreviation' => $request->Abreviation,
+            'Telephone' => $request->Telephone,
+            'MH_Statutaire' => $request->MH_Statutaire,
+            'Statut' => $request->Statut,
+            'Affectation' => $request->Affectation,
+            'Mutualise' => $request->Mutualise,
+            'EFP_mutualise' => $request->EFP_mutualise,
+            'Email' => $request->Email,
+            'Id_Salle' => $request->Id_Salle,
+            'Color' => $request->Color,
+            'Background_Color' => $request->Background_Color,
+        ]);
+        return response()->json([], 200);
+=======
+    public function formateurStatistiques($semaine)
+    {
+        $Seancesformateur = Seance::selectRaw('SUM(MH) as MHHebdoF ,formateur_Matricule')
+            ->groupBy('formateur_Matricule')
+            ->where('No_Semaine_Calendrier',$semaine)
+            ->with('formateur')
+            ->get();
+        return response()->json([
+            'Seancesformateur' => $Seancesformateur
+        ], 200);
+>>>>>>> 037e1de5795e25c9b998a13709421ba4ee96a34b
     }
 }

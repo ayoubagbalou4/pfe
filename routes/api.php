@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ModuleController;
 use App\Http\Controllers\Api\SalleController;
 use App\Http\Controllers\Api\SeanceController;
 use App\Http\Controllers\Api\SemaineController;
+use App\Models\Formateur;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,5 +41,7 @@ Route::get('seanceParDate', [SeanceController::class,"seanceParDate"]);
 Route::get('realisationModulesParGrp', [SeanceController::class,"realisationModulesParGrp"]);
 Route::get('semaineNumber', [SeanceController::class,"semaineNumber"]);
 Route::get('seancesParSemaine/{semaine}', [SeanceController::class,"seancesParSemaine"]);
+Route::get('formateurStatistiques/{semaine}', [FormateurController::class,"formateurStatistiques"]);
+Route::get('groupeStatistiques/{semaine}', [GroupeController::class,"groupeStatistiques"]);
 
 Route::apiResource('semaines', SemaineController::class);

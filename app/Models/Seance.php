@@ -18,4 +18,8 @@ class Seance extends Model
     {
         return $this->belongsTo(Module::class, 'Id_module', 'Id_module');
     }
+    public function groupe()
+    {
+        return $this->belongsTo(Groupe::class, 'Code_Groupe', 'Code_Groupe');
+    }
 }

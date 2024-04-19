@@ -226,10 +226,45 @@ const Context = ({ children }) => {
     useEffect(() => {
         getSemaines()
     } ,[])
+    const [statistiquesF,setStatistiquesF] = useState([])
+    const [loadingStatistiquesF,setLoadingStatistiquesF] = useState([])
+    const getStatistiquesF = async () => {
+        setLoadingStatistiquesF(true)
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/formateurStatistiques/${nSemaine}`)
+            setStatistiquesF(response.data.Seancesformateur)
+            setLoadingStatistiquesF(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingStatistiquesF(false)
+        }
+    }
+    useEffect(() => {
+        getStatistiquesF()
+    } ,[])
+    const [statistiquesG,setstatistiquesG] = useState([])
+    const [loadingstatistiquesG,setLoadingstatistiquesG] = useState([])
+    const getstatistiquesG = async () => {
+        setLoadingstatistiquesG(true)
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/groupeStatistiques/${nSemaine}`)
+            setstatistiquesG(response.data.Seancesgroupe)
+            setLoadingstatistiquesG(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingstatistiquesG(false)
+        }
+    }
+    useEffect(() => {
+        getstatistiquesG()
+    } ,[])
 
     const [seanceGenerate,setSeanceGenerate] = useState({})
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances , setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,seanceGenerate,setSeanceGenerate,setNSemaine,getSeancesParSemaine,loadingSeancesParSemaine,nSemaine}
+    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances ,
+         setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,
+         seanceGenerate,setSeanceGenerate,setNSemaine,getSeancesParSemaine,
+         loadingSeancesParSemaine,nSemaine,statistiquesF,statistiquesG}
     return (
         <contextProvider.Provider value={values}>
           {children}
