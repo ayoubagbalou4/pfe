@@ -3,12 +3,13 @@ import { contextProvider } from "../context/Context";
 import html2canvas from 'html2canvas';
 import jsPdf from 'jspdf';
 import EmploiFormateur from "../components/EmploiFormateur";
+import Loader from "../components/Loader";
 
 
 const EmploiTempsFormateur = () => {
 
     const pdfRef = useRef();
-    const { seancesParSemaine, formateurs, affectations } =
+    const { seancesParSemaine, formateurs, affectations , loadingSeancesParSemaine } =
         useContext(contextProvider);
 
     const calculeMHHebdoGroupe = (formateur) => {
@@ -73,7 +74,7 @@ const EmploiTempsFormateur = () => {
                         <div className="content">
                             <div className="search">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input onChange={(e) =>setSearchFormateur(e.target.value)}
+                                <input onChange={(e) => setSearchFormateur(e.target.value)}
                                     className="input1"
                                     spellcheck="false"
                                     type="text"
@@ -108,24 +109,31 @@ const EmploiTempsFormateur = () => {
 
             <button className="btnDownload" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
             <div ref={pdfRef}>
-            {!formateur ? formateurs.map((formateur) => (
-                <EmploiFormateur
-                    nomFormateur={formateur.Nom_Formateur}
-                    formateur={formateur.Matricule}
-                    masseHoraire={calculeMHHebdoGroupe(formateur)}
-                    annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
-                />
-            ))
-            :
-            <>
-            <EmploiFormateur
-                    nomFormateur={formateur.Nom_Formateur}
-                    formateur={formateur.Matricule}
-                    masseHoraire={calculeMHHebdoGroupe(formateur)}
-                    annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
-                />
-            </>
-        }
+                {
+                    loadingSeancesParSemaine ? <Loader />
+                        :
+                        <>
+                            {!formateur ? formateurs.map((formateur) => (
+                                <EmploiFormateur
+                                    nomFormateur={formateur.Nom_Formateur}
+                                    formateur={formateur.Matricule}
+                                    masseHoraire={calculeMHHebdoGroupe(formateur)}
+                                    annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
+                                />
+                            ))
+                                :
+                                <>
+                                    <EmploiFormateur
+                                        nomFormateur={formateur.Nom_Formateur}
+                                        formateur={formateur.Matricule}
+                                        masseHoraire={calculeMHHebdoGroupe(formateur)}
+                                        annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
+                                    />
+                                </>
+                            }
+                        </>
+                }
+
             </div>
         </div>
     );

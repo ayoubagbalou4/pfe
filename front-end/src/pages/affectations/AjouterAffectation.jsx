@@ -23,15 +23,19 @@ const AjouterAffectation = () => {
         try {
             const response = await axios.post('http://127.0.0.1:8000/api/affectations', affectationsData)
             setLoadingAddAffectation(false)
-            navigate('/admin/affectations')
+            navigate('/affectations')
             Swal.fire({
-                position: "top-end",
+                position: "center-center",
                 icon: "success",
                 title: "Add affectation With Success",
                 showConfirmButton: false,
                 timer: 1500
             });
         } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: "Cette Affectation Est Deja Exist",
+            });
             console.log(error)
             setLoadingAddAffectation(false)
         }
@@ -46,7 +50,7 @@ const AjouterAffectation = () => {
                     <div>
                         <p>Code Groupe</p>
                         <select onChange={handleAffectation} name='Code_Groupe' required>
-                            <option value="" key="">Choisir Groupe</option>
+                            <option value="" key="" selected disabled>Choisir Groupe</option>
                             {
                                 groupes.map((groupe, index) => (
                                     <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
@@ -57,10 +61,10 @@ const AjouterAffectation = () => {
                     <div>
                         <p>module</p>
                         <select onChange={handleAffectation} name='Id_module' required>
-                            <option value="" key="">Choisir module</option>
+                            <option value="" key="" selected disabled>Choisir module</option>
                             {
                                 modules.map((module, index) => (
-                                    <option value={module.Id_module} key={index}>{module.Id_module}</option>
+                                    <option value={module.Id_module} key={index}>{module.Id_module} ({module.Intitule_module})</option>
                                 ))
                             }
                         </select>
@@ -68,7 +72,7 @@ const AjouterAffectation = () => {
                     <div>
                         <p>formateur Matricule</p>
                         <select onChange={handleAffectation} name='formateur_Matricule' required>
-                            <option value="" key="">Choisir formateur</option>
+                            <option value="" key="" selected disabled>Choisir formateur</option>
                             {
                                 formateurs.map((formateur, index) => (
                                     <option value={formateur.Matricule} key={index}>{formateur.Nom_Formateur}</option>
@@ -81,7 +85,8 @@ const AjouterAffectation = () => {
                         <button>Add Affectation</button>
                     }
                 </form>
-                {loadingAddAffectation && <center><div class="loader2"></div></center>}
+
+                {loadingAddAffectation && <div className='singleLoader'><span class="loader"></span></div>}
             </div>
         </div>
     )

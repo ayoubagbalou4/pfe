@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('affectations', function (Blueprint $table) {
-            $table->id();
             $table->string('Code_Groupe');
-            $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
             $table->string('Id_module');
-            $table->foreign('Id_module')->references('Id_module')->on('modules');
             $table->string('formateur_Matricule')->nullable();
+            $table->primary(['Code_Groupe', 'Id_module', 'formateur_Matricule']);
+            $table->foreign('Code_Groupe')->references('Code_Groupe')->on('groupes');
+            $table->foreign('Id_module')->references('Id_module')->on('modules');
             $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
             $table->timestamps();
         });

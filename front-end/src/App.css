@@ -832,14 +832,14 @@ nav .header {
     pointer-events: none;
 }
 
-.content {
+.contentDashboard {
     padding: 20px;
     margin-top: 60px;
 }
 
 .boxs {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .boxs a {

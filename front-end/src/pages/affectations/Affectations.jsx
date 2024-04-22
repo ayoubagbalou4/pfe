@@ -25,16 +25,16 @@ const Affectations = () => {
     }, [])
 
 
-    const deleteAffectation = async (id) => {
+    const deleteAffectation = async (Code_Groupe,Id_module,formateur_Matricule) => {
         try {
-            const response = await axios.delete(`http://127.0.0.1:8000/api/affectations/${id}`)
+            const response = await axios.delete(`http://127.0.0.1:8000/api/affectations/${Code_Groupe}/${Id_module}/${formateur_Matricule}`)
             getAffectations()
         } catch (error) {
             console.log(error)
         }
     }
 
-    const deleteAffectationConfirm = (id) => {
+    const deleteAffectationConfirm = (Code_Groupe,Id_module,formateur_Matricule) => {
         Swal.fire({
             title: "Do you want to delete This Affectation?",
             showDenyButton: true,
@@ -43,7 +43,7 @@ const Affectations = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 Swal.fire("Deleted!", "", "success");
-                deleteAffectation(id)
+                deleteAffectation(Code_Groupe,Id_module,formateur_Matricule)
             }
         });
     }
@@ -73,8 +73,8 @@ const Affectations = () => {
                                         <td>{affectation.module.code_module}</td>
                                         <td>{affectation.formateur.Nom_Formateur}</td>
                                         <td>
-                                            <button onClick={() => deleteAffectationConfirm(affectation.id)} className='delete'>Delete</button>
-                                            <Link to={`/admin/edit-affectation/${affectation.id}`}><button className='update'>Update</button></Link>
+                                            <button onClick={() => deleteAffectationConfirm(affectation.Code_Groupe,affectation.module.Id_module,affectation.formateur.Matricule)} className='delete'>Delete</button>
+                                            <Link to={`/affectations/EditAffectation/${affectation.Code_Groupe}/${affectation.module.Id_module}/${affectation.formateur.Matricule}`}><button className='update'>Update</button></Link>
                                         </td>
                                     </tr>
                                 ))

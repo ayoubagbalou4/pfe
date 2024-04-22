@@ -31,7 +31,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('salles', SalleController::class);
 Route::apiResource('formateurs',FormateurController::class);
-Route::apiResource('affectations', AffectationController::class);
 Route::apiResource('filieres', FiliereController::class);
 Route::apiResource('groupes', GroupeController::class);
 Route::apiResource('filiereModules', FiliereModuleController::class);
@@ -45,3 +44,9 @@ Route::get('formateurStatistiques/{semaine}', [FormateurController::class,"forma
 Route::get('groupeStatistiques/{semaine}', [GroupeController::class,"groupeStatistiques"]);
 
 Route::apiResource('semaines', SemaineController::class);
+
+Route::get('affectations', [AffectationController::class,"index"]);
+Route::post('affectations', [AffectationController::class,"store"]);
+Route::get('affectations/{Code_Groupe}/{Id_module}/{formateur_Matricule}', [AffectationController::class,"show"]);
+Route::put('affectations/{Code_Groupe}/{Id_module}/{formateur_Matricule}', [AffectationController::class,"update"]);
+Route::delete('affectations/{Code_Groupe}/{Id_module}/{formateur_Matricule}', [AffectationController::class,"destroy"]);
