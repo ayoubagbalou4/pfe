@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Loader from '../../components/Loader'
 import Navbar from '../../components/Navbar'
+import Layout from '../../components/Layout'
 
 const Formateurs = () => {
 
@@ -52,7 +53,9 @@ const Formateurs = () => {
 
     return (
         <>
-            <Navbar />
+            <Layout content={
+                    <div class="contentDashboard">
+
             <div class="formAdmin">
                 <h1>Formateurs</h1>
                 {
@@ -92,6 +95,9 @@ const Formateurs = () => {
                         </table>
                 }
             </div>
+                    </div>
+                }
+            />
         </>
     )
 }

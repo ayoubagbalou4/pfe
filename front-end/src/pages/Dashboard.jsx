@@ -1,14 +1,15 @@
 import React from "react";
-import Content from "./Content";
 import Box from "./Box";
 import { Link } from "react-router-dom";
+import Layout from "../components/Layout";
+import Absence from "../components/Absence";
 
-const Dashbord = () => {
+const Dashboard = () => {
     return (
         <>
-            <Content
+            <Layout
                 content={
-                    <div class="content">
+                    <div class="contentDashboard">
                         <div class="boxs">
                             <Link to={"/"}>
                                 {" "}
@@ -35,6 +36,7 @@ const Dashbord = () => {
                                 />
                             </Link>
                         </div>
+                        
                     </div>
                 }
             />
@@ -42,4 +44,4 @@ const Dashbord = () => {
     );
 };
 
-export default Dashbord;
+export default Dashboard;

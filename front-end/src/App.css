@@ -53,11 +53,14 @@ header {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     padding: 15px 0;
 }
-.choisir_inputs.two{
+
+.choisir_inputs.two {
     margin-bottom: 15px;
 }
 
-.choisir_input_box, .choisir_input_box1, .choisir_input_box2 {
+.choisir_input_box,
+.choisir_input_box1,
+.choisir_input_box2 {
     width: 21%;
     text-align: center;
     position: relative;
@@ -98,7 +101,8 @@ header {
     width: 100%;
 }
 
-.choisir_input_box th, .choisir_input_box td {
+.choisir_input_box th,
+.choisir_input_box td {
     border: 1px solid black;
     text-align: center;
     padding: 3px 0;
@@ -115,7 +119,8 @@ header {
     width: 100%;
 }
 
-.main_table table th, .main_table table td {
+.main_table table th,
+.main_table table td {
     border: 2px solid black;
     text-align: center;
     width: calc(100% / 8);
@@ -241,13 +246,18 @@ header {
     background-color: #109CF1;
 }
 
-.select-btn, li, .select-btn1, .select-btn2 {
+.select-btn,
+li,
+.select-btn1,
+.select-btn2 {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.select-btn, .select-btn1, .select-btn2 {
+.select-btn,
+.select-btn1,
+.select-btn2 {
     padding: 6px 0;
     font-size: 16px;
     background: #fff;
@@ -255,7 +265,9 @@ header {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-.select-btn i, .select-btn1 i, .select-btn2 i {
+.select-btn i,
+.select-btn1 i,
+.select-btn2 i {
     font-size: 31px;
     transition: transform 0.3s linear;
 }
@@ -359,9 +371,12 @@ header {
     text-align: left;
 }
 
-.options li:hover, li.selected,
-.options1 li:hover, li.selected,
-.options2 li:hover, li.selected {
+.options li:hover,
+li.selected,
+.options1 li:hover,
+li.selected,
+.options2 li:hover,
+li.selected {
     border-radius: 5px;
     background: #f2f2f2;
 }
@@ -411,7 +426,8 @@ header {
     overflow-x: auto;
 }
 
-.parGroupe th, .parGroupe td {
+.parGroupe th,
+.parGroupe td {
     border: 1px solid #e6e6e6;
     text-align: center;
 }
@@ -513,7 +529,7 @@ header {
     color: #566573;
 }
 
-.tr th{
+.tr th {
     background-color: #566573a0;
     color: whitesmoke;
 }
@@ -524,12 +540,14 @@ header {
     border-radius: 10px;
     margin: 20px 0;
 }
+
 .fieldsetTwo {
     padding: 30px;
     border: 2px solid #566573;
     border-radius: 10px;
     text-align: center;
 }
+
 .fieldsetTwo legend {
     display: inline-block;
 }
@@ -540,9 +558,11 @@ header {
     flex-wrap: wrap;
     text-align: left;
 }
+
 .itemsEmploi h4 {
     width: 50%;
 }
+
 .itemsEmploi h4 span {
     color: #566573;
 }
@@ -554,6 +574,7 @@ header {
 .parGroupe tr:hover {
     background-color: white;
 }
+
 .btnDownload {
     background-color: #566573;
     border: none;
@@ -563,7 +584,8 @@ header {
     text-transform: capitalize;
     border-radius: 5px;
 }
-  .loader {
+
+.loader {
     width: 48px;
     height: 48px;
     border: 5px solid #566573;
@@ -572,16 +594,17 @@ header {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    }
+}
 
-    @keyframes rotation {
+@keyframes rotation {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
-    }
+}
 
 .loaderDiv {
     width: 100%;
@@ -599,21 +622,25 @@ header {
     margin: 30px;
     padding: 30px;
 }
+
 .formAdmin h1 {
     text-align: center;
     color: #566573;
     margin-bottom: 30px;
 }
+
 .formAdmin form {
     display: flex;
     flex-wrap: wrap;
     column-gap: 1%;
 }
+
 .formAdmin form div {
     margin: 9px 0;
     width: 32.6%;
     position: relative;
 }
+
 .formAdmin p {
     font-size: 15px;
     text-transform: capitalize;
@@ -621,7 +648,10 @@ header {
     color: #566573;
     font-weight: bold;
 }
-.formAdmin input , .formAdmin textarea , .formAdmin select {
+
+.formAdmin input,
+.formAdmin textarea,
+.formAdmin select {
     padding: 12px;
     width: 100%;
     outline: 0;
@@ -629,9 +659,13 @@ header {
     font-size: 14px;
     border: 2px solid #e6e6e6;
 }
-.formAdmin input:focus , .formAdmin textarea:focus , .formAdmin select:focus {
+
+.formAdmin input:focus,
+.formAdmin textarea:focus,
+.formAdmin select:focus {
     border: 2px solid #566573;
 }
+
 .formAdmin button {
     padding: 12px;
     width: 100%;
@@ -644,6 +678,7 @@ header {
     cursor: pointer;
     border-radius: 5px;
 }
+
 .colorInput {
     width: fit-content !important;
 }
@@ -655,7 +690,8 @@ header {
     overflow-x: scroll;
 }
 
-.formAdmin th, .formAdmin td {
+.formAdmin th,
+.formAdmin td {
     border: 1px solid #e6e6e6;
     text-align: center;
 }
@@ -673,23 +709,28 @@ header {
 .formAdmin tr:hover {
     background-color: #e6e6e6;
 }
+
 .formAdmin table button {
     width: fit-content !important;
 }
+
 .formAdmin table .delete {
     background-color: #FF5555;
     margin: 0 2px;
 }
+
 .formAdmin table .update {
     background-color: #3498db;
     margin: 0 2px;
 }
+
 .singleLoader {
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
 }
+
 .containerDahboard {
     display: flex;
 }
@@ -726,8 +767,8 @@ nav .header {
 }
 
 .menuClick {
-    display: none;
-    background: #e6e6e6;
+    display: block;
+    background: #566573;
     position: absolute;
     right: 20px;
     z-index: 999;
@@ -738,18 +779,10 @@ nav .header {
 
 .menuClick a {
     display: block;
-
     padding: 10px 20px;
-    color: black;
+    color: white;
     z-index: 999;
-}
-
-.menuClick a:hover {
-    background-color: #eee;
-}
-
-.menuClick a:nth-child(1) {
-    border-bottom: 1px solid gray;
+    cursor: pointer;
 }
 
 .logout {
@@ -767,15 +800,17 @@ nav .header {
 }
 
 .brand {
-    text-align: center;
-    font-size: 23px;
-    font-weight: bold;
-    padding: 19px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
 }
 
-.brand span {
-    color: white;
+.brand img {
+    width: 80px;
 }
+
+
 
 /* linksSide */
 .linksSide {
@@ -792,6 +827,7 @@ nav .header {
     position: relative;
     font-size: 12px;
     width: 100%;
+    display: inline-block;
 }
 
 .linksSide a i {
@@ -799,7 +835,8 @@ nav .header {
     padding-right: 15px;
 }
 
-.linksSide a:hover, .linksSide a.active {
+.linksSide a:hover,
+.linksSide a.active {
     background-color: white;
     color: black;
 }
@@ -832,14 +869,14 @@ nav .header {
     pointer-events: none;
 }
 
-.content {
+.contentDashboard {
     padding: 20px;
     margin-top: 60px;
 }
 
 .boxs {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .boxs a {
@@ -866,7 +903,7 @@ nav .header {
 }
 
 .boxs a:nth-child(2) {
-    background-color:  #D667D8;
+    background-color: #D667D8;
 }
 
 .boxs a:nth-child(3) {
@@ -879,4 +916,35 @@ nav .header {
 
 .box:nth-child(5) {
     background-color: #D86778;
+}
+
+.Générer {
+    width: 100%;
+    background-color: rgb(11, 178, 11);
+    color: white;
+    outline: 0;
+    border: 0;
+    text-transform: capitalize;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.GénérerTd {
+    background-color: rgb(11, 178, 11);
+}
+
+.linksDown {
+    background-color: #80909f;
+}
+
+.groupeTable tr {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 20% 10% 15% 10% 10% 10% 10% 7.5% 7.5%;
+}
+
+.AP_Table tr {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 15% 10% 10% 10% 10% 10% 10% 10%;
 }

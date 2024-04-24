@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import Navbar from '../../components/Navbar'
 import Loader from '../../components/Loader'
 import { contextProvider } from '../../context/Context'
+import Layout from '../../components/Layout'
 
 const EditFormateur = () => {
 
@@ -56,8 +57,10 @@ const EditFormateur = () => {
     }
 
     return (
-        <div>
-            <Navbar />
+
+           <Layout content={
+
+                    <div class="contentDashboard">
             <div class="formAdmin">
                 <h1>Edit Formateur</h1>
                 {loadingGetSingleFormateur ? <Loader /> :
@@ -130,7 +133,11 @@ const EditFormateur = () => {
                     </>
                 }
             </div>
-        </div>
+
+                    </div>
+                }
+            />
+
     )
 }
 

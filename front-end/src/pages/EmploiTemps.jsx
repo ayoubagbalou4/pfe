@@ -3,13 +3,19 @@ import { contextProvider } from "../context/Context";
 import Emploi from "../components/Emploi";
 import html2canvas from 'html2canvas';
 import jsPdf from 'jspdf';
+import Loader from './../components/Loader'
+import { useParams } from "react-router-dom";
 
 
 const EmploiTemps = () => {
+    const {semaine}=useParams()
 
     const pdfRef = useRef();
-    const { seancesParSemaine, seances, groupes, affectations } =
-        useContext(contextProvider);
+    const { seancesParSemaine, seances, groupes, affectations,loadingSeancesParSemaine ,
+        setNSemaine} = useContext(contextProvider);
+        
+    setNSemaine(semaine)
+
 
     const calculeMHHebdoGroupe = (groupe) => {
         let count = 0;
@@ -47,14 +53,11 @@ const EmploiTemps = () => {
                 const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
                 const imgX = (pdfWidth - imgWidth * ratio) / 2;
                 const imgY = 30;
-
                 pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
                 pdf.save("emploi_temp_Groupes.pdf");
-
             })
             .catch((error) => {
                 console.error('Error generating PDF:', error);
-
             });
     };
 
@@ -114,21 +117,27 @@ const EmploiTemps = () => {
             <button className="btnDownload" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
 
             <div ref={pdfRef}>
-
-                {!groupe ? groupes.map((groupe) => (
-                    <Emploi
-                        groupe={groupe.Code_Groupe}
-                        masseHoraire={calculeMHHebdoGroupe(groupe)}
-                        annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
-                    />
-                ))
-                    :
-                    <Emploi
-                        groupe={groupe}
-                        masseHoraire={calculeMHHebdoGroupe(groupe)}
-                        annee={affectations.find((aff) => aff.Code_Groupe == groupe)?.module.annee}
-                    />
+                {
+                    loadingSeancesParSemaine ? <Loader />
+                        :
+                        <>
+                            {!groupe ? groupes.map((groupe) => (
+                                <Emploi
+                                    groupe={groupe.Code_Groupe}
+                                    masseHoraire={calculeMHHebdoGroupe(groupe)}
+                                    annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
+                                />
+                            ))
+                                :
+                                <Emploi
+                                    groupe={groupe}
+                                    masseHoraire={calculeMHHebdoGroupe(groupe)}
+                                    annee={affectations.find((aff) => aff.Code_Groupe == groupe)?.module.annee}
+                                />
+                            }
+                        </>
                 }
+
             </div>
         </div>
     );

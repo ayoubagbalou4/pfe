@@ -3,6 +3,7 @@ import { Chart as chartjs } from 'chart.js/auto'
 import { contextProvider } from '../context/Context';
 import Navbar from './Navbar';
 import { Bar, Line } from 'react-chartjs-2';
+import Layout from './Layout';
 const StatistiquesFormateur = () => {
 const{statistiquesF}=useContext(contextProvider)
 
@@ -36,10 +37,15 @@ const{statistiquesF}=useContext(contextProvider)
 
   return (
     <>
-    <Navbar />
+   <Layout content={
+                    <div class="contentDashboard">
+
     <div style={{width:'90%' , margin: 'auto'}} >
       <Bar data={data} options={options} />
     </div>
+                    </div>
+                }
+            />
     </>
   );
 }
