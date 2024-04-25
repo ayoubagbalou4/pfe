@@ -48,6 +48,6 @@ Route::get('groupeStatistiques/{semaine}', [GroupeController::class,"groupeStati
 Route::apiResource('semaines', SemaineController::class);
 Route::post('remplacer/{id1}', [SeanceController::class,"remplacer"]);
 Route::post('dupliquer', [SeanceController::class,"dupliquer"]);
-Route::delete('supprimer/{Code_Groupe}/{formateur_Matricule}/{code_seance}', [SeanceController::class,"supprimer"]);
+Route::delete('supprimer/{Code_Groupe}/{formateur_Matricule}/{code_seance}/{No_Semaine_Calendrier}', [SeanceController::class,"supprimer"]);
 Route::post('absences', [AbsenceController::class,"store"]);
 Route::get('absences/{semaine}', [AbsenceController::class,"index"]);

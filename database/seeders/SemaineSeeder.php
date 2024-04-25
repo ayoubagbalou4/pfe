@@ -20,42 +20,49 @@ class SemaineSeeder extends Seeder
             'firstDayOfWeek' => '2023-09-04',
             'lastDayOfWeek' => '2023-09-10',
             'Semaine_DRIF' => 1,
+            'annee'=>2023
         ]);
         Semaine::create([
             'semaine' => 37,
             'firstDayOfWeek' => '2023-09-11',
             'lastDayOfWeek' => '2023-09-17',
             'Semaine_DRIF' => 2,
+            'annee'=>2023
         ]);
         Semaine::create([
             'semaine' => 38,
             'firstDayOfWeek' => '2023-09-18',
             'lastDayOfWeek' => '2023-09-24',
             'Semaine_DRIF' => 3,
+            'annee'=>2023
         ]);
         Semaine::create([
             'semaine' => 39,
             'firstDayOfWeek' => '2023-09-25',
             'lastDayOfWeek' => '2023-10-01',
             'Semaine_DRIF' => 4,
+            'annee'=>2023
         ]);
         Semaine::create([
             'semaine' => 40,
             'firstDayOfWeek' => '2023-10-02',
             'lastDayOfWeek' => '2023-10-08',
             'Semaine_DRIF' => 5,
+            'annee'=>2023
         ]);
         Semaine::create([
             'semaine' => 41,
             'firstDayOfWeek' => '2023-10-09',
             'lastDayOfWeek' => '2023-10-15',
             'Semaine_DRIF' => 6,
+            'annee'=>2023
         ]);
         Semaine::create([
             'semaine' => 42,
             'firstDayOfWeek' => '2023-10-16',
             'lastDayOfWeek' => '2023-10-22',
             'Semaine_DRIF' => 7,
+            'annee'=>2023
         ]);
     }
 }

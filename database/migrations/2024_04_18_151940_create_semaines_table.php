@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('firstDayOfWeek');
             $table->date('lastDayOfWeek');
             $table->integer('Semaine_DRIF');
+            $table->integer('annee');
             $table->timestamps();
         });
     }

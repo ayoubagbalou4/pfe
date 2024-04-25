@@ -96,10 +96,11 @@ class SeanceController extends Controller
     }
 
 
-    public function supprimer($Code_Groupe,$formateur_Matricule,$code_seance){
+    public function supprimer($Code_Groupe,$formateur_Matricule,$code_seance,$No_Semaine_Calendrier){
         Seance::where('Code_Groupe',$Code_Groupe)
         ->where('formateur_Matricule',$formateur_Matricule)
         ->where('code_seance',$code_seance)
+        ->where('No_Semaine_Calendrier',$No_Semaine_Calendrier)
         ->delete();
         return response()->json([], 200);
     }

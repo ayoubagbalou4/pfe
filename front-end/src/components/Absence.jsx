@@ -16,7 +16,7 @@ const Absence = () => {
     }
 
     return (
-        <Layout content={
+        <Layout header={"Absences"} Absences={"active"} content={
             <div class="contentDashboard">
             <div className='parGroupe'>
                 <h1>Absence des formateurs</h1>

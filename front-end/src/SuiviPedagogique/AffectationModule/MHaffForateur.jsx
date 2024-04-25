@@ -14,7 +14,7 @@ const MHaffForateur = () => {
         return total;
     };
     return (
-        <Layout content={
+        <Layout header={"Masse horaire affectées aux formateurs"} SuiviPédagogique={"active"} content={
             <>
                 <div class="contentDashboard">
                     <div className='parGroupe'>

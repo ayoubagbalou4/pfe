@@ -41,11 +41,11 @@ const ApTotalGroupe = () => {
     };
 
     return (
-        <Layout content={
+        <Layout header={"Ap Totale Par Groupe"} ApTotaleGroupe={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Ap Totale Par Groupe </h1>
-                    <table className='AP_Table'>
+                    <table className='apTable'>
                         <thead>
                             <tr>
                                 <th> Code Filiere</th>

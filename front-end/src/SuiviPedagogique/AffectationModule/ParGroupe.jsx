@@ -28,10 +28,10 @@ const ParGroupe = () => {
 
 
     return (
-        <Layout content={
+        <Layout header={"Affecation des modules"} SuiviPédagogique={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
-                    <h1>Affecation des modules </h1>
+                    <h1>Affecation des modules</h1>
                     <div className="choisir_inputs two">
                         <div className="choisir_input_box3 select">
                             <p>Filiere</p>

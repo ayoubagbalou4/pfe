@@ -821,18 +821,28 @@ nav .header {
     color: white;
     display: block;
     padding: 15px 20px;
-    font-weight: 600;
+    font-weight: 700;
     display: flex;
     align-items: center;
     position: relative;
-    font-size: 12px;
+    font-size: 15px;
     width: 100%;
-    display: inline-block;
+    cursor: pointer;
 }
 
 .linksSide a i {
+    width: 30px;
     font-size: 22px;
-    padding-right: 15px;
+    text-align: center;
+    margin-right: 10px;
+}
+.linksDown {
+    background-color: #566573;
+}
+.linksDown i {
+    width: 20px !important;
+    font-size: 18px !important;
+    margin-right: 10px;
 }
 
 .linksSide a:hover,
@@ -840,8 +850,12 @@ nav .header {
     background-color: white;
     color: black;
 }
-
-.linksSide .item:hover::before,
+#arrowRight {
+    position: absolute;
+    right: 0;
+    font-size: 20px;
+}
+.linksSide a:hover::before,
 .linksSide .active::before {
     content: "";
     position: absolute;
@@ -868,6 +882,7 @@ nav .header {
     box-shadow: 35px -35px 0 10px white;
     pointer-events: none;
 }
+
 
 .contentDashboard {
     padding: 20px;
@@ -933,9 +948,7 @@ nav .header {
     background-color: rgb(11, 178, 11);
 }
 
-.linksDown {
-    background-color: #80909f;
-}
+
 
 .groupeTable tr {
     width: 100%;
@@ -943,8 +956,20 @@ nav .header {
     grid-template-columns: 20% 10% 15% 10% 10% 10% 10% 7.5% 7.5%;
 }
 
-.AP_Table tr {
+.apTable tr {
     width: 100%;
     display: grid;
-    grid-template-columns: 15% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-columns: 20% 12% 12% 12% 12% 12% 10% 10%;
+}
+
+.arrowDown{
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    font-size: 45px;
+    color: #566573;
+    z-index: 990;
+    background-color: white;
+    cursor: pointer;
+    clip-path: circle();
 }

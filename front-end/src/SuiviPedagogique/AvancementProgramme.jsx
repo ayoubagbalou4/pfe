@@ -28,7 +28,7 @@ const AvancementProgramme = () => {
     };
     const groupeFilter = affectations.find((e) => e.Code_Groupe == groupe);
     return (
-        <Layout content={
+        <Layout header={"MH hebdomadaires par groupes"} AvancementProgramme={"active"} content={
             <div class="contentDashboard">
                 <div className="parGroupe">
                     <h1>MH hebdomadaires par groupes</h1>

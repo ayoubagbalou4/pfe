@@ -9,7 +9,7 @@ const ModuleNonAffectees = () => {
     const { affectations, filiereModules } = useContext(contextProvider);
 
     return (
-        <Layout content={
+        <Layout header={"Module Non Affectées"} SuiviPédagogique={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Module Non Affectées</h1>

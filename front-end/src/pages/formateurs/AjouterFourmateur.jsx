@@ -38,7 +38,7 @@ const AjouterFourmateur = () => {
     }
 
     return (
-        <Layout content={
+        <Layout header={"Ajouter Un Formateur"} Formateur={"active"} content={
             <div class="contentDashboard">
                 <div class="formAdmin">
                     <h1>Ajouter Un Formateur</h1>

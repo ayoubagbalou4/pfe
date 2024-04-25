@@ -26,6 +26,9 @@ import Dashboard from './pages/Dashboard'
 import EditAffectation from './pages/affectations/EditAffectation'
 import Absence from './components/Absence'
 import Login from './Auth/Login'
+import AjouterSemaine from './pages/semaines/AjouterSemaine'
+import Semaines from './pages/semaines/Semaines'
+import EditSemaine from './pages/semaines/EditSemaine'
 
 const App = () => {
   return (
@@ -61,6 +64,11 @@ const App = () => {
                 <Route path='/Dashboard' element={<Dashboard/>}/>
                 <Route path='/Absences' element={<Absence/>}/>
                 <Route path='/Login' element={<Login/>}/>
+
+                <Route path='/semaines/AjouterSemaine' element={<AjouterSemaine/>}/>
+                <Route path='/semaines' element={<Semaines/>}/>
+                <Route path='/semaines/EditSemaine/:id' element={<EditSemaine/>}/>
+
 
 
 

@@ -37,7 +37,7 @@ const ParFormateur = () => {
     }, [formateur])
 
     return (
-        <Layout content={
+        <Layout header={"Affecation des modules Par Formateur"} SuiviPédagogique={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Affecation des modules Par Formateur</h1>

@@ -60,7 +60,8 @@ const CreerSeance = () => {
             bg: formateur.Background_Color,
             Id_Salle: salle,
             module: module.code_module,
-            Id_module:module.Id_module
+            Id_module:module.Id_module,
+            generate:true
         };
         setSeanceGenerate(x);
     };

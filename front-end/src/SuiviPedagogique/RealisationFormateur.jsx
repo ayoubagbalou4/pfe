@@ -23,7 +23,7 @@ const RealisationFormateur = () => {
 
 
     return (
-        <Layout content={
+        <Layout header={"Réalisation des formateurs"} RealisationFormateur={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Réalisation des formateurs</h1>

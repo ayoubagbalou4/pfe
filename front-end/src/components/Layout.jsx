@@ -9,6 +9,7 @@ const Layout = (props) => {
     const [showStatistiques, setshowStatistiques] = useState(false);
     const [showRealisation, setshowRealisation] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    const [showSemaine, setshowSemaine] = useState(false);
     const [admin, setAdmin] = useState(localStorage.getItem('admin'));
     const navigate = useNavigate()
 
@@ -36,7 +37,10 @@ const Layout = (props) => {
     const toggleMenu4 = () => {
         setshowRealisation(!showRealisation);
     };
-    const handleLogout=()=>{
+    const toggleMenu5 = () => {
+        setshowSemaine(!showSemaine);
+    };
+    const handleLogout = () => {
         Swal.fire({
             title: "Êtes-vous sûr(e) de vouloir vous déconnecter ?",
             text: "Vous ne pourrez pas revenir en arrière !",
@@ -58,61 +62,69 @@ const Layout = (props) => {
             <div class="aside">
                 <div class="brand"><img src="http://localhost:3000/images/logo4.png" alt="" /></div>
                 <div className="linksSide">
-                    <Link to="/Dashboard"><i className="fa-solid fa-house-chimney"></i> Dashboard </Link>
-                    <a onClick={toggleMenu1}><i className="fa-solid fa-user"></i>Suivi Pédagogique</a>
+                    <Link className={props.Dashboard} to="/Dashboard"><i className="fa-solid fa-house-chimney"></i> Dashboard </Link>
+                    <a className={props.SuiviPédagogique} onClick={toggleMenu1}><i className="fa-solid fa-user"></i> Suivi Pédagogique {!showAffectation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
                     {
                         showAffectation &&
                         <>
-                            <Link className='linksDown' to="/suivi/affectation/groupe">Groupe</Link>
-                            <Link className='linksDown' to="/suivi/affectation/groupeModule">Groupe par Module</Link>
-                            <Link className='linksDown' to="/suivi/affectation/formateur">Formateur</Link>
-                            <Link className='linksDown' to="/suivi/affectation/nonAffecte">Non Affecté</Link>
-                            <Link className='linksDown' to="/suivi/affectation/MH-aff-Formateur">MH-aff-Formateur</Link>
+                            <Link to="/suivi/affectation/groupe"><i class="fa-solid fa-chevron-right"></i>Groupe</Link>
+                            <Link to="/suivi/affectation/groupeModule"><i class="fa-solid fa-chevron-right"></i>Groupe par Module</Link>
+                            <Link to="/suivi/affectation/formateur"><i class="fa-solid fa-chevron-right"></i>Formateur</Link>
+                            <Link to="/suivi/affectation/nonAffecte"><i class="fa-solid fa-chevron-right"></i>Non Affecté</Link>
+                            <Link to="/suivi/affectation/MH-aff-Formateur"><i class="fa-solid fa-chevron-right"></i>MH-aff-Formateur</Link>
                         </>
                     }
-                    <a onClick={toggleMenu2}><i className="fa-solid fa-users"></i>Formateur</a>
+                    <a className={props.Formateur} onClick={toggleMenu2}><i className="fa-solid fa-users"></i>Formateur {!showFormateur ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
                     {
                         showFormateur &&
                         <>
-                            <Link className='linksDown' to="/formateurs/AjouterFourmateur">Ajouter Formateur</Link>
-                            <Link className='linksDown' to="/formateurs">Afficher Formateurs</Link>
+                            <Link to="/formateurs/AjouterFourmateur"><i class="fa-solid fa-chevron-right"></i>Ajouter Formateur</Link>
+                            <Link to="/formateurs"><i class="fa-solid fa-chevron-right"></i>Afficher Formateurs</Link>
                         </>
                     }
-                    <a onClick={toggleMenu3}><i className="fa-solid fa-chart-simple"></i> Statistiques</a>
+                    <a className={props.Statistiques} onClick={toggleMenu3}><i className="fa-solid fa-chart-simple"></i> Statistiques {!showStatistiques ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
                     {
                         showStatistiques &&
                         <>
-                            <Link className='linksDown' to="/StatistiquesFormateur">Statistiques Formateur</Link>
-                            <Link className='linksDown' to="/StatistiquesGroupe">Statistiques Groupe</Link>
+                            <Link to="/StatistiquesFormateur"><i class="fa-solid fa-chevron-right"></i>Statistiques Formateur</Link>
+                            <Link to="/StatistiquesGroupe"><i class="fa-solid fa-chevron-right"></i>Statistiques Groupe</Link>
 
                         </>
                     }
-                    <a onClick={toggleMenu4}><i className="fa-solid fa-circle-check"></i>RealisationFormateur</a>
+                    <a className={props.RealisationFormateur} onClick={toggleMenu4}><i className="fa-solid fa-circle-check"></i>RealisationFormateur {!showRealisation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
                     {
                         showRealisation &&
                         <>
-                            <Link className='linksDown' to="/suivi/Realisation-Formateur-ParSemaine"> Realisation Formateur ParSemaine</Link>
-                            <Link className='linksDown' to="/suivi/RealisationFormateur">Realisation Formateur</Link>
+                            <Link to="/suivi/Realisation-Formateur-ParSemaine"><i class="fa-solid fa-chevron-right"></i>Realisation Formateur ParSemaine</Link>
+                            <Link to="/suivi/RealisationFormateur"><i class="fa-solid fa-chevron-right"></i>Realisation Formateur</Link>
 
                         </>
                     }
-                    <Link to="/suivi/ApTotaleGroupe"><i className="fa-solid fa-users-rectangle"></i> Ap Totale Groupe</Link>
-                    <Link to="/suivi/AvancementProgramme"><i className="fa-solid fa-calendar-check"></i> Avancement Programme</Link>
-                    <Link to="/OcupationSalle"><i className="fa-solid fa-house-laptop"></i> Ocupation Salle</Link>
-                    <Link to="/Absences"><i className="fa-solid fa-user-xmark"></i> Absences </Link>
+                    <a className={props.semaines} onClick={toggleMenu5}><i class="fa-solid fa-calendar-plus"></i>Semaines {!showSemaine ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    {
+                        showSemaine &&
+                        <>
+                            <Link to="/semaines"><i class="fa-solid fa-chevron-right"></i>Afficher Les Semaines</Link>
+                            <Link to="/semaines/AjouterSemaine"><i class="fa-solid fa-chevron-right"></i>Ajouter Semaine</Link>
+
+                        </>
+                    }
+                    <Link className={props.ApTotaleGroupe} to="/suivi/ApTotaleGroupe"><i className="fa-solid fa-users-rectangle"></i> Ap Totale Groupe</Link>
+                    <Link className={props.AvancementProgramme} to="/suivi/AvancementProgramme"><i className="fa-solid fa-calendar-check"></i> Avancement Programme</Link>
+
                 </div>
             </div>
             <div class="main">
                 <nav>
-                    <div class="header">Header</div>
-                    <div onClick={()=>setShowMenu(!showMenu)} class="logout">
+                    <div class="header">{props.header}</div>
+                    <div onClick={() => setShowMenu(!showMenu)} class="logout">
                         <img src="http://localhost:3000/images/provile_empty.png" alt="" />
                     </div>
                 </nav>
                 {showMenu &&
-                <div class="menuClick">
-                    <a onClick={handleLogout}><i class="fa-solid fa-power-off"></i> Déconnecter</a>
-                </div>}
+                    <div class="menuClick">
+                        <a onClick={handleLogout}><i class="fa-solid fa-power-off"></i> Déconnecter</a>
+                    </div>}
                 {props.content}
             </div>
         </div>

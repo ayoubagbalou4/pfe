@@ -39,7 +39,7 @@ const ParGroupeModule = () => {
 
 
     return (
-        <Layout content={
+        <Layout header={"Affecation des modules"} SuiviPédagogique={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Affecation des modules </h1>
