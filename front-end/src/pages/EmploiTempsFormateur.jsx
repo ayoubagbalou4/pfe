@@ -1,60 +1,98 @@
 import React, { useContext, useRef, useState } from "react";
 import { contextProvider } from "../context/Context";
-import html2canvas from 'html2canvas';
-import jsPdf from 'jspdf';
+import html2canvas from "html2canvas";
+import jsPdf from "jspdf";
 import EmploiFormateur from "../components/EmploiFormateur";
 import Loader from "../components/Loader";
-
+import Navbar from "../components/Navbar";
 
 const EmploiTempsFormateur = () => {
-
     const pdfRef = useRef();
-    const { seancesParSemaine, formateurs, affectations , loadingSeancesParSemaine } =
-        useContext(contextProvider);
+    const {
+        seancesParSemaine,
+        formateurs,
+        affectations,
+        loadingSeancesParSemaine,
+        nSemaine,
+        semaines,
+    } = useContext(contextProvider);
 
     const calculeMHHebdoGroupe = (formateur) => {
         let count = 0;
         seancesParSemaine
-            .filter((seance) => seance.formateur_Matricule == formateur.Matricule)
+            .filter(
+                (seance) => seance.formateur_Matricule == formateur.Matricule
+            )
             .map((e) => {
                 count += e.MH;
             });
         return count;
     };
 
+    const dateOfSemaine = semaines.find(
+        (s) => s.semaine == nSemaine
+    )?.firstDayOfWeek;
 
-    const [formateur, setFormateur] = useState()
-    const [afficherSelect1, setAfficherSelect1] = useState(false)
-    const [searchFormateur, setSearchFormateur] = useState('')
-
+    const [formateur, setFormateur] = useState();
+    const [afficherSelect1, setAfficherSelect1] = useState(false);
+    const [searchFormateur, setSearchFormateur] = useState("");
 
     const handleSelected1 = (formateur) => {
-        setFormateur(formateur)
-        setAfficherSelect1(false)
-    }
+        setFormateur(formateur);
+        setAfficherSelect1(false);
+    };
 
     const downloadPDF = () => {
         const input = pdfRef.current;
         html2canvas(input)
             .then((canvas) => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPdf('p', 'mm', 'a4', true);
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jsPdf("p", "mm", "a4", true);
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = pdf.internal.pageSize.getHeight();
                 const imgWidth = canvas.width;
                 const imgHeight = canvas.height;
-                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                const ratio = Math.min(
+                    pdfWidth / imgWidth,
+                    pdfHeight / imgHeight
+                );
                 const imgX = (pdfWidth - imgWidth * ratio) / 2;
                 const imgY = 30;
-                pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                pdf.addImage(
+                    imgData,
+                    "PNG",
+                    imgX,
+                    imgY,
+                    imgWidth * ratio,
+                    imgHeight * ratio
+                );
                 pdf.save("emploi_temps_Formateurs.pdf");
             })
             .catch((error) => {
-                console.error('Error generating PDF:', error);
+                console.error("Error generating PDF:", error);
             });
     };
+    const [scroll, setScroll] = useState(false)
+
+    const goToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+        setScroll(!scroll)
+    }
+
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        setScroll(!scroll)
+    }
 
     return (
+        <>
+        <Navbar/>
         <div className="parGroupe">
             <div className="choisir_inputs two">
                 <div className="choisir_input_box3 select">
@@ -74,7 +112,10 @@ const EmploiTempsFormateur = () => {
                         <div className="content">
                             <div className="search">
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                                <input onChange={(e) => setSearchFormateur(e.target.value)}
+                                <input
+                                    onChange={(e) =>
+                                        setSearchFormateur(e.target.value)
+                                    }
                                     className="input1"
                                     spellcheck="false"
                                     type="text"
@@ -82,60 +123,95 @@ const EmploiTempsFormateur = () => {
                                 />
                             </div>
                             <ul className="options1">
-                                {formateurs
-                                    .map((formateur, index) => {
-                                        if (
-                                            formateur.Nom_Formateur.toLowerCase().includes(
-                                                searchFormateur.toLowerCase()
-                                            )
-                                        ) {
-                                            return (
-                                                <li
-                                                    onClick={() =>
-                                                        handleSelected1(formateur)
-                                                    }
-                                                    key={index}
-                                                >
-                                                    {formateur.Nom_Formateur}
-                                                </li>
-                                            );
-                                        }
-                                    })}
+                                {formateurs.map((formateur, index) => {
+                                    if (
+                                        formateur.Nom_Formateur.toLowerCase().includes(
+                                            searchFormateur.toLowerCase()
+                                        )
+                                    ) {
+                                        return (
+                                            <li
+                                                onClick={() =>
+                                                    handleSelected1(formateur)
+                                                }
+                                                key={index}
+                                            >
+                                                {formateur.Nom_Formateur}
+                                            </li>
+                                        );
+                                    }
+                                })}
                             </ul>
                         </div>
                     )}
                 </div>
             </div>
 
-            <button className="btnDownload" onClick={downloadPDF}><i className="fa fa-download"> Telecharger</i></button>
+            <button className="btnDownload" onClick={downloadPDF}>
+                <i className="fa fa-download"> Telecharger</i>
+            </button>
             <div ref={pdfRef}>
-                {
-                    loadingSeancesParSemaine ? <Loader />
-                        :
-                        <>
-                            {!formateur ? formateurs.map((formateur) => (
+                {loadingSeancesParSemaine ? (
+                    <Loader />
+                ) : (
+                    <>
+                        {!formateur ? (
+                            formateurs.map((formateur) => (
                                 <EmploiFormateur
                                     nomFormateur={formateur.Nom_Formateur}
+                                    date={dateOfSemaine}
                                     formateur={formateur.Matricule}
-                                    masseHoraire={calculeMHHebdoGroupe(formateur)}
-                                    annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
+                                    masseHoraire={calculeMHHebdoGroupe(
+                                        formateur
+                                    )}
+                                    annee={
+                                        affectations.find(
+                                            (aff) =>
+                                                aff.formateur_Matricule ==
+                                                formateur.Matricule
+                                        )?.module.annee
+                                    }
                                 />
                             ))
-                                :
-                                <>
-                                    <EmploiFormateur
-                                        nomFormateur={formateur.Nom_Formateur}
-                                        formateur={formateur.Matricule}
-                                        masseHoraire={calculeMHHebdoGroupe(formateur)}
-                                        annee={affectations.find((aff) => aff.formateur_Matricule == formateur.Matricule)?.module.annee}
-                                    />
-                                </>
-                            }
-                        </>
-                }
-
+                        ) : (
+                            <>
+                                <EmploiFormateur
+                                    nomFormateur={formateur.Nom_Formateur}
+                                    date={dateOfSemaine}
+                                    formateur={formateur.Matricule}
+                                    masseHoraire={calculeMHHebdoGroupe(
+                                        formateur
+                                    )}
+                                    annee={
+                                        affectations.find(
+                                            (aff) =>
+                                                aff.formateur_Matricule ==
+                                                formateur.Matricule
+                                        )?.module.annee
+                                    }
+                                />
+                            </>
+                        )}
+                    </>
+                )}
+                {!loadingSeancesParSemaine && (
+                    <div className="arrowDown">
+                        {scroll ? (
+                            <i
+                                onClick={goToTop}
+                                className="fa-solid fa-circle-up"
+                            ></i>
+                        ) : (
+                            <i
+                                onClick={goToBottom}
+                                className="fa-solid fa-circle-down"
+                            ></i>
+                        )}
+                    </div>
+                )}
             </div>
         </div>
+        </>
     );
 };
 

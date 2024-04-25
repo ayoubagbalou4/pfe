@@ -18,19 +18,25 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+header .logo {
+    width: 70px;
+}
+header .logo img{
+    width: 100%;
+}
+
 .links {
     display: flex;
     align-items: center;
     column-gap: 10px;
 }
 
-.links img {
-    width: 30px;
-    height: 30px;
+.links a {
+    color: #566573;
 }
 
 .links i:nth-child(1) {
-    color: orange;
+    color: #566573;
 }
 
 .choisir_section {

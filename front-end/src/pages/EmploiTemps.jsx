@@ -5,6 +5,7 @@ import html2canvas from 'html2canvas';
 import jsPdf from 'jspdf';
 import Loader from './../components/Loader'
 import { useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 
 const EmploiTemps = () => {
@@ -12,20 +13,21 @@ const EmploiTemps = () => {
 
     const pdfRef = useRef();
     const { seancesParSemaine, seances, groupes, affectations,loadingSeancesParSemaine ,
-        setNSemaine} = useContext(contextProvider);
+        setNSemaine , nSemaine , semaines} = useContext(contextProvider);
         
-    setNSemaine(semaine)
 
 
     const calculeMHHebdoGroupe = (groupe) => {
         let count = 0;
         seancesParSemaine
-            .filter((seance) => seance.Code_Groupe === groupe)
+            .filter((seance) => seance.Code_Groupe === groupe && seance.formateur_Matricule)
             .map((e) => {
                 count += e.MH;
             });
         return count;
     };
+
+    const dateOfSemaine = semaines.find(s => s.semaine == nSemaine)?.firstDayOfWeek
 
 
     const [groupe, setGroupe] = useState()
@@ -38,31 +40,61 @@ const EmploiTemps = () => {
         setAfficherSelect1(false)
     }
 
+
     const downloadPDF = () => {
         const input = pdfRef.current;
-
-
-        html2canvas(input, { scale: 2 }) // Adjust scale as needed for better resolution
+        html2canvas(input)
             .then((canvas) => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPdf('p', 'mm', 'a4', true);
+                const imgData = canvas.toDataURL("image/png");
+                const pdf = new jsPdf("p", "mm", "a4", true);
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = pdf.internal.pageSize.getHeight();
                 const imgWidth = canvas.width;
                 const imgHeight = canvas.height;
-                const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+                const ratio = Math.min(
+                    pdfWidth / imgWidth,
+                    pdfHeight / imgHeight
+                );
                 const imgX = (pdfWidth - imgWidth * ratio) / 2;
                 const imgY = 30;
-                pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-                pdf.save("emploi_temp_Groupes.pdf");
+                pdf.addImage(
+                    imgData,
+                    "PNG",
+                    imgX,
+                    imgY,
+                    imgWidth * ratio,
+                    imgHeight * ratio
+                );
+                pdf.save("emploi_temps_Groupes.pdf");
             })
             .catch((error) => {
-                console.error('Error generating PDF:', error);
+                console.error("Error generating PDF:", error);
             });
     };
+    const [scroll, setScroll] = useState(false)
+
+    const goToBottom = () => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+        setScroll(!scroll)
+    }
+
+    const goToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        setScroll(!scroll)
+    }
+    
+    
 
 
     return (
+        <>
+        <Navbar />
         <div className="parGroupe">
             <div className="choisir_inputs two">
                 <div className="choisir_input_box3 select">
@@ -124,22 +156,32 @@ const EmploiTemps = () => {
                             {!groupe ? groupes.map((groupe) => (
                                 <Emploi
                                     groupe={groupe.Code_Groupe}
-                                    masseHoraire={calculeMHHebdoGroupe(groupe)}
+                                    date={dateOfSemaine}
+                                    masseHoraire={calculeMHHebdoGroupe(groupe.Code_Groupe)}
                                     annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
                                 />
                             ))
-                                :
+                            :
                                 <Emploi
                                     groupe={groupe}
+                                    date={dateOfSemaine}
                                     masseHoraire={calculeMHHebdoGroupe(groupe)}
                                     annee={affectations.find((aff) => aff.Code_Groupe == groupe)?.module.annee}
-                                />
+                                    />
                             }
                         </>
                 }
-
-            </div>
+                {!loadingSeancesParSemaine && <div className="arrowDown">
+                {
+                    scroll ?
+                        <i onClick={goToTop} className="fa-solid fa-circle-up"></i>
+                        :
+                        <i onClick={goToBottom} className="fa-solid fa-circle-down"></i>
+                }
+            </div>}
         </div>
+        </div>
+        </>
     );
 };
 

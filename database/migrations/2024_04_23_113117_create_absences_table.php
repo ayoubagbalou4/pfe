@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('semaine');
             $table->date('date');
             $table->foreign('formateur_Matricule')->references('Matricule')->on('formateurs');
+            $table->string('codeSeance');
             $table->timestamps();
         });
     }

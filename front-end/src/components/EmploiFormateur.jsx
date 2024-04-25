@@ -34,7 +34,7 @@ const EmploiFormateur = (props) => {
                     <h4>Mode de formation: <span>RESEDENTIEL</span></h4>
                     <h4>Niveau: <span>TS</span></h4>
                     <h4>Masse Horaire/Smaine: <span>{props.masseHoraire} H</span></h4>
-                    <h4>Annee: <span>2023/2024</span></h4>
+                    <h4>date: <span>{props.date}</span></h4>
                 </div>
             </fieldset>
             <table>
