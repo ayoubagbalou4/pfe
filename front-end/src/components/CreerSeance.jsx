@@ -10,7 +10,7 @@ const CreerSeance = () => {
         setSeanceGenerate,
         semaines,
         setNSemaine,
-        getSeancesParSemaine,
+        seances,
         nSemaine
     } = useContext(contextProvider);
 
@@ -59,7 +59,9 @@ const CreerSeance = () => {
             color: formateur.Color,
             bg: formateur.Background_Color,
             Id_Salle: salle,
-            module: module.code_module
+            module: module.code_module,
+            Id_module:module.Id_module,
+            generate:true
         };
         setSeanceGenerate(x);
     };

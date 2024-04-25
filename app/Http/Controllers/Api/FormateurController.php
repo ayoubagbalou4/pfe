@@ -56,8 +56,9 @@ class FormateurController extends Controller
             'Background_Color' => $request->Background_Color,
         ]);
         return response()->json([], 200);
-    }    
-    
+    }
+
+
     public function formateurStatistiques($semaine)
     {
         $Seancesformateur = Seance::selectRaw('SUM(MH) as MHHebdoF ,formateur_Matricule')

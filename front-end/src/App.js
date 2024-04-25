@@ -22,9 +22,10 @@ import AjouterAffectation from './pages/affectations/AjouterAffectation'
 import Affectations from './pages/affectations/Affectations'
 import StatistiquesFormateur from './components/StatistiquesFormateur'
 import StatistiquesGroupe from './components/StatistiquesGroupe'
-import StatistiqueSemaineAct from './components/StatistiqueSemaineAct'
 import Dashboard from './pages/Dashboard'
 import EditAffectation from './pages/affectations/EditAffectation'
+import Absence from './components/Absence'
+import Login from './Auth/Login'
 
 const App = () => {
   return (
@@ -57,8 +58,11 @@ const App = () => {
                 <Route path='/StatistiquesFormateur' element={<StatistiquesFormateur/>}/>
 
                 <Route path='/StatistiquesGroupe' element={<StatistiquesGroupe/>}/>
-                <Route path='/StatistiqueSemaineAct' element={<StatistiqueSemaineAct/>}/>
                 <Route path='/Dashboard' element={<Dashboard/>}/>
+                <Route path='/Absences' element={<Absence/>}/>
+                <Route path='/Login' element={<Login/>}/>
+
+
 
             </Routes>
         </Context>

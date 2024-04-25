@@ -4,13 +4,18 @@ import Emploi from "../components/Emploi";
 import html2canvas from 'html2canvas';
 import jsPdf from 'jspdf';
 import Loader from './../components/Loader'
+import { useParams } from "react-router-dom";
 
 
 const EmploiTemps = () => {
+    const {semaine}=useParams()
 
     const pdfRef = useRef();
-    const { seancesParSemaine, seances, groupes, affectations,loadingSeancesParSemaine } =
-        useContext(contextProvider);
+    const { seancesParSemaine, seances, groupes, affectations,loadingSeancesParSemaine ,
+        setNSemaine} = useContext(contextProvider);
+        
+    setNSemaine(semaine)
+
 
     const calculeMHHebdoGroupe = (groupe) => {
         let count = 0;

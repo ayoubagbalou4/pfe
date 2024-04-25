@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Loader from '../../components/Loader'
 import Navbar from '../../components/Navbar'
+import Layout from '../../components/Layout'
 
 const Formateurs = () => {
 
@@ -52,46 +53,50 @@ const Formateurs = () => {
 
     return (
         <>
-            <Navbar />
-            <div class="formAdmin">
-                <h1>Formateurs</h1>
-                {
-                    loadingFormateurs ?
-                        <Loader />
-                        :
-                        <table>
-                            <tr>
-                                <th>Matricule</th>
-                                <th>Nom Formateur</th>
-                                <th>Abreviation</th>
-                                <th>Id Salle</th>
-                                <th>Background Color</th>
-                                <th>Color</th>
-                                <th>actions</th>
-                            </tr>
-                            {
-                                formateurs.map((formateur, index) => (
-                                    <tr key={index}>
-                                        <td>{formateur.Matricule}</td>
-                                        <td>{formateur.Nom_Formateur}</td>
-                                        <td>{formateur.Abreviation}</td>
-                                        <td>{formateur.Id_Salle}</td>
-                                        <td style={{ textAlign: 'center' }}>
-                                            <div style={{ backgroundColor: formateur.Background_Color, width: '30px', height: '30px', borderRadius: '50%', textAlign: 'center', display: 'inline-block' }}></div>
-                                        </td>
-                                        <td style={{ textAlign: 'center' }}>
-                                            <div style={{ backgroundColor: formateur.Color, width: '30px', height: '30px', borderRadius: '50%', textAlign: 'center', display: 'inline-block' }}></div>
-                                        </td>
-                                        <td>
-                                            <button onClick={() => deleteFormateurConfirm(formateur.Matricule)} className='delete'>Delete</button>
-                                            <Link to={`/formateurs/EditFormateur/${formateur.Matricule}`}><button className='update'>Update</button></Link>
-                                        </td>
+            <Layout header={"Formateurs"} Formateur={"active"} content={
+                <div class="contentDashboard">
+                    <div class="formAdmin">
+                        <h1>Formateurs</h1>
+                        {
+                            loadingFormateurs ?
+                                <Loader />
+                                :
+                                <table>
+                                    <tr>
+                                        <th>Matricule</th>
+                                        <th>Nom Formateur</th>
+                                        <th>Abreviation</th>
+                                        <th>Id Salle</th>
+                                        <th>Background Color</th>
+                                        <th>Color</th>
+                                        <th>actions</th>
                                     </tr>
-                                ))
-                            }
-                        </table>
-                }
-            </div>
+                                    {
+                                        formateurs.map((formateur, index) => (
+                                            <tr key={index}>
+                                                <td>{formateur.Matricule}</td>
+                                                <td>{formateur.Nom_Formateur}</td>
+                                                <td>{formateur.Abreviation}</td>
+                                                <td>{formateur.Id_Salle}</td>
+                                                <td style={{ textAlign: 'center' }}>
+                                                    <div style={{ backgroundColor: formateur.Background_Color, width: '30px', height: '30px', borderRadius: '50%', textAlign: 'center', display: 'inline-block' }}></div>
+                                                </td>
+                                                <td style={{ textAlign: 'center' }}>
+                                                    <div style={{ backgroundColor: formateur.Color, width: '30px', height: '30px', borderRadius: '50%', textAlign: 'center', display: 'inline-block' }}></div>
+                                                </td>
+                                                <td>
+                                                    <button onClick={() => deleteFormateurConfirm(formateur.Matricule)} className='delete'>Delete</button>
+                                                    <Link to={`/formateurs/EditFormateur/${formateur.Matricule}`}><button className='update'>Update</button></Link>
+                                                </td>
+                                            </tr>
+                                        ))
+                                    }
+                                </table>
+                        }
+                    </div>
+                </div>
+            }
+            />
         </>
     )
 }

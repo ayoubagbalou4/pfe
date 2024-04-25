@@ -7973,7 +7973,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -8197,7 +8197,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -8435,7 +8435,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -8688,7 +8688,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -8926,7 +8926,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -8940,7 +8940,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '10657',
             'Id_module' =>'DIA_DEVOAM_TS_M203',
@@ -8954,7 +8954,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '19478',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -9179,7 +9179,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -9193,7 +9193,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '10657',
             'Id_module' =>'DIA_DEVOAM_TS_M201',
@@ -9207,7 +9207,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '19478',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -9445,7 +9445,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -9459,7 +9459,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -9656,7 +9656,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -9670,7 +9670,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -9838,7 +9838,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -10062,7 +10062,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -10314,7 +10314,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '19443',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -10328,7 +10328,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'INFO201',
             'formateur_Matricule' => '11533',
             'Id_module' =>'AG_INFO_TS_EGTS203',
@@ -10552,7 +10552,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '19443',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -10566,7 +10566,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'INFO201',
             'formateur_Matricule' => '11533',
             'Id_module' =>'AG_INFO_TS_EGTS203',
@@ -10790,7 +10790,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOCC201',
             'formateur_Matricule' => '10750',
             'Id_module' =>'DIA_IDOCC_TS_M202',
@@ -10804,7 +10804,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '10657',
             'Id_module' =>'DIA_DEVOAM_TS_M201',
@@ -10818,7 +10818,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '19540',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -10832,7 +10832,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -10846,7 +10846,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -10860,7 +10860,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'INFO202',
             'formateur_Matricule' => '11533',
             'Id_module' =>'AG_INFO_TS_EGTS203',
@@ -11056,7 +11056,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOCC201',
             'formateur_Matricule' => '10750',
             'Id_module' =>'DIA_IDOCC_TS_M202',
@@ -11070,7 +11070,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '10657',
             'Id_module' =>'DIA_DEVOAM_TS_M201',
@@ -11084,7 +11084,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '19540',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -11098,7 +11098,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11113,7 +11113,7 @@ class SeanceSeeder extends Seeder
             'Type_seance' => 'A DISTANCE',
         ]);
         Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11127,7 +11127,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'INFO202',
             'formateur_Matricule' => '11533',
             'Id_module' =>'AG_INFO_TS_EGTS203',
@@ -11323,7 +11323,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -11337,7 +11337,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -11351,7 +11351,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOAM_TS_EGTS202',
@@ -11365,7 +11365,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11379,7 +11379,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11393,7 +11393,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOWFS_TS_EGTS202',
@@ -11407,7 +11407,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '19360',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -11421,7 +11421,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11435,7 +11435,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11561,7 +11561,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -11575,7 +11575,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -11589,7 +11589,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOAM_TS_EGTS202',
@@ -11603,7 +11603,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11617,7 +11617,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11631,7 +11631,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOWFS_TS_EGTS202',
@@ -11645,7 +11645,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '19360',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -11659,7 +11659,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11673,7 +11673,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -11799,7 +11799,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -11813,7 +11813,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -11827,7 +11827,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '19826',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -11897,7 +11897,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -11911,7 +11911,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -11925,7 +11925,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A DISTANCE',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '19826',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -14906,7 +14906,7 @@ class SeanceSeeder extends Seeder
 
         // semain 40
         Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -14921,7 +14921,7 @@ class SeanceSeeder extends Seeder
             'Type_seance' => 'A Distance',
         ]);
         Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -14935,7 +14935,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '19443',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -14949,7 +14949,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '19540',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -15131,7 +15131,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '19443',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -15145,7 +15145,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '19540',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -15355,7 +15355,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -15369,7 +15369,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -15551,7 +15551,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -15565,7 +15565,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -15733,7 +15733,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -15747,7 +15747,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -15761,7 +15761,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -15775,7 +15775,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '19360',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -15943,7 +15943,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -15957,7 +15957,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -15971,7 +15971,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -15985,7 +15985,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '19360',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -16167,7 +16167,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '19478',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -16405,7 +16405,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '19478',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -16643,7 +16643,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -16657,7 +16657,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '19826',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -16867,7 +16867,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -16881,7 +16881,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '19826',
             'Id_module' =>'DIA_DEVOWFS_TS_M203',
@@ -17105,7 +17105,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -17119,7 +17119,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -17133,7 +17133,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -17147,7 +17147,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -17301,7 +17301,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '10854',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -17315,7 +17315,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '15035',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -17329,7 +17329,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -17343,7 +17343,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -17692,7 +17692,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13552',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -18393,7 +18393,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR201',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -18407,7 +18407,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -18421,7 +18421,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR203',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -18435,7 +18435,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '10657',
             'Id_module' =>'DIA_DEVOAM_TS_M201',
@@ -18449,7 +18449,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18463,7 +18463,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18645,7 +18645,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '10855',
             'Id_module' =>'DIA_IDOSR_TS_M201',
@@ -18659,7 +18659,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '10657',
             'Id_module' =>'DIA_DEVOAM_TS_M201',
@@ -18673,7 +18673,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18687,7 +18687,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS204',
             'formateur_Matricule' => '10777',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18869,7 +18869,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18883,7 +18883,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18897,7 +18897,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOWFS_TS_EGTS202',
@@ -18911,7 +18911,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -18925,7 +18925,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -19079,7 +19079,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '16:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS201',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -19093,7 +19093,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS202',
             'formateur_Matricule' => '13566',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -19107,7 +19107,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS203',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOWFS_TS_EGTS202',
@@ -19121,7 +19121,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS205',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -19135,7 +19135,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOWFS206',
             'formateur_Matricule' => '17544',
             'Id_module' =>'DIA_DEVOWFS_TS_M201',
@@ -19289,7 +19289,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '18:30',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -19303,7 +19303,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -19401,7 +19401,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '11:00',
             'Type_seance' => 'PRESENTIEL',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'DEVOAM201',
             'formateur_Matricule' => '13556',
             'Id_module' =>'DIA_DEVOAM_TS_EGTS202',
@@ -19415,7 +19415,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR202',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -19429,7 +19429,7 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'A Distance',
         ]);Seance::create([
-            
+
             'Code_Groupe' => 'IDOSR204',
             'formateur_Matricule' => '13053',
             'Id_module' =>'DIA_IDOSR_TS_EGTS202',
@@ -19513,8 +19513,5 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);
-
-
-
     }
 }

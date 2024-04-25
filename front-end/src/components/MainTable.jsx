@@ -1,11 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import { contextProvider } from '.././context/Context'
 import GroupeSeance from './GroupeSeance'
+import dateFormat, { masks } from "dateformat";
+import Swal from 'sweetalert2';
 
 
 const MainTable = () => {
 
-    const { seancesParSemaine, groupes, setSeancesParSemaine, formateurs , getSeancesParSemaine} = useContext(contextProvider);
+    const { seancesParSemaine, groupes, nSemaine, semaines, getSeancesParSemaine,setNSemaine } = useContext(contextProvider);
+
+    const semaine = semaines.find(s => s.semaine == nSemaine)
 
     const getSeanceParGroupe = (groupe, codeSeance) => {
 
@@ -19,7 +24,7 @@ const MainTable = () => {
             const bg = seanceParCodeSeance.formateur.Background_Color ? seanceParCodeSeance.formateur.Background_Color : seanceParCodeSeance.bg;
             const color = seanceParCodeSeance.formateur.Color ? seanceParCodeSeance.formateur.Color : seanceParCodeSeance.color;
             const id = seanceParCodeSeance.id;
-            return { code_seance: codeSeance, formateur, module, Id_Salle, id, bg, color , Code_Groupe : groupe } || '';
+            return { code_seance: codeSeance, formateur, module, Id_Salle, id, bg, color, Code_Groupe: groupe } || '';
         } else {
             const seanceFind = seancesParSemaine.find(seance => seance.Code_Groupe == groupe && seance.code_seance == codeSeance)
             if (seanceFind) {
@@ -29,22 +34,94 @@ const MainTable = () => {
                     id: Math.floor(Math.random() * 205000),
                     Code_Groupe: groupe,
                     code_seance: codeSeance,
+                    Jour_de_semaine: codeSeance[0],
                     formateur: "",
                     module: "",
-                    Id_Salle: ""
+                    Id_Salle: "",
+                    Horaire_debut: "",
+                    Horaire_fin: "",
+                    Date: "",
+                    MH: 2.5,
+                    No_Semaine_Calendrier: nSemaine,
+                    No_Semaine_DRIF: semaine?.Semaine_DRIF,
+
+
                 };
+                if (parseInt(codeSeance[0]) == 1) {
+                    emptyObject.Jour_de_semaine = 'LUNDI'
+                    emptyObject.Date = semaine?.firstDayOfWeek
+                }
+                else if (parseInt(codeSeance[0]) == 2) {
+                    emptyObject.Jour_de_semaine = 'MARDI'
+                    var currentDate = new Date(semaine?.firstDayOfWeek);
+                    const dateJour = dateFormat(currentDate.setDate(currentDate.getDate() + 1), "yyyy-mm-dd")
+                    emptyObject.Date = dateJour
+                }
+                else if (parseInt(codeSeance[0]) == 3) {
+                    emptyObject.Jour_de_semaine = 'MERCREDI'
+                    var currentDate = new Date(semaine?.firstDayOfWeek);
+                    const dateJour = dateFormat(currentDate.setDate(currentDate.getDate() + 2), "yyyy-mm-dd")
+                    emptyObject.Date = dateJour
+                }
+                else if (parseInt(codeSeance[0]) == 4) {
+                    emptyObject.Jour_de_semaine = 'JEUDI'
+                    var currentDate = new Date(semaine?.firstDayOfWeek);
+                    const dateJour = dateFormat(currentDate.setDate(currentDate.getDate() + 3), "yyyy-mm-dd")
+                    emptyObject.Date = dateJour
+                }
+                else if (parseInt(codeSeance[0]) == 5) {
+                    emptyObject.Jour_de_semaine = 'VENDREDI'
+                    var currentDate = new Date(semaine?.firstDayOfWeek);
+                    const dateJour = dateFormat(currentDate.setDate(currentDate.getDate() + 4), "yyyy-mm-dd")
+                    emptyObject.Date = dateJour
+                }
+                else {
+                    emptyObject.Jour_de_semaine = 'SAMEDI'
+                    var currentDate = new Date(semaine?.firstDayOfWeek);
+                    const dateJour = dateFormat(currentDate.setDate(currentDate.getDate() + 5), "yyyy-mm-dd")
+                    emptyObject.Date = dateJour
+                }
+
+
+                if (parseInt(codeSeance[2]) == 1) {
+                    emptyObject.Horaire_debut = '08:30'
+                    emptyObject.Horaire_fin = '11:00'
+                }
+                else if (parseInt(codeSeance[2]) == 2) {
+                    emptyObject.Horaire_debut = '11:00'
+                    emptyObject.Horaire_fin = '13:30'
+                }
+                else if (parseInt(codeSeance[2]) == 3) {
+                    emptyObject.Horaire_debut = '13:30'
+                    emptyObject.Horaire_fin = '16:00'
+                }
+                else {
+                    emptyObject.Horaire_debut = '16:00'
+                    emptyObject.Horaire_fin = '18:30'
+                }
+
                 seancesParSemaine.push(emptyObject);
                 return emptyObject;
             }
         }
     };
+    const navigate= useNavigate()
 
-
-    const details = (groupe,codeSeance) => {
-        console.log(getSeanceParGroupe(groupe,codeSeance))
+    const add = () => {
+        Swal.fire({
+            title: "Générer l'emploi des:",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Groupes",
+            denyButtonText: "Formateurs"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                navigate(`/EmploiTemps`)
+            } else if (result.isDenied) {
+                navigate(`/EmploiTempsFormateur`)
+            }
+          });
     }
-
-
 
     return (
         <>
@@ -63,7 +140,7 @@ const MainTable = () => {
                     </tr>
 
                     <tr>
-                        <td><i class="fa-solid fa-file-import"></i></td>
+                        <td className='GénérerTd'><button data-swal-toast-template="#my-template" className='Générer' onClick={add}><i class="fa-solid fa-gear" style={{ color: "#ffffff" }}></i> Générer</button></td>
                         <td><i class="fa-regular fa-calendar-days"></i></td>
                         <td class="nested_table_td">
                             <table>
@@ -141,15 +218,15 @@ const MainTable = () => {
 
                                 <td className="nested_table_td_three">
                                     <table>
-                                        <tr onClick={() => details(groupe.Code_Groupe,'1S1')}>
-            {<GroupeSeance
-                index={getSeanceParGroupe(groupe.Code_Groupe, '1S1').id}
-                formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S1').formateur}
-                module={getSeanceParGroupe(groupe.Code_Groupe, '1S1').module}
-                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S1').Id_Salle}
-                bg={getSeanceParGroupe(groupe.Code_Groupe, '1S1').bg}
-                color={getSeanceParGroupe(groupe.Code_Groupe, '1S1').color}
-            />}
+                                        <tr>
+                                            {<GroupeSeance
+                                                index={getSeanceParGroupe(groupe.Code_Groupe, '1S1').id}
+                                                formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S1').formateur}
+                                                module={getSeanceParGroupe(groupe.Code_Groupe, '1S1').module}
+                                                salle={getSeanceParGroupe(groupe.Code_Groupe, '1S1').Id_Salle}
+                                                bg={getSeanceParGroupe(groupe.Code_Groupe, '1S1').bg}
+                                                color={getSeanceParGroupe(groupe.Code_Groupe, '1S1').color}
+                                            />}
                                             {<GroupeSeance
                                                 index={getSeanceParGroupe(groupe.Code_Groupe, '1S2').id}
                                                 formateur={getSeanceParGroupe(groupe.Code_Groupe, '1S2').formateur}

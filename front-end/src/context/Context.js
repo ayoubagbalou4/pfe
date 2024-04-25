@@ -258,13 +258,29 @@ const Context = ({ children }) => {
     useEffect(() => {
         getstatistiquesG()
     } ,[])
+    const [absence,setAbsence] = useState([])
+    const [loadingAbsence,setLoadingAbsence] = useState([])
+    const getAbsence = async () => {
+        setLoadingAbsence(true)
+        try {
+            const response = await axios.get(`http://127.0.0.1:8000/api/absences/${nSemaine}`)
+            setAbsence(response.data.absences)
+            setLoadingAbsence(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingAbsence(false)
+        }
+    }
+    useEffect(() => {
+        getAbsence()
+    } ,[nSemaine])
 
     const [seanceGenerate,setSeanceGenerate] = useState({})
 
     const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances ,
          setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,
          seanceGenerate,setSeanceGenerate,setNSemaine,getSeancesParSemaine,
-         loadingSeancesParSemaine,nSemaine,statistiquesF,statistiquesG}
+         loadingSeancesParSemaine,nSemaine,statistiquesF,statistiquesG,absence,loadingAbsence,loadingSalles,loadingAffectations,loadingFormateurs}
     return (
         <contextProvider.Provider value={values}>
           {children}

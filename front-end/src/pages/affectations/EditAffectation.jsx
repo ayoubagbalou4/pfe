@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import { contextProvider } from '../../context/Context'
 import Navbar from '../../components/Navbar'
 import Loader from '../../components/Loader'
+import Layout from '../../components/Layout'
 
 const EditAffectation = () => {
 
@@ -61,56 +62,58 @@ const EditAffectation = () => {
     }
 
     return (
-        <div>
-            <Navbar />
-            <div class="formAdmin">
-                <h1>Edit Affectation</h1>
-                {loadingGetSingleAffectation ? <Loader /> :
-                    <>
-                        <form onSubmit={editAffectation}>
-                            <div>
-                                <p>Code Groupe</p>
-                                <select value={affectationsData.Code_Groupe} onChange={handleAffectation} name='Code_Groupe' required>
-                                    <option value="" key="" selected disabled>Choisir Groupe</option>
-                                    {
-                                        groupes.map((groupe, index) => (
-                                            <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
-                                        ))
-                                    }
-                                </select>
-                            </div>
-                            <div>
-                                <p>module</p>
-                                <select value={affectationsData.Id_module} onChange={handleAffectation} name='Id_module' required>
-                                    <option value="" key="" selected disabled>Choisir module</option>
-                                    {
-                                        modules.map((module, index) => (
-                                            <option value={module.Id_module} key={index}>{module.Id_module} ({module.Intitule_module})</option>
-                                        ))
-                                    }
-                                </select>
-                            </div>
-                            <div>
-                                <p>formateur Matricule</p>
-                                <select value={affectationsData.formateur_Matricule} onChange={handleAffectation} name='formateur_Matricule' required>
-                                    <option value="" key="" selected disabled>Choisir formateur</option>
-                                    {
-                                        formateurs.map((formateur, index) => (
-                                            <option value={formateur.Matricule} key={index}>{formateur.Nom_Formateur}</option>
-                                        ))
-                                    }
-                                </select>
-                            </div>
-                            {
-                                !loadingEditAffectation &&
-                                <button>Edit Affectation</button>
-                            }
-                        </form>
-                        {loadingEditAffectation && <div className='singleLoader'><span class="loader"></span></div>}
-                    </>
-                }
+        <Layout content={
+            <div class="contentDashboard">
+                <div class="formAdmin">
+                    <h1>Edit Affectation</h1>
+                    {loadingGetSingleAffectation ? <Loader /> :
+                        <>
+                            <form onSubmit={editAffectation}>
+                                <div>
+                                    <p>Code Groupe</p>
+                                    <select value={affectationsData.Code_Groupe} onChange={handleAffectation} name='Code_Groupe' required>
+                                        <option value="" key="" selected disabled>Choisir Groupe</option>
+                                        {
+                                            groupes.map((groupe, index) => (
+                                                <option value={groupe.Code_Groupe} key={index}>{groupe.Code_Groupe}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <p>module</p>
+                                    <select value={affectationsData.Id_module} onChange={handleAffectation} name='Id_module' required>
+                                        <option value="" key="" selected disabled>Choisir module</option>
+                                        {
+                                            modules.map((module, index) => (
+                                                <option value={module.Id_module} key={index}>{module.Id_module} ({module.Intitule_module})</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                <div>
+                                    <p>formateur Matricule</p>
+                                    <select value={affectationsData.formateur_Matricule} onChange={handleAffectation} name='formateur_Matricule' required>
+                                        <option value="" key="" selected disabled>Choisir formateur</option>
+                                        {
+                                            formateurs.map((formateur, index) => (
+                                                <option value={formateur.Matricule} key={index}>{formateur.Nom_Formateur}</option>
+                                            ))
+                                        }
+                                    </select>
+                                </div>
+                                {
+                                    !loadingEditAffectation &&
+                                    <button>Edit Affectation</button>
+                                }
+                            </form>
+                            {loadingEditAffectation && <div className='singleLoader'><span class="loader"></span></div>}
+                        </>
+                    }
+                </div>
             </div>
-        </div>
+        }
+        />
     )
 }
 

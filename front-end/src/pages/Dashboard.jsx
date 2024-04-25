@@ -2,11 +2,13 @@ import React from "react";
 import Box from "./Box";
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout";
+import Absence from "../components/Absence";
 
 const Dashboard = () => {
     return (
         <>
             <Layout
+            header={"Dashboard"} Dashboard={"active"}
                 content={
                     <div class="contentDashboard">
                         <div class="boxs">
@@ -35,6 +37,7 @@ const Dashboard = () => {
                                 />
                             </Link>
                         </div>
+
                     </div>
                 }
             />
