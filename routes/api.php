@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\FiliereModuleController;
 use App\Http\Controllers\Api\FormateurController;
 use App\Http\Controllers\Api\GroupeController;
 use App\Http\Controllers\Api\ModuleController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\SalleController;
 use App\Http\Controllers\Api\SeanceController;
 use App\Http\Controllers\Api\SemaineController;
@@ -51,3 +52,5 @@ Route::post('dupliquer', [SeanceController::class,"dupliquer"]);
 Route::delete('supprimer/{Code_Groupe}/{formateur_Matricule}/{code_seance}/{No_Semaine_Calendrier}', [SeanceController::class,"supprimer"]);
 Route::post('absences', [AbsenceController::class,"store"]);
 Route::get('absences/{semaine}', [AbsenceController::class,"index"]);
+
+Route::get('sendEmail', [NotificationController::class,"sendEmail"]);

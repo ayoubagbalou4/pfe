@@ -973,3 +973,9 @@ nav .header {
     cursor: pointer;
     clip-path: circle();
 }
+header .logo {
+    width: 70px;
+}
+header .logo img{
+    width: 100%;
+}

@@ -11,10 +11,9 @@ const EmploiTemps = () => {
     const {semaine}=useParams()
 
     const pdfRef = useRef();
-    const { seancesParSemaine, seances, groupes, affectations,loadingSeancesParSemaine ,
-        setNSemaine} = useContext(contextProvider);
-        
-    setNSemaine(semaine)
+    const { seancesParSemaine, seances, groupes, affectations,loadingSeancesParSemaine} = useContext(contextProvider);
+
+
 
 
     const calculeMHHebdoGroupe = (groupe) => {
@@ -40,9 +39,7 @@ const EmploiTemps = () => {
 
     const downloadPDF = () => {
         const input = pdfRef.current;
-
-
-        html2canvas(input, { scale: 2 }) // Adjust scale as needed for better resolution
+        html2canvas(input)
             .then((canvas) => {
                 const imgData = canvas.toDataURL('image/png');
                 const pdf = new jsPdf('p', 'mm', 'a4', true);
@@ -52,9 +49,24 @@ const EmploiTemps = () => {
                 const imgHeight = canvas.height;
                 const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
                 const imgX = (pdfWidth - imgWidth * ratio) / 2;
-                const imgY = 30;
+                let imgY = 30;
+
+                const addNewPage = () => {
+                    pdf.addPage();
+                    imgY = 30; // Réinitialiser la position Y pour la nouvelle page
+                };
+
+                // Ajouter chaque tableau dans une nouvelle page
                 pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-                pdf.save("emploi_temp_Groupes.pdf");
+                imgY += imgHeight * ratio; // Mise à jour de la position Y après l'ajout du tableau
+
+                // Ajoutez une nouvelle page si le tableau dépasse la hauteur de la page actuelle
+                if (imgY >= pdfHeight) {
+                    addNewPage();
+                    pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+                }
+
+                pdf.save("emploi_temps_Formateurs.pdf");
             })
             .catch((error) => {
                 console.error('Error generating PDF:', error);
@@ -125,7 +137,7 @@ const EmploiTemps = () => {
                                 <Emploi
                                     groupe={groupe.Code_Groupe}
                                     masseHoraire={calculeMHHebdoGroupe(groupe)}
-                                    annee={affectations.find((aff) => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}
+                                    annee={affectations.find((aff) => aff.Code_Groupe == groupe?.Code_Groupe)?.module.annee}
                                 />
                             ))
                                 :
