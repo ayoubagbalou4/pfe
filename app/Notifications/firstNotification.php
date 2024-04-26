@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Storage;
 
 class firstNotification extends Notification
 {
@@ -40,18 +41,17 @@ class firstNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable)
     {
-           ////////////////modifier la fonction////////////////
+        // return (new MailMessage)
+        //     ->greeting($this->detail["greeting"])
+        //     ->line($this->detail["body"])
+        //     ->action($this->detail["actiontext"], $this->detail["actionurl"])
+        //     ->line($this->detail["lastline"])
+        //     ->salutation('Cordialement, Double_AC');
         return (new MailMessage)
-            ->greeting($this->detail["greeting"])
-            ->line($this->detail["body"])
-            ->action($this->detail["actiontext"], $this->detail["actionurl"])
-            ->line($this->detail["lastline"]);
-
-          //////////////////////////////////
+            ->view('index', $this->detail);
     }
-
     /**
      * Get the array representation of the notification.
      *

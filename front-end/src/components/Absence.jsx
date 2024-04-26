@@ -56,6 +56,7 @@ const Absence = () => {
                                     <th>Formateur</th>
                                     <th>Jour</th>
                                     <th>Date</th>
+                                    <th>Seance</th>
                                     <th>Justification</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,7 @@ const Absence = () => {
                                             <td>{absence.formateur?.Nom_Formateur}</td>
                                             <td>{absence.jour}</td>
                                             <td>{absence.date}</td>
+                                            <td>{absence.codeSeance}</td>
                                             <td>{absence.justification}</td>
                                         </tr>
                                     ))

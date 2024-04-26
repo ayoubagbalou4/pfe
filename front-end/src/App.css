@@ -14,8 +14,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 200px;
+    padding: 5px 200px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #566573;
+    color: white;
+}
+
+header .logo {
+    width: 60px;
+}
+
+header .logo img {
+    width: 100%;
 }
 
 .links {
@@ -24,13 +34,13 @@ header {
     column-gap: 10px;
 }
 
-.links img {
-    width: 30px;
-    height: 30px;
+.links a {
+    color: white;
+    margin: 0 8px;
 }
 
 .links i:nth-child(1) {
-    color: orange;
+    color: white;
 }
 
 .choisir_section {
@@ -535,6 +545,7 @@ li.selected {
 }
 
 .fieldsetOne {
+    width: 100%;
     padding: 20px;
     border: 2px solid #566573;
     border-radius: 10px;
@@ -836,9 +847,11 @@ nav .header {
     text-align: center;
     margin-right: 10px;
 }
+
 .linksDown {
     background-color: #566573;
 }
+
 .linksDown i {
     width: 20px !important;
     font-size: 18px !important;
@@ -850,11 +863,13 @@ nav .header {
     background-color: white;
     color: black;
 }
+
 #arrowRight {
     position: absolute;
     right: 0;
     font-size: 20px;
 }
+
 .linksSide a:hover::before,
 .linksSide .active::before {
     content: "";
@@ -962,7 +977,7 @@ nav .header {
     grid-template-columns: 20% 12% 12% 12% 12% 12% 10% 10%;
 }
 
-.arrowDown{
+.arrowDown {
     position: fixed;
     bottom: 40px;
     right: 40px;
@@ -973,9 +988,113 @@ nav .header {
     cursor: pointer;
     clip-path: circle();
 }
-header .logo {
-    width: 70px;
+
+
+
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    color: white;
 }
-header .logo img{
+
+.aboutPage {
+    display: flex;
     width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgAbout {
+    width: 50%;
+}
+
+.imgAbout img {
+    width: 100%;
+}
+
+.aboutContent {
+    width: 50%;
+}
+
+.aboutContent h1 {
+    color: black;
+    margin-bottom: 25px;
+}
+
+.aboutContent p {
+    color: black;
+    font-size: 20px;
+}
+
+
+
+@media print {
+    .choisir_inputs.two {
+        display: none;
+    }
+
+    header {
+        display: none;
+    }
+
+    .arrowDown {
+        display: none;
+    }
+
+    .btnDownload {
+        display: none;
+    }
+
+    .emploiDiv {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: baseline;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background-color: #566573;
+    color: white;
+}
+
+.contactPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contactPageLeft {
+    width: 50%;
+}
+.contactPageLeft img{
+    width: 100%;
+}
+.contactPageRight {
+    width: 45%;
+    margin: 0 auto;
+}
+.contactPageRight h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.contactPageRight input , .contactPageRight textarea{
+    padding: 13px;
+    border: 2px solid #e6e6e6;
+    width: 100%;
+    margin-bottom: 8px;
+    outline: 0;
+}
+.contactPageRight button {
+    padding: 12px;
+    width: 100%;
+    background-color: #566573;
+    color: white;
+    border: 0;
+}
+.contactPageRight input:focus , .contactPageRight textarea:focus {
+    border: 2px solid #566573;
 }

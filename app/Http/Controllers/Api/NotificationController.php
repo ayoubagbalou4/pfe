@@ -12,23 +12,28 @@ use Illuminate\Support\Facades\Notification as FacadesNotification;
 
 class NotificationController extends Controller
 {
+
     public function sendEmail(Request $request)
     {
-
-        $client = new User();
-        $client->name = 'aya';
-        $client->email = "2003110600198@ofppt-edu.ma";
-        $client->password = Hash::make('123');
-
-        $detail = [
-            "greeting" => $client->name,
-            "body" => "test",
-            "actiontext" => "thanks for subscribing",
-            "actionurl" => $client->email,
-            "lastline" => "this last line"
+        $data = [
+            ["name" => "ayoub", "email" => "ayoubagbalou4@gmail.com", "link" => "http://localhost:3000/emploi-formateur/19826"],
+            ["name" => "aya", "email" => "2003110600198@ofppt-edu.ma", "link" => "http://localhost:3000/emploi-formateur/10657"],
+            ["name" => "chaimae", "email" => "chaymaeelazzabi@gmail.com", "link" => "http://localhost:3000/emploi-formateur/10750"]
         ];
 
-        FacadesNotification::send($client, new firstNotification($detail));
-        return back()->with("success", "client creer avec succe");
+        foreach ($data as $clientData) {
+            $detail = [
+                "nomFormateur" => $clientData['name'],
+                "link" => $clientData['link']
+            ];
+
+            $client = new User();
+            $client->name = $clientData['name'];
+            $client->email = $clientData['email'];
+            $client->password = Hash::make('123');
+
+            $client->notify(new firstNotification($detail));
+        }
+        return back()->with("success", "clients créés avec succès");
     }
 }

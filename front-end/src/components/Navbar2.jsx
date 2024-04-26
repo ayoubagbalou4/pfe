@@ -1,20 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+const Navbar2 = () => {
 
-const Navbar = () => {
     return (
         <header>
             <div className="logo"><img src="http://localhost:3000/images/logo4.png" alt="navbarDashboard" /></div>
             <div className="links">
-                <i className="fa-solid fa-share"></i>
-                <Link to={"/dashboard"}>Dashboard</Link>
+                <Link to={"/About"}>About Us</Link>
+                <Link to={"/Contact"}>Contact</Link>
+                <Link to={"/EmploiTemps"}>Groupes</Link>
             </div>
         </header>
-    );
-};
+    )
 
+}
 
-
-export default Navbar;
-
+export default Navbar2

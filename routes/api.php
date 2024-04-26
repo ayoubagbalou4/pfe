@@ -11,9 +11,11 @@ use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\SalleController;
 use App\Http\Controllers\Api\SeanceController;
 use App\Http\Controllers\Api\SemaineController;
+use App\Mail\MailWithAttachment;
 use App\Models\Formateur;
 use App\Models\Module;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*

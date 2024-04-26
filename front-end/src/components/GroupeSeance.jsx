@@ -212,6 +212,7 @@ const GroupeSeance = (props) => {
                         jour: seancesParSemaine.find(s => s.id == id)?.Jour_de_semaine,
                         semaine: seancesParSemaine.find(s => s.id == id)?.No_Semaine_Calendrier,
                         date: seancesParSemaine.find(s => s.id == id)?.Date,
+                        codeSeance: seancesParSemaine.find(s => s.id == id)?.code_seance,
                     }
                     const codeGroupe = seancesParSemaine.find(s => s.id == id)?.Code_Groupe
                     const codeSeance = seancesParSemaine.find(s => s.id == id)?.code_seance
