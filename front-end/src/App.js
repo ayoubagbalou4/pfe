@@ -29,6 +29,7 @@ import Login from './Auth/Login'
 import AjouterSemaine from './pages/semaines/AjouterSemaine'
 import Semaines from './pages/semaines/Semaines'
 import EditSemaine from './pages/semaines/EditSemaine'
+import AboutUs from './pages/AboutUs'
 
 const App = () => {
   return (
@@ -68,6 +69,7 @@ const App = () => {
                 <Route path='/semaines/AjouterSemaine' element={<AjouterSemaine/>}/>
                 <Route path='/semaines' element={<Semaines/>}/>
                 <Route path='/semaines/EditSemaine/:id' element={<EditSemaine/>}/>
+                <Route path='/About' element={<AboutUs/>}/>
 
 
 

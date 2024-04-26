@@ -23,6 +23,7 @@ const EmploiFormateur = (props) => {
     }
 
     return (
+        <div className="emploiDiv">
         <fieldset className="fieldsetOne">
             <fieldset className="fieldsetTwo">
                 <legend>
@@ -258,6 +259,7 @@ const EmploiFormateur = (props) => {
                 </tr>
             </table>
         </fieldset>
+        </div>
     );
 };
 
