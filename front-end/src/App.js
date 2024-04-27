@@ -39,7 +39,7 @@ const App = () => {
     <BrowserRouter>
         <Context>
             <Routes>
-                <Route path='/' element={<Home />}/>
+                <Route path='/home' element={<Home />}/>
                 <Route path='/suivi/affectation/groupe' element={<ParGroupe />}/>
                 <Route path='/suivi/affectation/groupeModule' element={<ParGroupeModule />}/>
                 <Route path='/suivi/affectation/formateur' element={<ParFormateur />}/>
@@ -71,9 +71,9 @@ const App = () => {
                 <Route path='/semaines/AjouterSemaine' element={<AjouterSemaine/>}/>
                 <Route path='/semaines' element={<Semaines/>}/>
                 <Route path='/semaines/EditSemaine/:id' element={<EditSemaine/>}/>
-                <Route path='/About' element={<AboutUs/>}/>
+                <Route path='/' element={<AboutUs/>}/>
                 <Route path='/emploi-formateur/:matricule' element={<EmploiSeulForamteur/>}/>
-                
+
                 <Route path='/Contact' element={<Contact />}/>
             </Routes>
         </Context>

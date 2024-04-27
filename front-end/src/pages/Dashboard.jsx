@@ -63,7 +63,7 @@ const Dashboard = () => {
                                 titre="Absences "
                             />
                         </Link>
-                        <Link to={"/"}>
+                        <Link to={"/home"}>
                             <Box
                                 logo="fa-regular fa-calendar"
                                 titre="Créer Un Emploi "

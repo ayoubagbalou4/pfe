@@ -117,7 +117,7 @@ const OccupationSalle = () => {
 
                                                     <td>{salle.Id_Salle}</td>
 
-                                                    <td class="nested_table_td">
+                                                    <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
                                                                 <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '1S1')} /></td>
@@ -128,7 +128,7 @@ const OccupationSalle = () => {
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="nested_table_td">
+                                                    <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
                                                                 <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '2S1')} /></td>
@@ -139,7 +139,7 @@ const OccupationSalle = () => {
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="nested_table_td">
+                                                    <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
                                                                 <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '3S1')} /></td>
@@ -150,7 +150,7 @@ const OccupationSalle = () => {
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="nested_table_td">
+                                                    <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
                                                                 <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '4S1')} /></td>
@@ -161,7 +161,7 @@ const OccupationSalle = () => {
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="nested_table_td">
+                                                    <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
                                                                 <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '5S1')} /></td>
@@ -172,7 +172,7 @@ const OccupationSalle = () => {
                                                             </tr>
                                                         </table>
                                                     </td>
-                                                    <td class="nested_table_td">
+                                                    <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
                                                                 <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '6S1')} /></td>

@@ -157,6 +157,10 @@ header .logo img {
     color: white;
     width: 25%;
 }
+.nested_table_td.salle table td {
+    background-color: #566573;
+
+}
 
 .nested_table_td table td:nth-child(1) {
     border-left: 0 !important;
@@ -594,6 +598,8 @@ li.selected {
     cursor: pointer;
     text-transform: capitalize;
     border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 22px;
 }
 
 .loader {

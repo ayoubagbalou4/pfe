@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
 import { contextProvider } from "../context/Context";
 import Layout from "../components/Layout";
-
+import * as XLSX from 'xlsx';
 const AvancementProgramme = () => {
     const { affectations, seances, semaineNumber, groupes } =
         useContext(contextProvider);
@@ -26,12 +26,43 @@ const AvancementProgramme = () => {
             });
         return count;
     };
+
+    const exportToExcel = () => {
+        const data = [];
+        data.push(['Annee', 'Groupe', ...semaineNumber.map((semaine) => `MH Hebdo -S ${semaine.number}`)]);
+
+        if (groupe) {
+            const rowData = [
+                affectations.find((e) => e.Code_Groupe === groupe)?.module.annee,
+                groupe,
+                ...semaineNumber.map((semaine) => calculeMHHebdoGroupe(groupe, semaine.number))
+            ];
+            data.push(rowData);
+        } else {
+            affectations.forEach((groupe) => {
+                const rowData = [
+                    groupe.module.annee,
+                    groupe.Code_Groupe,
+                    ...semaineNumber.map((semaine) => calculeMHHebdoGroupe(groupe.Code_Groupe, semaine.number))
+                ];
+                data.push(rowData);
+            });
+        }
+
+        const ws = XLSX.utils.aoa_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Avancement Programme");
+        XLSX.writeFile(wb, "Avancement_Programme.xlsx");
+    };
+
+
     const groupeFilter = affectations.find((e) => e.Code_Groupe == groupe);
     return (
         <Layout header={"MH hebdomadaires par groupes"} AvancementProgramme={"active"} content={
             <div class="contentDashboard">
                 <div className="parGroupe">
                     <h1>MH hebdomadaires par groupes</h1>
+                    <button className="btnDownload" onClick={exportToExcel}><i class="fa-solid fa-file-csv"></i>   Export to Excel</button>
                     <div className="choisir_inputs two">
                         <div className="choisir_input_box3 select">
                             <p>Groupe</p>
