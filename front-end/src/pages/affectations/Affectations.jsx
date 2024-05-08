@@ -53,7 +53,7 @@ const Affectations = () => {
 
     return (
         <>
-            <Layout content={
+            <Layout affectations="active" content={
                 <div className='contentDashboard'>
                     <div class="formAdmin">
                         <h1>Affecations</h1>

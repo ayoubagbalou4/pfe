@@ -44,7 +44,7 @@ const AjouterAffectation = () => {
 
     return (
         <div>
-            <Layout content={
+            <Layout affectations="active" content={
                 <div class="contentDashboard">
                     <div class="formAdmin">
                         <h1>Ajouter Affectation</h1>

@@ -185,7 +185,7 @@ const GroupeSeance = (props) => {
 
     const handleClick = (event, id) => {
         event.preventDefault();
-        const seance = seancesParSemaine.find(e => e.id == e.id)
+        const seance = seancesParSemaine.find(e => e.id == id)
         const formateur = formateurs.find(e => seance?.formateur == e.Abreviation)?.Matricule
         Swal.fire({
             title: "Seance Exécuté?",
@@ -228,9 +228,6 @@ const GroupeSeance = (props) => {
                     newSeances.splice(newSeances.indexOf(itemSeance), 1);
                     setSeancesParSemaine(newSeances)
                 }
-
-
-
             } else if (result.isDenied) {
                 const newSeances = [...seancesParSemaine];
                 const itemSeance = seancesParSemaine.find(item => item.id == id)
