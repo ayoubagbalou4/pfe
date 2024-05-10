@@ -7,10 +7,10 @@ const Navbar2 = () => {
         <header>
             <div className="logo"><img src="http://localhost:3000/images/logo4.png" alt="navbarDashboard" /></div>
             <div className="links">
-                <Link to={"/"}>About Us</Link>
+                <Link to={"/"}>À Propos de Nous</Link>
                 <Link to={"/Contact"}>Contact</Link>
-                <Link to={"/EmploiTemps"}>Groupes</Link>
-                <Link to={"/Login"}>Login</Link>
+                <Link to={"/EmploiTemps"}> Emploi Des Groupes</Link>
+                <Link to={"/Login"}>Se Connecter</Link>
             </div>
         </header>
     )
