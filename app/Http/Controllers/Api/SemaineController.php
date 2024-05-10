@@ -11,7 +11,7 @@ class SemaineController extends Controller
 {
     public function index()
     {
-        $semaines = Semaine::all();
+        $semaines = Semaine::orderBy('Semaine_DRIF')->get();
         return response()->json([
             'semaines' => $semaines
         ], 200);
@@ -51,26 +51,35 @@ class SemaineController extends Controller
     }
 
 
-    public function insertWeeks()
+    public function insertWeeks(Request $request)
     {
-        $year = date('Y');
-        $startOfYear = strtotime("$year-01-01");
-        $endOfYear = strtotime("$year-12-31");
+        $date = $request->date;
+        $year = date('Y', strtotime($date));
+        $yeaOfLastDate = $year + 1;
 
-        for ($weekStart = $startOfYear; $weekStart <= $endOfYear; $weekStart = strtotime('+1 week', $weekStart)) {
-            $weekNumber = date('W', $weekStart);
+        $lastDateOfYear = $yeaOfLastDate . '-06-24';
+        $weekNumber = date('W', strtotime($date));
 
-            $firstDayOfWeek = date('Y-m-d', strtotime('monday', $weekStart));
-            $lastDayOfWeek = date('Y-m-d', strtotime('sunday', $weekStart));
+        $startDateOfWeek = date('Y-m-d', strtotime('monday this week', strtotime($date)));
+        $semaineDrif = 1;
+
+        $weeks = [];
+        while (strtotime($date) <= strtotime($lastDateOfYear)) {
+            $weekNumber = date('W', strtotime($date));
+            $startDateOfWeek = date('Y-m-d', strtotime('monday this week', strtotime($date)));
+            $endDateOfWeek = date('Y-m-d', strtotime('sunday this week', strtotime($date)));
 
             Semaine::create([
                 'semaine' => $weekNumber,
-                'firstDayOfWeek' => $firstDayOfWeek,
-                'lastDayOfWeek' => $lastDayOfWeek,
-                'Semaine_DRIF' => $firstDayOfWeek,
-                'annee' => $year,
+                'firstDayOfWeek' => $startDateOfWeek,
+                'lastDayOfWeek' => $endDateOfWeek,
+                'Semaine_DRIF' => $semaineDrif++,
+                'annee' => date('Y', strtotime($startDateOfWeek)),
             ]);
+
+            $date = date('Y-m-d', strtotime($date . ' +1 week'));
         }
-        return response()->json([], 200);
+
+        return response()->json($weeks, 200);
     }
 }

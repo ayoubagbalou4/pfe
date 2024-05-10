@@ -14,6 +14,8 @@ const CreerSeance = () => {
         nSemaine
     } = useContext(contextProvider);
 
+
+
     const [semaine, setSemaine] = useState()
     const [afficherSelect0, setAfficherSelect0] = useState(false)
     const [searchSemaine, setSearchSemaine] = useState('')
@@ -160,7 +162,7 @@ const CreerSeance = () => {
                 </div>
 
                 <div className="choisir_input_box select">
-                    <p>Salle</p>
+                    <p>Salle {nSemaine} </p>
                     <div
                         onClick={() =>
                             setAfficherSelectSalle(!afficherSelectSalle)
