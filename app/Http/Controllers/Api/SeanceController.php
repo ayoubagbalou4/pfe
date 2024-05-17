@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Seance;
+use App\Models\Semaine;
 use Illuminate\Http\Request;
 
 class SeanceController extends Controller
@@ -16,9 +17,27 @@ class SeanceController extends Controller
         ], 200);
     }
 
+    public function getSemaineNow()
+    {
+        $dateNow = date('Y-m-d');
+        $semaineNow = Semaine::where('firstDayOfWeek', '<=', $dateNow)
+            ->where('lastDayOfWeek', '>=', $dateNow)
+            ->first();
+        if ($semaineNow) {
+            $seancesParSemaine = Seance::where('No_Semaine_Calendrier', $semaineNow->semaine)
+                ->with('formateur', 'module')
+                ->get();
+            return response()->json($semaineNow->semaine,200);
+        } else {
+            return response()->json([
+                'error' => 'Aucune semaine n\'a été trouvée pour la date actuelle.'
+            ], 404);
+        }
+    }
+
     public function seancesParSemaine($semaine)
     {
-        $seancesParSemaine = Seance::where('No_Semaine_Calendrier',$semaine)->with('formateur', 'module')->get();
+        $seancesParSemaine = Seance::where('No_Semaine_Calendrier', $semaine)->with('formateur', 'module')->get();
         return response()->json([
             'seancesParSemaine' => $seancesParSemaine
         ], 200);
@@ -41,13 +60,14 @@ class SeanceController extends Controller
         $seances = Seance::selectRaw('SUM(MH) as somme ,Code_Groupe,Id_module,
         SUM(CASE WHEN Type_seance = "PRESENTIEL" THEN MH ELSE 0 END) as sommeP,
         SUM(CASE WHEN Type_seance = "A DISTANCE" THEN MH ELSE 0 END) as sommeD')
-            ->groupBy('Code_Groupe','Id_module')
+            ->groupBy('Code_Groupe', 'Id_module')
             ->get();
         return response()->json([
             'realisationModulesParGrp' => $seances
         ], 200);
     }
-    public function semaineNumber(){
+    public function semaineNumber()
+    {
         $semaine = Seance::selectRaw('No_Semaine_Calendrier as number')
             ->groupBy('No_Semaine_Calendrier')
             ->get();
@@ -56,7 +76,8 @@ class SeanceController extends Controller
         ], 200);
     }
 
-    public function remplacer($id1,Request $request){
+    public function remplacer($id1, Request $request)
+    {
         $seance = Seance::find($id1);
         $seance->update([
             "Id_Salle" => $request->Id_Salle,
@@ -71,12 +92,13 @@ class SeanceController extends Controller
             "MH" => $request->MH,
             "Horaire_debut" => $request->Horaire_debut,
             "Horaire_fin" => $request->Horaire_fin,
-            "Type_seance" => $request-> Type_seance,
+            "Type_seance" => $request->Type_seance,
         ]);
         return response()->json([], 200);
     }
 
-    public function dupliquer(Request $request){
+    public function dupliquer(Request $request)
+    {
         Seance::create([
             "Id_Salle" => $request->Id_Salle,
             "Code_Groupe" => $request->Code_Groupe,
@@ -90,19 +112,19 @@ class SeanceController extends Controller
             "MH" => $request->MH,
             "Horaire_debut" => $request->Horaire_debut,
             "Horaire_fin" => $request->Horaire_fin,
-            "Type_seance" => $request->Id_Salle?"PRESENTIEL":"A DISTANCE",
+            "Type_seance" => $request->Id_Salle ? "PRESENTIEL" : "A DISTANCE",
         ]);
         return response()->json([], 200);
     }
 
 
-    public function supprimer($Code_Groupe,$formateur_Matricule,$code_seance,$No_Semaine_Calendrier){
-        Seance::where('Code_Groupe',$Code_Groupe)
-        ->where('formateur_Matricule',$formateur_Matricule)
-        ->where('code_seance',$code_seance)
-        ->where('No_Semaine_Calendrier',$No_Semaine_Calendrier)
-        ->delete();
+    public function supprimer($Code_Groupe, $formateur_Matricule, $code_seance, $No_Semaine_Calendrier)
+    {
+        Seance::where('Code_Groupe', $Code_Groupe)
+            ->where('formateur_Matricule', $formateur_Matricule)
+            ->where('code_seance', $code_seance)
+            ->where('No_Semaine_Calendrier', $No_Semaine_Calendrier)
+            ->delete();
         return response()->json([], 200);
     }
-
 }

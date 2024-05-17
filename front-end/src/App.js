@@ -60,7 +60,6 @@ const App = () => {
                 <Route path='/affectations/AjouterAffectation' element={<AjouterAffectation/>}/>
                 <Route path='/affectations' element={<Affectations/>}/>
                 <Route path='/affectations/EditAffectation/:Code_Groupe/:Id_module/:formateur_Matricule' element={<EditAffectation/>}/>
-
                 <Route path='/StatistiquesFormateur' element={<StatistiquesFormateur/>}/>
 
                 <Route path='/StatistiquesGroupe' element={<StatistiquesGroupe/>}/>

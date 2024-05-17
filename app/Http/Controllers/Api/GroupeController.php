@@ -16,6 +16,7 @@ class GroupeController extends Controller
             'groupes' => $groupes
         ], 200);
     }
+    
     public function groupeStatistiques($semaine)
     {
         $Seancesgroupe = Seance::selectRaw('SUM(MH) as MHHebdog ,Code_Groupe')

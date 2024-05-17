@@ -195,6 +195,16 @@ class SalleSeeder extends Seeder
                 "Spesialisee" => 0
             ]
         );
+        Salle::create(
+            [
+                "Id_Salle" => "A distance",
+                "Nom_Salle" => "A distance",
+                "Etage" => "RDC",
+                "Capacite" => "50",
+                "Spesialisee" => 0
+            ]
+        );
+        
     }
 }
 

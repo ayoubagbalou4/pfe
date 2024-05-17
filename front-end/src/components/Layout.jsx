@@ -10,6 +10,7 @@ const Layout = (props) => {
     const [showRealisation, setshowRealisation] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showSemaine, setshowSemaine] = useState(false);
+    const [showAfectation1,setshowAffectation1] = useState(false)
     const [admin, setAdmin] = useState(localStorage.getItem('admin'));
     const navigate = useNavigate()
 
@@ -22,6 +23,7 @@ const Layout = (props) => {
     if (!admin) {
         return null
     }
+
 
 
 
@@ -39,6 +41,9 @@ const Layout = (props) => {
     };
     const toggleMenu5 = () => {
         setshowSemaine(!showSemaine);
+    };
+    const toggleMenu6 = () => {
+        setshowAffectation1(!showAfectation1);
     };
     const handleLogout = () => {
         Swal.fire({
@@ -105,8 +110,16 @@ const Layout = (props) => {
                         showSemaine &&
                         <>
                             <Link to="/semaines"><i class="fa-solid fa-chevron-right"></i>Afficher Les Semaines</Link>
-                            <Link to="/semaines/AjouterSemaine"><i class="fa-solid fa-chevron-right"></i>Ajouter Semaine</Link>
+                            <Link to="/semaines/AjouterSemaine"><i className="fa-solid fa-chevron-right"></i>Ajouter Semaine</Link>
 
+                        </>
+                    }
+                    <a className={props.affectations} onClick={toggleMenu6}><i class="fa-solid fa-building-circle-arrow-right"> </i>Affectations{!showAfectation1 ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    {
+                        showAfectation1 &&
+                        <>
+                            <Link to="/affectations"><i className="fa-solid fa-chevron-right"></i>Affectations</Link>
+                            <Link to="/affectations/AjouterAffectation"><i className="fa-solid fa-chevron-right"></i>Ajouter Affectation</Link>
                         </>
                     }
                     <Link className={props.ApTotaleGroupe} to="/suivi/ApTotaleGroupe"><i className="fa-solid fa-users-rectangle"></i> Ap Totale Groupe</Link>

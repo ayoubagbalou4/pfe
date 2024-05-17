@@ -56,3 +56,6 @@ Route::post('absences', [AbsenceController::class,"store"]);
 Route::get('absences/{semaine}', [AbsenceController::class,"index"]);
 
 Route::get('sendEmail', [NotificationController::class,"sendEmail"]);
+
+Route::post('insertWeeks', [SemaineController::class,"insertWeeks"]);
+Route::get('getSemaineNow', [SeanceController::class,"getSemaineNow"]);

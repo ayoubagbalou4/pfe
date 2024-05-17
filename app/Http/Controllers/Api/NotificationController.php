@@ -16,9 +16,9 @@ class NotificationController extends Controller
     public function sendEmail(Request $request)
     {
         $data = [
-            ["name" => "DRISS EL-AZZABI ", "email" => "drssalzaby@gmail.com", "link" => "http://localhost:3000/emploi-formateur/19826"],
-            // ["name" => "aya", "email" => "2003110600198@ofppt-edu.ma", "link" => "http://localhost:3000/emploi-formateur/10657"],
-            // ["name" => "chaimae", "email" => "chaymaeelazzabi@gmail.com", "link" => "http://localhost:3000/emploi-formateur/10750"]
+            ["name" => "ayoub", "email" => "ayoubagbalou4@gmail.com", "link" => "http://localhost:3000/emploi-formateur/19826"],
+            ["name" => "aya", "email" => "2003110600198@ofppt-edu.ma", "link" => "http://localhost:3000/emploi-formateur/10657"],
+            ["name" => "chaimae", "email" => "chaymaeelazzabi@gmail.com", "link" => "http://localhost:3000/emploi-formateur/10750"]
         ];
 
         foreach ($data as $clientData) {

@@ -14,14 +14,16 @@ const CreerSeance = () => {
         nSemaine
     } = useContext(contextProvider);
 
+
+
     const [semaine, setSemaine] = useState()
     const [afficherSelect0, setAfficherSelect0] = useState(false)
     const [searchSemaine, setSearchSemaine] = useState('')
 
-    const handleSelected0 = (semaine) => {
-        setSemaine(semaine)
+    const handleSelected0 = (s) => {
+        setSemaine(s)
         setAfficherSelect0(false)
-        setNSemaine(semaine.semaine)
+        setNSemaine(s.semaine)
     }
 
     const [searchFormateur, setSearchFormateur] = useState("");
@@ -81,7 +83,15 @@ const CreerSeance = () => {
                 <div className="choisir_input_box3 select">
                             <p>No Semaine Calendrier</p>
                             <div onClick={() => setAfficherSelect0(!afficherSelect0)} className="select-btn1">
-                                <span>{semaine ?  `S - ${semaine.semaine} (${semaine.firstDayOfWeek} - ${semaine.lastDayOfWeek}` : "Chosir la semaine pour elaborer son tableau"}</span>
+
+                                {
+                                    nSemaine ? 
+                                    <span>{semaine ?  `S - ${semaine.semaine} (${semaine.firstDayOfWeek} - ${semaine.lastDayOfWeek})` :
+                                    `S - ${semaines.find(s => s.semaine == nSemaine)?.semaine} (${semaines.find(s => s.semaine == nSemaine)?.firstDayOfWeek} - ${semaines.find(s => s.semaine == nSemaine)?.lastDayOfWeek})`}</span>
+                                    :
+                                    <span>Choisir Une Semaine</span>
+                                }
+
                                 <i className="uil uil-angle-down"></i>
                             </div>
                             {
@@ -160,7 +170,7 @@ const CreerSeance = () => {
                 </div>
 
                 <div className="choisir_input_box select">
-                    <p>Salle</p>
+                    <p>Salle </p>
                     <div
                         onClick={() =>
                             setAfficherSelectSalle(!afficherSelectSalle)

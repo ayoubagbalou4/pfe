@@ -130,11 +130,10 @@ const AvancementProgramme = () => {
                                     ))}
                                 </tr>
                             ) : (
-                                affectations.map((groupe) => (
+                                groupes.map((groupe) => (
                                     <tr>
-                                        <td>{groupe.module.annee}</td>
+                                        <td>{affectations.find(aff => aff.Code_Groupe == groupe.Code_Groupe)?.module.annee}</td>
                                         <td>{groupe.Code_Groupe}</td>
-
                                         {semaineNumber.map((semaine) => (
                                             <td>
                                                 {calculeMHHebdoGroupe(

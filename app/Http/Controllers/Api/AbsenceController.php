@@ -16,7 +16,6 @@ class AbsenceController extends Controller
             "jour"=>$request->jour,
             "date"=>$request->date,
             "codeSeance"=>$request->codeSeance,
-
         ]);
         return response()->json([], 200);
 

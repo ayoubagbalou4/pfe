@@ -36,10 +36,6 @@ const GroupeSeance = (props) => {
                     copiedOldItem['No_Semaine_DRIF'] = newItem['No_Semaine_DRIF'];
                     copiedOldItem['MH'] = newItem['MH'];
                     delete copiedOldItem.generate;
-
-                    const newSeances = [...seancesParSemaine];
-                    newSeances.splice(newSeances.indexOf(newItem), 0, copiedOldItem);
-                    setSeancesParSemaine(newSeances);
                     const formateur = formateurs.find(e => copiedOldItem.formateur == e.Abreviation)?.Matricule
 
                     const data = {
@@ -50,7 +46,7 @@ const GroupeSeance = (props) => {
                         code_seance: copiedOldItem.code_seance,
                         Date: copiedOldItem.Date,
                         Jour_de_semaine: copiedOldItem.Jour_de_semaine,
-                        No_Semaine_Calendrier: copiedOldItem.No_Semaine_Calendrier,
+                        No_Semaine_Calendrier: 19,
                         No_Semaine_DRIF: copiedOldItem.No_Semaine_DRIF,
                         MH: 2.5,
                         Horaire_debut: copiedOldItem.Horaire_debut,
@@ -59,12 +55,24 @@ const GroupeSeance = (props) => {
                     setSeanceGenerate({
                         generate:true
                     })
-                    console.log(data)
+                    if(seancesParSemaine.find(s => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle)){
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: "Salle Deja Occupée!",
+                          });
+                        return
+                    }
                     try {
                         axios.post(`http://127.0.0.1:8000/api/dupliquer`, data)
                     } catch (error) {
                         console.log(error)
                     }
+
+                    const newSeances = [...seancesParSemaine];
+                    newSeances.splice(newSeances.indexOf(newItem), 0, copiedOldItem);
+                    setSeancesParSemaine(newSeances);
+
                 }
             })
         } else {
@@ -86,12 +94,16 @@ const GroupeSeance = (props) => {
                     copiedOldItem['No_Semaine_Calendrier'] = newItem['No_Semaine_Calendrier'];
                     copiedOldItem['No_Semaine_DRIF'] = newItem['No_Semaine_DRIF'];
                     copiedOldItem['MH'] = newItem['MH'];
-
-                    const newSeances = [...seancesParSemaine];
-                    newSeances.splice(newSeances.indexOf(newItem), 0, copiedOldItem);
-                    setSeancesParSemaine(newSeances);
                     const formateur = formateurs.find(e => copiedOldItem.formateur == e.Abreviation)?.Matricule
-                    //  const module=modules.find(e=> copiedOldItem.formateur==e.Abreviation)?.Matricule
+
+
+                    if(seancesParSemaine.find(s => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle)){
+                        Swal.fire({
+                            icon: "error",
+                            title: "Salle Deja Occupée!...",
+                          });
+                        return
+                    }
 
                     const data = {
                         Id_Salle: copiedOldItem.Id_Salle,
@@ -108,12 +120,14 @@ const GroupeSeance = (props) => {
                         Horaire_fin: copiedOldItem.Horaire_fin,
                     }
 
-                    console.log(data)
                     try {
                         axios.post(`http://127.0.0.1:8000/api/dupliquer`, data)
                     } catch (error) {
                         console.log(error)
                     }
+                    const newSeances = [...seancesParSemaine];
+                    newSeances.splice(newSeances.indexOf(newItem), 0, copiedOldItem);
+                    setSeancesParSemaine(newSeances);
 
 
                 } else if (result.isDenied) {
@@ -185,7 +199,7 @@ const GroupeSeance = (props) => {
 
     const handleClick = (event, id) => {
         event.preventDefault();
-        const seance = seancesParSemaine.find(e => e.id == e.id)
+        const seance = seancesParSemaine.find(e => e.id == id)
         const formateur = formateurs.find(e => seance?.formateur == e.Abreviation)?.Matricule
         Swal.fire({
             title: "Seance Exécuté?",
@@ -228,9 +242,6 @@ const GroupeSeance = (props) => {
                     newSeances.splice(newSeances.indexOf(itemSeance), 1);
                     setSeancesParSemaine(newSeances)
                 }
-
-
-
             } else if (result.isDenied) {
                 const newSeances = [...seancesParSemaine];
                 const itemSeance = seancesParSemaine.find(item => item.id == id)

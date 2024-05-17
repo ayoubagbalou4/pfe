@@ -19498,7 +19498,8 @@ class SeanceSeeder extends Seeder
             'Horaire_debut' => '11:00',
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
-        ]);Seance::create([
+        ]);
+        Seance::create([
             'Id_Salle' => 'SN1',
             'Code_Groupe' => 'DEV104',
             'formateur_Matricule' => '13199',
@@ -19513,5 +19514,112 @@ class SeanceSeeder extends Seeder
             'Horaire_fin' => '13:30',
             'Type_seance' => 'PRESENTIEL',
         ]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
