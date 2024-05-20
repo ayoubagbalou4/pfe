@@ -10,7 +10,7 @@ const AjouterAffectation = () => {
 
     const { formateurs, groupes, modules } = useContext(contextProvider);
 
-
+ 
     const navigate = useNavigate()
     const [loadingAddAffectation, setLoadingAddAffectation] = useState(false)
     const [affectationsData, setAffectationsData] = useState({})

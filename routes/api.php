@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AbsenceController;
 use App\Http\Controllers\Api\AffectationController;
+use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\FiliereController;
 use App\Http\Controllers\Api\FiliereModuleController;
 use App\Http\Controllers\Api\FormateurController;
@@ -41,6 +42,7 @@ Route::apiResource('groupes', GroupeController::class);
 Route::apiResource('filiereModules', FiliereModuleController::class);
 Route::apiResource('seances', SeanceController::class);
 Route::apiResource('modules', ModuleController::class);
+Route::apiResource('contacts', ContactController::class);
 Route::get('seanceParDate', [SeanceController::class,"seanceParDate"]);
 Route::get('realisationModulesParGrp', [SeanceController::class,"realisationModulesParGrp"]);
 Route::get('semaineNumber', [SeanceController::class,"semaineNumber"]);
@@ -59,3 +61,5 @@ Route::get('sendEmail', [NotificationController::class,"sendEmail"]);
 
 Route::post('insertWeeks', [SemaineController::class,"insertWeeks"]);
 Route::get('getSemaineNow', [SeanceController::class,"getSemaineNow"]);
+
+Route::put('Updatecontacts', [ContactController::class,"Updatecontacts"]);

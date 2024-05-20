@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
@@ -8,12 +9,30 @@ const Layout = (props) => {
     const [showGroupe, setshowGroupe] = useState(false);
     const [showStatistiques, setshowStatistiques] = useState(false);
     const [showRealisation, setshowRealisation] = useState(false);
+    const [showEmploi, setshowEmploi] = useState(false);
+
+
     const [showMenu, setShowMenu] = useState(false);
     const [showSemaine, setshowSemaine] = useState(false);
-    const [showAfectation1,setshowAffectation1] = useState(false)
+    const [showAfectation1, setshowAffectation1] = useState(false)
     const [admin, setAdmin] = useState(localStorage.getItem('admin'));
+    const [Contacts, setContacts] = useState([])
+    const [loadingContacts, setLoadingContacts] = useState(false)
     const navigate = useNavigate()
-
+    const getContacts = async () => {
+        setLoadingContacts(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/contacts')
+            setContacts(response.data.contacts)
+            setLoadingContacts(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingContacts(false)
+        }
+    }
+    useEffect(() => {
+        getContacts()
+    }, [])
     useEffect(() => {
         if (!admin) {
             navigate('/Login')
@@ -27,9 +46,15 @@ const Layout = (props) => {
 
 
 
+
+
     const toggleMenu1 = () => {
         setshowAffectation(!showAffectation);
     };
+    const toggleMenu7 = () => {
+        setshowEmploi(!showEmploi);
+    };
+
     const toggleMenu2 = () => {
         setshowFormateur(!showFormateur);
     };
@@ -60,6 +85,16 @@ const Layout = (props) => {
                 navigate('/Login')
             }
         });
+    }
+
+    const updateRead = async () => {
+        try {
+            const response = await axios.put(`http://127.0.0.1:8000/api/Updatecontacts`)
+            getContacts()
+            navigate('/ContactNotif')
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
@@ -122,16 +157,31 @@ const Layout = (props) => {
                             <Link to="/affectations/AjouterAffectation"><i className="fa-solid fa-chevron-right"></i>Ajouter Affectation</Link>
                         </>
                     }
+                    <a className={props.emploi} onClick={toggleMenu7}><i class="fa-solid fa-calendar-days"></i>Emplois{!showEmploi ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    {
+                        showEmploi &&
+                        <>
+                            <Link to="/EmploiTempsFormateur"><i className="fa-solid fa-chevron-right"></i>Emploi Formateur</Link>
+                            <Link to="/EmploiTemps"><i className="fa-solid fa-chevron-right"></i>Emploi Groupe</Link>
+                        </>
+                    }
                     <Link className={props.ApTotaleGroupe} to="/suivi/ApTotaleGroupe"><i className="fa-solid fa-users-rectangle"></i> Ap Totale Groupe</Link>
                     <Link className={props.AvancementProgramme} to="/suivi/AvancementProgramme"><i className="fa-solid fa-calendar-check"></i> Avancement Programme</Link>
-
                 </div>
             </div>
             <div class="main">
                 <nav>
                     <div class="header">{props.header}</div>
-                    <div onClick={() => setShowMenu(!showMenu)} class="logout">
-                        <img src="http://localhost:3000/images/provile_empty.png" alt="" />
+                    <div className='notif'>
+                        <Link onClick={updateRead}>
+                            <div class="notification">
+                                <i class="fa-solid fa-bell"></i>
+                                <span class="badge">{Contacts.filter(e => e.read == 0)?.length}</span>
+                            </div>
+                        </Link>
+                        <div onClick={() => setShowMenu(!showMenu)} class="logout">
+                            <img src="http://localhost:3000/images/provile_empty.png" alt="" />
+                        </div>
                     </div>
                 </nav>
                 {showMenu &&

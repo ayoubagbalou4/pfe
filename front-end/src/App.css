@@ -157,6 +157,7 @@ header .logo img {
     color: white;
     width: 25%;
 }
+
 .nested_table_td.salle table td {
     background-color: white;
     color: #566573;
@@ -804,9 +805,22 @@ nav .header {
 
 .logout {
     cursor: pointer;
-    margin: 0 2px;
+    margin: 0 10px;
     width: 45px;
     height: 45px;
+
+}
+
+.notif {
+    display: flex;
+    align-items: center;
+}
+
+.notif i {
+    font-size: 25px;
+    color: goldenrod;
+    margin-right: 15px;
+    cursor: pointer;
 }
 
 .logout img {
@@ -1010,9 +1024,11 @@ nav .header {
     justify-content: center;
     align-items: center;
 }
+
 .imgAbout {
     width: 50%;
 }
+
 .imgAbout img {
     width: 80%;
 }
@@ -1071,34 +1087,125 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
 .contactPageLeft {
     width: 50%;
 }
-.contactPageLeft img{
-    width: 100%;
+
+.contactPageLeft img {
+    width: 75%;
 }
+
 .contactPageRight {
     width: 45%;
     margin: 0 auto;
 }
+
 .contactPageRight h1 {
     margin-bottom: 20px;
     text-align: center;
 }
-.contactPageRight input , .contactPageRight textarea{
+
+.contactPageRight input,
+.contactPageRight textarea {
     padding: 13px;
     border: 2px solid #e6e6e6;
     width: 100%;
     margin-bottom: 8px;
     outline: 0;
 }
+
 .contactPageRight button {
     padding: 12px;
     width: 100%;
     background-color: #566573;
     color: white;
     border: 0;
+    cursor: pointer;
 }
-.contactPageRight input:focus , .contactPageRight textarea:focus {
+
+.contactPageRight input:focus,
+.contactPageRight textarea:focus {
     border: 2px solid #566573;
+}
+
+.notification {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: 1px;
+    padding: 3px 9px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+}
+
+
+.column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+    text-align: center;
+}
+
+.card img {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.about-section {
+    padding: 50px;
+    text-align: center;
+    color: white;
+}
+
+.container {
+    padding: 0 16px;
+}
+
+.container::after,
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.title {
+    color: grey;
+}
+
+.card .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #566573;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
 }

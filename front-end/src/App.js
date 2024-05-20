@@ -32,6 +32,7 @@ import EditSemaine from './pages/semaines/EditSemaine'
 import AboutUs from './pages/AboutUs'
 import EmploiSeulForamteur from './pages/EmploiSeulForamteur'
 import Contact from './pages/Contact'
+import Notification from './components/Notification'
 
 const App = () => {
   return (
@@ -74,6 +75,7 @@ const App = () => {
                 <Route path='/emploi-formateur/:matricule' element={<EmploiSeulForamteur/>}/>
 
                 <Route path='/Contact' element={<Contact />}/>
+                <Route path='/ContactNotif' element={<Notification />}/>
             </Routes>
         </Context>
     </BrowserRouter>
