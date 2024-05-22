@@ -3,6 +3,7 @@ import { contextProvider } from '../context/Context'
 import Loader from './Loader';
 import Layout from './Layout';
 import axios from 'axios';
+import * as XLSX from 'xlsx';
 
 const Absence = () => {
 
@@ -60,6 +61,19 @@ const Absence = () => {
         getAbsence()
     }, [nSemaine])
 
+    const exportToExcel = () => {
+        const worksheet = XLSX.utils.json_to_sheet(absence.map((absence) => ({
+            'Formateur': absence.formateur?.Nom_Formateur,
+            'Jour': absence.jour,
+            'Date': absence.date,
+            'Seance': absence.codeSeance,
+            'Justification': absence.justification
+        })));
+
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Absence des formateurs');
+        XLSX.writeFile(workbook, 'Absence_des_formateurs.xlsx');
+    };
 
 
     return (
@@ -67,6 +81,7 @@ const Absence = () => {
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Absence des formateurs</h1>
+                    <button className='btnDownload' onClick={exportToExcel}><i class="fa-solid fa-file-csv"></i>  Export to Excel</button>
                     <div className="choisir_inputs two">
                         <div className="choisir_input_box3 select">
                             <p>No Semaine Calendrier</p>

@@ -128,8 +128,8 @@ const MainTable = () => {
 
             <div class="main_table">
                 <table>
-                    <tr>
-                        <th>25/02/2024</th>
+                    <tr className='jourFix'>
+                        <th>{semaine?.firstDayOfWeek}</th>
                         <th>Semaine</th>
                         <th>Lundi</th>
                         <th>Mardi</th>
@@ -139,9 +139,9 @@ const MainTable = () => {
                         <th>Samedi</th>
                     </tr>
 
-                    <tr>
+                    <tr className='jourFix'>
                         <td className='GénérerTd'><button data-swal-toast-template="#my-template" className='Générer' onClick={add}><i class="fa-solid fa-gear" style={{ color: "#ffffff" }}></i> Générer</button></td>
-                        <td><i class="fa-regular fa-calendar-days"></i></td>
+                        <td className='fixedIcon'><i class="fa-regular fa-calendar-days"></i></td>
                         <td class="nested_table_td">
                             <table>
                                 <tr>

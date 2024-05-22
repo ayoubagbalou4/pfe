@@ -23,7 +23,7 @@ const GroupeSeance = (props) => {
                 title: "Ajouter Cette Seance?",
                 showCancelButton: true,
                 confirmButtonText: "Ajouter",
-            }).then((result) => {
+            }).then( async (result) => {
                 if (result.isConfirmed) {
                     const copiedOldItem = { ...oldItem };
                     copiedOldItem['code_seance'] = newItem['code_seance'];
@@ -64,7 +64,8 @@ const GroupeSeance = (props) => {
                         return
                     }
                     try {
-                        axios.post(`http://127.0.0.1:8000/api/dupliquer`, data)
+                        const respone = await axios.post(`http://127.0.0.1:8000/api/dupliquer`, data)
+                        console.log(respone.data)
                     } catch (error) {
                         console.log(error)
                     }

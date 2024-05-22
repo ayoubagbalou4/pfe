@@ -74,13 +74,14 @@ header .logo img {
     width: 21%;
     text-align: center;
     position: relative;
+    z-index: 999;
 }
 
 .choisir_input_box3 {
     width: 40%;
     text-align: center;
     position: relative;
-    z-index: 999;
+    z-index: 1000;
 }
 
 .choisir_input_box.select,
@@ -191,8 +192,7 @@ header .logo img {
 .nested_table_td_three {
     padding: 0 !important;
     border-top: 0 !important;
-    border-right: 0 !important;
-    border-left: 0 !important;
+    border-right: 4px solid black !important;
     border-bottom: 2px solid black !important;
     height: 90px;
 }
@@ -1208,4 +1208,22 @@ footer {
         width: 100%;
         display: block;
     }
+}
+
+.jourFix th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    z-index: 1;
+}
+
+.jourFix td {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px;
+    z-index: 1;
+}
+.fixedIcon{
+    background-color: #f2f2f2;
 }

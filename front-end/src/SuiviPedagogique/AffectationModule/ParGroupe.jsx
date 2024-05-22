@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import Navbar from './../../components/Navbar'
 import { contextProvider } from '../../context/Context'
 import Layout from '../../components/Layout'
+import * as XLSX from 'xlsx';
+
 
 const ParGroupe = () => {
 
@@ -24,6 +26,25 @@ const ParGroupe = () => {
         setGroupe(groupe)
         setAfficherSelect1(false)
     }
+    const exportToExcel = () => {
+        const worksheet = XLSX.utils.json_to_sheet(filiereModules
+        .map((m, index) => ({
+            'Module': m.module.Id_module,
+            'Numero Module': m.module.code_module,
+            'Formateur Referent': affectations.find(a => a.Id_module == m.module.Id_module).formateur.Nom_Formateur,
+            'MHP_S1': m.module.MHP_S1,
+            'MHP_S2': m.module.MHP_S2,
+            'MHSYN_S1': m.module.MHSYN_S1,
+            'MHSYN_S2': m.module.MHSYN_S2,
+            'COF': m.module.Coef,
+            'Regional': m.module.EFM_Regional,
+
+        })));
+
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Affecation des modules');
+        XLSX.writeFile(workbook, 'Affecation_des_modules.xlsx');
+    };
 
 
 
@@ -32,6 +53,8 @@ const ParGroupe = () => {
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Affecation des modules</h1>
+                    <button className='btnDownload' onClick={exportToExcel}><i class="fa-solid fa-file-csv"></i>  Export to Excel</button>
+
                     <div className="choisir_inputs two">
                         <div className="choisir_input_box3 select">
                             <p>Filiere</p>
