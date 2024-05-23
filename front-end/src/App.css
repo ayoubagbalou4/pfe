@@ -758,6 +758,7 @@ li.selected {
     background-color: #566573;
     position: fixed;
     height: 100vh;
+    /* z-index: 99; */
 }
 
 .main {
@@ -835,6 +836,7 @@ nav .header {
     display: flex;
     justify-content: center;
     margin: 20px auto;
+    cursor: pointer;
 }
 
 .brand img {
@@ -1226,4 +1228,21 @@ footer {
 }
 .fixedIcon{
     background-color: #f2f2f2;
+}
+.containerDahboard.smallDash .aside {
+    width: 5%;
+}
+.containerDahboard.smallDash .main {
+    width: 95%;
+    position: relative;
+    left: 5%;
+}
+.containerDahboard.smallDash nav {
+    width: 95%;
+}
+.containerDahboard.smallDash .linksSide a span {
+    display: none;
+}
+.containerDahboard.smallDash .brand img {
+    width: 40px;
 }

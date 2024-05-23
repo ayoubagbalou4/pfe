@@ -158,10 +158,13 @@ const Context = ({ children }) => {
     const [loadingSeancesParSemaine, setLoadingSeancesParSemaine] = useState(false)
     const getSeancesParSemaine = async () => {
         setLoadingSeancesParSemaine(true)
+        
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/seancesParSemaine/${nSemaine}`)
-            setSeancesParSemaine(response.data.seancesParSemaine)
-            setLoadingSeancesParSemaine(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/seancesParSemaine/${nSemaine}`)
+                setSeancesParSemaine(response.data.seancesParSemaine)
+                setLoadingSeancesParSemaine(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingSeancesParSemaine(false)
@@ -230,9 +233,11 @@ const Context = ({ children }) => {
     const getStatistiquesF = async () => {
         setLoadingStatistiquesF(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/formateurStatistiques/${nSemaine}`)
-            setStatistiquesF(response.data.Seancesformateur)
-            setLoadingStatistiquesF(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/formateurStatistiques/${nSemaine}`)
+                setStatistiquesF(response.data.Seancesformateur)
+                setLoadingStatistiquesF(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingStatistiquesF(false)
@@ -246,9 +251,11 @@ const Context = ({ children }) => {
     const getstatistiquesG = async () => {
         setLoadingstatistiquesG(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/groupeStatistiques/${nSemaine}`)
-            setstatistiquesG(response.data.Seancesgroupe)
-            setLoadingstatistiquesG(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/groupeStatistiques/${nSemaine}`)
+                setstatistiquesG(response.data.Seancesgroupe)
+                setLoadingstatistiquesG(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingstatistiquesG(false)
@@ -262,9 +269,11 @@ const Context = ({ children }) => {
     const getAbsence = async () => {
         setLoadingAbsence(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/absences/${nSemaine}`)
-            setAbsence(response.data.absences)
-            setLoadingAbsence(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/absences/${nSemaine}`)
+                setAbsence(response.data.absences)
+                setLoadingAbsence(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingAbsence(false)

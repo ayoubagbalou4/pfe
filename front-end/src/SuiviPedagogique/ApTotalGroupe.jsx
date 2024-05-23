@@ -98,8 +98,6 @@ const ApTotalGroupe = () => {
 
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
         }

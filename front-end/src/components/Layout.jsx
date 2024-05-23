@@ -4,6 +4,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
 
 const Layout = (props) => {
+
+    const [smallAside,setSmallAside] = useState(false)
+
     const [showAffectation, setshowAffectation] = useState(false);
     const [showFormateur, setshowFormateur] = useState(false);
     const [showGroupe, setshowGroupe] = useState(false);
@@ -97,13 +100,15 @@ const Layout = (props) => {
         }
     }
 
+
+
     return (
-        <div class="containerDahboard">
+        <div class={`containerDahboard ${smallAside ? 'smallDash' : ''}`}>
             <div class="aside">
-                <div class="brand"><img src="http://localhost:3000/images/logo4.png" alt="" /></div>
+                <div class="brand"  onClick={() => setSmallAside(!smallAside)} ><img src="http://localhost:3000/images/logo4.png" alt="" /></div>
                 <div className="linksSide">
-                    <Link className={props.Dashboard} to="/Dashboard"><i className="fa-solid fa-house-chimney"></i> Dashboard </Link>
-                    <a className={props.SuiviPédagogique} onClick={toggleMenu1}><i className="fa-solid fa-user"></i> Suivi Pédagogique {!showAffectation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <Link className={props.Dashboard} to="/Dashboard"><i className="fa-solid fa-house-chimney"></i> <span> Dashboard </span></Link>
+                    <a className={props.SuiviPédagogique} onClick={toggleMenu1}><i className="fa-solid fa-user"></i> <span>Suivi Pédagogique {!showAffectation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showAffectation &&
                         <>
@@ -114,7 +119,7 @@ const Layout = (props) => {
                             <Link to="/suivi/affectation/MH-aff-Formateur"><i class="fa-solid fa-chevron-right"></i>MH-aff-Formateur</Link>
                         </>
                     }
-                    <a className={props.Formateur} onClick={toggleMenu2}><i className="fa-solid fa-users"></i>Formateur {!showFormateur ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <a className={props.Formateur} onClick={toggleMenu2}><i className="fa-solid fa-users"></i><span>Formateur {!showFormateur ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showFormateur &&
                         <>
@@ -122,7 +127,7 @@ const Layout = (props) => {
                             <Link to="/formateurs"><i class="fa-solid fa-chevron-right"></i>Afficher Formateurs</Link>
                         </>
                     }
-                    <a className={props.Statistiques} onClick={toggleMenu3}><i className="fa-solid fa-chart-simple"></i> Statistiques {!showStatistiques ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <a className={props.Statistiques} onClick={toggleMenu3}><i className="fa-solid fa-chart-simple"></i><span> Statistiques {!showStatistiques ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showStatistiques &&
                         <>
@@ -131,7 +136,7 @@ const Layout = (props) => {
 
                         </>
                     }
-                    <a className={props.RealisationFormateur} onClick={toggleMenu4}><i className="fa-solid fa-circle-check"></i>RealisationFormateur {!showRealisation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <a className={props.RealisationFormateur} onClick={toggleMenu4}><i className="fa-solid fa-circle-check"></i><span> RealisationFormateur {!showRealisation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showRealisation &&
                         <>
@@ -140,7 +145,7 @@ const Layout = (props) => {
 
                         </>
                     }
-                    <a className={props.semaines} onClick={toggleMenu5}><i class="fa-solid fa-calendar-plus"></i>Semaines {!showSemaine ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <a className={props.semaines} onClick={toggleMenu5}><i class="fa-solid fa-calendar-plus"></i><span> Semaines {!showSemaine ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showSemaine &&
                         <>
@@ -149,7 +154,7 @@ const Layout = (props) => {
 
                         </>
                     }
-                    <a className={props.affectations} onClick={toggleMenu6}><i class="fa-solid fa-building-circle-arrow-right"> </i>Affectations{!showAfectation1 ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <a className={props.affectations} onClick={toggleMenu6}><i class="fa-solid fa-building-circle-arrow-right"></i> <span>Affectations{!showAfectation1 ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showAfectation1 &&
                         <>
@@ -157,7 +162,7 @@ const Layout = (props) => {
                             <Link to="/affectations/AjouterAffectation"><i className="fa-solid fa-chevron-right"></i>Ajouter Affectation</Link>
                         </>
                     }
-                    <a className={props.emploi} onClick={toggleMenu7}><i class="fa-solid fa-calendar-days"></i>Emplois{!showEmploi ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>}</a>
+                    <a className={props.emploi} onClick={toggleMenu7}><i class="fa-solid fa-calendar-days"></i><span> Emplois{!showEmploi ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>
                     {
                         showEmploi &&
                         <>
@@ -165,13 +170,13 @@ const Layout = (props) => {
                             <Link to="/EmploiTemps"><i className="fa-solid fa-chevron-right"></i>Emploi Groupe</Link>
                         </>
                     }
-                    <Link className={props.ApTotaleGroupe} to="/suivi/ApTotaleGroupe"><i className="fa-solid fa-users-rectangle"></i> Ap Totale Groupe</Link>
-                    <Link className={props.AvancementProgramme} to="/suivi/AvancementProgramme"><i className="fa-solid fa-calendar-check"></i> Avancement Programme</Link>
+                    <Link className={props.ApTotaleGroupe} to="/suivi/ApTotaleGroupe"><i className="fa-solid fa-users-rectangle"></i> <span> Ap Totale Groupe</span></Link>
+                    <Link className={props.AvancementProgramme} to="/suivi/AvancementProgramme"><i className="fa-solid fa-calendar-check"></i> <span>Avancement Programme</span></Link>
                 </div>
             </div>
             <div class="main">
                 <nav>
-                    <div class="header">{props.header}</div>
+                    <div class="header"> {props.header}</div>
                     <div className='notif'>
                         <Link onClick={updateRead}>
                             <div class="notification">

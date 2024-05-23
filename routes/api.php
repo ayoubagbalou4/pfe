@@ -50,8 +50,9 @@ Route::get('seancesParSemaine/{semaine}', [SeanceController::class,"seancesParSe
 Route::get('formateurStatistiques/{semaine}', [FormateurController::class,"formateurStatistiques"]);
 Route::get('groupeStatistiques/{semaine}', [GroupeController::class,"groupeStatistiques"]);
 
+
 Route::apiResource('semaines', SemaineController::class);
-Route::post('remplacer/{id1}', [SeanceController::class,"remplacer"]);
+Route::post('remplacer/{id1}/{id2}', [SeanceController::class,"remplacer"]);
 Route::post('dupliquer', [SeanceController::class,"dupliquer"]);
 Route::delete('supprimer/{Code_Groupe}/{formateur_Matricule}/{code_seance}/{No_Semaine_Calendrier}', [SeanceController::class,"supprimer"]);
 Route::post('absences', [AbsenceController::class,"store"]);

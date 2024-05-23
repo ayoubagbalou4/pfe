@@ -76,26 +76,41 @@ class SeanceController extends Controller
         ], 200);
     }
 
-    public function remplacer($id1, Request $request)
+
+    public function remplacer($id1, $id2)
     {
-        $seance = Seance::find($id1);
-        $seance->update([
-            "Id_Salle" => $request->Id_Salle,
-            "Code_Groupe" => $request->Code_Groupe,
-            "formateur_Matricule" => $request->formateur_Matricule,
-            "Id_module" => $request->Id_module,
-            "code_seance" => $request->code_seance,
-            "Date" => $request->Date,
-            "Jour_de_semaine" => $request->Jour_de_semaine,
-            "No_Semaine_Calendrier" => $request->No_Semaine_Calendrier,
-            "No_Semaine_DRIF" => $request->No_Semaine_DRIF,
-            "MH" => $request->MH,
-            "Horaire_debut" => $request->Horaire_debut,
-            "Horaire_fin" => $request->Horaire_fin,
-            "Type_seance" => $request->Type_seance,
+        $seance1 = Seance::find($id1);
+        $seance2 = Seance::find($id2);
+    
+        if (!$seance1 || !$seance2) {
+            return response()->json(['message' => 'One or both sessions not found'], 404);
+        }
+    
+        $tempSeance = $seance1->toArray();
+    
+        $seance1->update([
+            'code_seance' => $seance2->code_seance,
+            'Date' => $seance2->Date,
+            'Jour_de_semaine' => $seance2->Jour_de_semaine,
+            'Horaire_debut' => $seance2->Horaire_debut,
+            'Horaire_fin' => $seance2->Horaire_fin,
+            'Type_seance' => $seance2->Type_seance,
+            'Code_Groupe' => $seance2->Code_Groupe,
         ]);
-        return response()->json([], 200);
+    
+        $seance2->update([
+            'code_seance' => $tempSeance['code_seance'],
+            'Date' => $tempSeance['Date'],
+            'Jour_de_semaine' => $tempSeance['Jour_de_semaine'],
+            'Horaire_debut' => $tempSeance['Horaire_debut'],
+            'Horaire_fin' => $tempSeance['Horaire_fin'],
+            'Type_seance' => $tempSeance['Type_seance'],
+            'Code_Groupe' => $tempSeance['Code_Groupe'],
+        ]);
+    
+        return response()->json(['message' => 'Sessions replaced successfully']);
     }
+    
 
     public function dupliquer(Request $request)
     {
@@ -112,7 +127,7 @@ class SeanceController extends Controller
             "MH" => $request->MH,
             "Horaire_debut" => $request->Horaire_debut,
             "Horaire_fin" => $request->Horaire_fin,
-            "Type_seance" => $request->Id_Salle ? "PRESENTIEL" : "A DISTANCE",
+            "Type_seance" => $request->Id_Salle == 'A distance' ? "A DISTANCE" : "PRESENTIEL",
         ]);
         return response()->json([], 200);
     }
