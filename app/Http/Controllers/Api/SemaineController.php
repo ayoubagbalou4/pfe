@@ -11,7 +11,9 @@ class SemaineController extends Controller
 {
     public function index()
     {
-        $semaines = Semaine::orderBy('Semaine_DRIF')->get();
+        $semaines = Semaine::orderBy('Semaine_DRIF')
+            ->where('archive', 0)
+            ->get();
         return response()->json([
             'semaines' => $semaines
         ], 200);
@@ -57,8 +59,10 @@ class SemaineController extends Controller
         $year = date('Y', strtotime($date));
         $yeaOfLastDate = $year + 1;
 
-        $lastDateOfYear = $yeaOfLastDate . '-06-24';
+        $lastDateOfYear = $yeaOfLastDate . '-07-15';
         $weekNumber = date('W', strtotime($date));
+
+        $this->archivePreviousRecords($date, $year);
 
         $startDateOfWeek = date('Y-m-d', strtotime('monday this week', strtotime($date)));
         $semaineDrif = 1;
@@ -75,11 +79,26 @@ class SemaineController extends Controller
                 'lastDayOfWeek' => $endDateOfWeek,
                 'Semaine_DRIF' => $semaineDrif++,
                 'annee' => date('Y', strtotime($startDateOfWeek)),
+                'archive' => 0,
             ]);
 
             $date = date('Y-m-d', strtotime($date . ' +1 week'));
         }
 
+
         return response()->json($weeks, 200);
+    }
+
+
+    public function archivePreviousRecords($currentDate, $year)
+    {
+        $previousYear = $year - 1;
+
+        Seance::where('Date', '<', $currentDate)
+            ->where('Date', '>', $previousYear . '-09-01')
+            ->update(['archive' => 1]);
+
+        Semaine::where('firstDayOfWeek', '<', $currentDate)
+            ->update(['archive' => 1]);
     }
 }

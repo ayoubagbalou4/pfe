@@ -1246,3 +1246,34 @@ footer {
 .containerDahboard.smallDash .brand img {
     width: 40px;
 }
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+  }
+  
+  .pagination li {
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .pagination li a {
+    color: black;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+  }
+  
+  .pagination li.active a {
+    background-color: #566573;
+    color: white;
+  }
+
+
+.headerD {
+    display: flex;
+    justify-content: space-between;
+}

@@ -174,6 +174,35 @@ const GroupeSeance = (props) => {
                     );
                     setSeancesParSemaine(newSeances);
                 } else if (result.isDenied) {
+                    
+
+                    const data = {
+                        Id_Salle: oldItem.Id_Salle,
+                        Code_Groupe: oldItem.Code_Groupe,
+                        formateur_Matricule: oldItem.formateur_Matricule ? oldItem.formateur_Matricule :formateurs.find(formateur => formateur.Abreviation == oldItem.formateur)?.Matricule,
+                        Id_module: oldItem.Id_module,
+                        code_seance: oldItem.code_seance,
+                        Date: oldItem.Date,
+
+                        Id_Salle1: newItem.Id_Salle,
+                        Code_Groupe1: newItem.Code_Groupe,
+                        formateur_Matricule1: newItem.formateur_Matricule ? newItem.formateur_Matricule :formateurs.find(formateur => formateur.Abreviation == newItem.formateur)?.Matricule ,
+                        Id_module1: newItem.Id_module,
+                        code_seance1: newItem.code_seance,
+                        Date1: newItem.Date
+                    };
+
+                    console.log(newItem)
+                    console.log(oldItem)
+                    console.log(data)
+
+                    try {
+                        const response = await axios.post(`http://127.0.0.1:8000/api/remplacer`,data)
+                        console.log(response.data)
+                    } catch (error) {
+                        console.log(error)
+                    }
+
                     const oldItemTemp = oldItem["code_seance"];
                     oldItem["code_seance"] = newItem["code_seance"];
                     newItem["code_seance"] = oldItemTemp;
@@ -202,30 +231,6 @@ const GroupeSeance = (props) => {
                     newSeances.splice(newSeances.indexOf(newItem), 1, oldItem);
                     newSeances.splice(newSeances.indexOf(oldItem), 1, newItem);
                     setSeancesParSemaine(newSeances);
-
-                    // const data = {
-                    //     Id_Salle: oldItem.Id_Salle,
-                    //     Code_Groupe: oldItem.Code_Groupe,
-                    //     formateur_Matricule: oldItem.formateur_Matricule,
-                    //     Id_module: oldItem.Id_module,
-                    //     code_seance: oldItem.code_seance,
-                    //     Date: oldItem.Date,
-                    //     Jour_de_semaine: oldItem.Jour_de_semaine,
-                    //     No_Semaine_Calendrier: oldItem.No_Semaine_Calendrier,
-                    //     No_Semaine_DRIF: oldItem.No_Semaine_DRIF,
-                    //     MH: oldItem.MH,
-                    //     Horaire_debut: oldItem.Horaire_debut,
-                    //     Horaire_fin: oldItem.Horaire_fin,
-                    //     Type_seance: oldItem.Type_seance,
-                    // };
-                    console.log(oldItem);
-                    console.log(newItem);
-                    try {
-                        const response = await axios.post(`http://127.0.0.1:8000/api/remplacer/${oldItem.id}/${newItem.id}`)
-                        console.log(response.data)
-                    } catch (error) {
-                        console.log(error)
-                    }
                     
                 }
             });
