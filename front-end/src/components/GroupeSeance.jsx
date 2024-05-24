@@ -113,6 +113,7 @@ const GroupeSeance = (props) => {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const copiedOldItem = { ...oldItem };
+                    copiedOldItem["id"] = newItem["id"];
                     copiedOldItem["code_seance"] = newItem["code_seance"];
                     copiedOldItem["Code_Groupe"] = newItem["Code_Groupe"];
                     copiedOldItem["Date"] = newItem["Date"];
@@ -129,19 +130,44 @@ const GroupeSeance = (props) => {
                         (e) => copiedOldItem.formateur == e.Abreviation
                     )?.Matricule;
 
-                    if (
-                        seancesParSemaine.find(
-                            (s) =>
-                                s.code_seance == copiedOldItem.code_seance &&
-                                s.Id_Salle == copiedOldItem.Id_Salle
-                        )
-                    ) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Salle Deja Occupée!...",
-                        });
-                        return;
+
+                    const seanceFind = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle);
+
+                    if (seanceFind.length > 0) {
+                        const amphiCount = seanceFind.filter((s) => s.Id_Salle == "AMPHI").length;
+                        const distanceCount = seanceFind.filter((s) => s.Id_Salle == "A distance").length;
+
+                        if (seanceFind.length == 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Salle Deja Occupée!....",
+                            });
+                            return;
+                        }
+
+                        if (amphiCount > 2) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Limit of AMPHI sessions exceeded!",
+                            });
+                            return;
+                        }
+
+                        if (distanceCount > 2) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Limit of A distance sessions exceeded!",
+                            });
+                            return;
+                        }
+
+                        // Swal.fire({
+                        //     icon: "error",
+                        //     title: "Salle Deja Occupée!....",
+                        // });
+                        // return;
                     }
+
 
                     const data = {
                         Id_Salle: copiedOldItem.Id_Salle,
@@ -189,15 +215,20 @@ const GroupeSeance = (props) => {
                         formateur_Matricule1: newItem.formateur_Matricule ? newItem.formateur_Matricule : formateurs.find(formateur => formateur.Abreviation == newItem.formateur)?.Matricule,
                         Id_module1: newItem.Id_module,
                         code_seance1: newItem.code_seance,
-                        Date1: newItem.Date
+                        Date1: newItem.Date,
+
+                        Jour_de_semaine: newItem.Jour_de_semaine,
+                        Horaire_debut: newItem.Horaire_debut,
+                        Horaire_fin: newItem.Horaire_fin,
+                        Type_seance: oldItem.Type_seance,
                     };
 
                     console.log(newItem)
                     console.log(oldItem)
-                    // console.log(data)
+                    console.log(data)
 
                     try {
-                        const response = await axios.post(`http://127.0.0.1:8000/api/remplacer`,data)
+                        const response = await axios.post(`http://127.0.0.1:8000/api/remplacer`, data)
                         console.log(response.data)
                     } catch (error) {
                         console.log(error)

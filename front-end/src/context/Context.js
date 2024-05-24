@@ -141,18 +141,18 @@ const Context = ({ children }) => {
     }, [])
 
 
-    const [nSemaine, setNSemaine] = useState(37)
-    // const getSemainesNow = async () => {
-    //     try {
-    //         const response = await axios.get('http://127.0.0.1:8000/api/getSemaineNow')
-    //         setNSemaine(response.data)
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
-    // useEffect(() => {
-    //     getSemainesNow()
-    // }, [])
+    const [nSemaine, setNSemaine] = useState()
+    const getSemainesNow = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/getSemaineNow')
+            setNSemaine(response.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getSemainesNow()
+    }, [])
 
     const [seancesParSemaine, setSeancesParSemaine] = useState([])
     const [loadingSeancesParSemaine, setLoadingSeancesParSemaine] = useState(false)
