@@ -62,7 +62,7 @@ const EditAffectation = () => {
     }
 
     return (
-        <Layout content={
+        <Layout affectations="active" content={
             <div class="contentDashboard">
                 <div class="formAdmin">
                     <h1>Edit Affectation</h1>

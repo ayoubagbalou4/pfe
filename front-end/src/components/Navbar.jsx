@@ -1,18 +1,20 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 const Navbar = () => {
+    return (
+        <header>
+            <div className="logo"><img src="http://localhost:3000/images/logo4.png" alt="navbarDashboard" /></div>
+            <div className="links">
+                <i className="fa-solid fa-share"></i>
+                <Link to={"/dashboard"}>Dashboard</Link>
+            </div>
+        </header>
+    );
+};
 
-  return (
-    <header>
-        <h2>Logo</h2>
-        <div class="links">
-            <i class="fa-solid fa-bell"></i>
-            <p>admin</p>
-            <img src="http://localhost:3000/images/provile_empty.png" alt="" />
-            <i class="fa-solid fa-caret-down"></i>
-        </div>
-    </header>
-  )
-}
 
-export default Navbar
+
+export default Navbar;
+

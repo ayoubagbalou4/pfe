@@ -14,8 +14,8 @@ class AbsenceController extends Controller
             "justification"=>$request->justification,
             "semaine"=>$request->semaine,
             "jour"=>$request->jour,
-            "date"=>$request->date
-
+            "date"=>$request->date,
+            "codeSeance"=>$request->codeSeance,
         ]);
         return response()->json([], 200);
 

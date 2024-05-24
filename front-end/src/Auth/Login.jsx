@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "./Login.css"
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2';
+import Navbar2 from '../components/Navbar2';
 
 const Login = () => {
     const [login,setLogin]=useState();
@@ -23,6 +24,8 @@ const Login = () => {
     }
 
   return (
+    <>
+    <Navbar2/>
     <div className="section">
         <div className="form">
             <div className="empty_side">
@@ -40,6 +43,7 @@ const Login = () => {
             </form>
         </div>
     </div>
+    </>
   )
 }
 

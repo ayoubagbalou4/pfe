@@ -17,6 +17,7 @@ class FormateurController extends Controller
         ], 200);
     }
 
+
     public function store(Request $request)
     {
         Formateur::create($request->all());
@@ -56,8 +57,7 @@ class FormateurController extends Controller
             'Background_Color' => $request->Background_Color,
         ]);
         return response()->json([], 200);
-    }
-
+        }
 
     public function formateurStatistiques($semaine)
     {

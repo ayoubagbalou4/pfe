@@ -89,8 +89,8 @@ const Context = ({ children }) => {
         getFilieres()
     }, [])
 
-    const [filiereModules,setFiliereModules] = useState([])
-    const [loadingFiliereModules,setLoadingFiliereModules] = useState([])
+    const [filiereModules, setFiliereModules] = useState([])
+    const [loadingFiliereModules, setLoadingFiliereModules] = useState([])
     const getFiliereModules = async () => {
         setLoadingFiliereModules(true)
         try {
@@ -104,10 +104,10 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getFiliereModules()
-    } ,[])
+    }, [])
 
-    const [seances,setSeances] = useState([])
-    const [loadingSeances,setLoadingSeances] = useState([])
+    const [seances, setSeances] = useState([])
+    const [loadingSeances, setLoadingSeances] = useState([])
     const getSeances = async () => {
         setLoadingSeances(true)
         try {
@@ -121,97 +121,10 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getSeances()
-    } ,[])
+    }, [])
 
-
-    const [nSemaine,setNSemaine] = useState(36)
-    const [seancesParSemaine,setSeancesParSemaine] = useState([])
-    const [loadingSeancesParSemaine,setLoadingSeancesParSemaine] = useState(false)
-    const getSeancesParSemaine = async () => {
-        setLoadingSeancesParSemaine(true)
-        try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/seancesParSemaine/${nSemaine}`)
-            setSeancesParSemaine(response.data.seancesParSemaine)
-            setLoadingSeancesParSemaine(false)
-        } catch (error) {
-            console.log(error)
-            setLoadingSeancesParSemaine(false)
-        }
-    }
-    useEffect(() => {
-        getSeancesParSemaine()
-    } ,[nSemaine])
-
-    // const [semaines,setsemaines] = useState([])
-    // const [loadingsemaines,setLoadingsemaines] = useState([])
-    // const getsemaines = async () => {
-    //     setLoadingsemaines(true)
-    //     try {
-    //         const response = await axios.get('http://127.0.0.1:8000/api/seanceParDate')
-    //         setsemaines(response.data.seanceParDate)
-    //         setLoadingsemaines(false)
-    //     } catch (error) {
-    //         console.log(error)
-    //         setLoadingsemaines(false)
-    //     }
-    // }
-    // useEffect(() => {
-    //     getsemaines()
-    // } ,[])
-
-    const [modules,setModules] = useState([])
-    const [loadingModules,setLoadingModules] = useState([])
-    const getmodules = async () => {
-        setLoadingModules(true)
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/modules')
-            setModules(response.data.modules)
-            setLoadingModules(false)
-        } catch (error) {
-            console.log(error)
-            setLoadingModules(false)
-        }
-    }
-    useEffect(() => {
-        getmodules()
-    } ,[])
-    const [realisationMHT,setrealisationMHT] = useState([])
-    const [loadingrealisationMHT,setLoadingrealisationMHT] = useState([])
-    const getrealisationMHT = async () => {
-        setLoadingrealisationMHT(true)
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/realisationModulesParGrp')
-            setrealisationMHT(response.data.realisationModulesParGrp)
-            setLoadingrealisationMHT(false)
-        } catch (error) {
-            console.log(error)
-            setLoadingrealisationMHT(false)
-        }
-    }
-    useEffect(() => {
-        getrealisationMHT()
-    } ,[])
-
-    const [semaineNumber,setSemaineNumber] = useState([])
-    const [loadingSemaineNumber,setLoadingSemaineNumber] = useState([])
-    const getsemaineNumber = async () => {
-        setLoadingSemaineNumber(true)
-        try {
-            const response = await axios.get('http://127.0.0.1:8000/api/semaineNumber')
-            setSemaineNumber(response.data.semaineNumber)
-            setLoadingSemaineNumber(false)
-        } catch (error) {
-            console.log(error)
-            setLoadingSemaineNumber(false)
-        }
-    }
-    useEffect(() => {
-        getsemaineNumber()
-    } ,[])
-
-
-    const [semaines,setSemaines] = useState([])
-    const [loadingSemaines,setLoadingSemaines] = useState([])
+    const [semaines, setSemaines] = useState([])
+    const [loadingSemaines, setLoadingSemaines] = useState([])
     const getSemaines = async () => {
         setLoadingSemaines(true)
         try {
@@ -225,15 +138,106 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getSemaines()
-    } ,[])
-    const [statistiquesF,setStatistiquesF] = useState([])
-    const [loadingStatistiquesF,setLoadingStatistiquesF] = useState([])
+    }, [])
+
+
+    const [nSemaine, setNSemaine] = useState(37)
+    // const getSemainesNow = async () => {
+    //     try {
+    //         const response = await axios.get('http://127.0.0.1:8000/api/getSemaineNow')
+    //         setNSemaine(response.data)
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    // useEffect(() => {
+    //     getSemainesNow()
+    // }, [])
+
+    const [seancesParSemaine, setSeancesParSemaine] = useState([])
+    const [loadingSeancesParSemaine, setLoadingSeancesParSemaine] = useState(false)
+    const getSeancesParSemaine = async () => {
+        setLoadingSeancesParSemaine(true)
+
+        try {
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/seancesParSemaine/${nSemaine}`)
+                setSeancesParSemaine(response.data.seancesParSemaine)
+                setLoadingSeancesParSemaine(false)
+            }
+        } catch (error) {
+            console.log(error)
+            setLoadingSeancesParSemaine(false)
+        }
+    }
+    useEffect(() => {
+        getSeancesParSemaine()
+    }, [nSemaine])
+
+
+
+    const [modules, setModules] = useState([])
+    const [loadingModules, setLoadingModules] = useState([])
+    const getmodules = async () => {
+        setLoadingModules(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/modules')
+            setModules(response.data.modules)
+            setLoadingModules(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingModules(false)
+        }
+    }
+    useEffect(() => {
+        getmodules()
+    }, [])
+
+    const [realisationMHT, setrealisationMHT] = useState([])
+    const [loadingrealisationMHT, setLoadingrealisationMHT] = useState([])
+    const getrealisationMHT = async () => {
+        setLoadingrealisationMHT(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/realisationModulesParGrp')
+            setrealisationMHT(response.data.realisationModulesParGrp)
+            setLoadingrealisationMHT(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingrealisationMHT(false)
+        }
+    }
+    useEffect(() => {
+        getrealisationMHT()
+    }, [])
+
+    const [semaineNumber, setSemaineNumber] = useState([])
+    const [loadingSemaineNumber, setLoadingSemaineNumber] = useState([])
+    const getsemaineNumber = async () => {
+        setLoadingSemaineNumber(true)
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/semaineNumber')
+            setSemaineNumber(response.data.semaineNumber)
+            setLoadingSemaineNumber(false)
+        } catch (error) {
+            console.log(error)
+            setLoadingSemaineNumber(false)
+        }
+    }
+    useEffect(() => {
+        getsemaineNumber()
+    }, [])
+
+
+    const [statistiquesF, setStatistiquesF] = useState([])
+    const [loadingStatistiquesF, setLoadingStatistiquesF] = useState([])
     const getStatistiquesF = async () => {
         setLoadingStatistiquesF(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/formateurStatistiques/${nSemaine}`)
-            setStatistiquesF(response.data.Seancesformateur)
-            setLoadingStatistiquesF(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/formateurStatistiques/${nSemaine}`)
+                setStatistiquesF(response.data.Seancesformateur)
+                setLoadingStatistiquesF(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingStatistiquesF(false)
@@ -241,15 +245,17 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getStatistiquesF()
-    } ,[])
-    const [statistiquesG,setstatistiquesG] = useState([])
-    const [loadingstatistiquesG,setLoadingstatistiquesG] = useState([])
+    }, [nSemaine])
+    const [statistiquesG, setstatistiquesG] = useState([])
+    const [loadingstatistiquesG, setLoadingstatistiquesG] = useState([])
     const getstatistiquesG = async () => {
         setLoadingstatistiquesG(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/groupeStatistiques/${nSemaine}`)
-            setstatistiquesG(response.data.Seancesgroupe)
-            setLoadingstatistiquesG(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/groupeStatistiques/${nSemaine}`)
+                setstatistiquesG(response.data.Seancesgroupe)
+                setLoadingstatistiquesG(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingstatistiquesG(false)
@@ -257,15 +263,17 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getstatistiquesG()
-    } ,[])
-    const [absence,setAbsence] = useState([])
-    const [loadingAbsence,setLoadingAbsence] = useState([])
+    }, [nSemaine])
+    const [absence, setAbsence] = useState([])
+    const [loadingAbsence, setLoadingAbsence] = useState([])
     const getAbsence = async () => {
         setLoadingAbsence(true)
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/absences/${nSemaine}`)
-            setAbsence(response.data.absences)
-            setLoadingAbsence(false)
+            if(nSemaine !== undefined){
+                const response = await axios.get(`http://127.0.0.1:8000/api/absences/${nSemaine}`)
+                setAbsence(response.data.absences)
+                setLoadingAbsence(false)
+            }
         } catch (error) {
             console.log(error)
             setLoadingAbsence(false)
@@ -273,17 +281,19 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getAbsence()
-    } ,[nSemaine])
+    }, [nSemaine])
 
-    const [seanceGenerate,setSeanceGenerate] = useState({})
+    const [seanceGenerate, setSeanceGenerate] = useState({})
 
-    const values = { formateurs, salles, affectations , groupes , filieres,filiereModules,seances ,
-         setSeances ,semaines, modules,realisationMHT,semaineNumber,seancesParSemaine,setSeancesParSemaine,
-         seanceGenerate,setSeanceGenerate,setNSemaine,getSeancesParSemaine,
-         loadingSeancesParSemaine,nSemaine,statistiquesF,statistiquesG,absence,loadingAbsence,loadingSalles,loadingAffectations,loadingFormateurs}
+    const values = {
+        formateurs, salles, affectations, groupes, filieres, filiereModules, seances,
+        setSeances, semaines, modules, realisationMHT, semaineNumber, seancesParSemaine, setSeancesParSemaine,
+        seanceGenerate, setSeanceGenerate, setNSemaine, getSeancesParSemaine,
+        loadingSeancesParSemaine, nSemaine, statistiquesF, statistiquesG, absence, loadingAbsence, loadingSalles, loadingAffectations, loadingFormateurs
+    }
     return (
         <contextProvider.Provider value={values}>
-          {children}
+            {children}
         </contextProvider.Provider>
     )
 }

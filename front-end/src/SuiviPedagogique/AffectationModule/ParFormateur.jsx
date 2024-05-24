@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import Context, { contextProvider } from '../../context/Context';
 import Navbar from '../../components/Navbar';
 import Layout from '../../components/Layout';
+import * as XLSX from 'xlsx';
+import dateFormat, { masks } from "dateformat";
+
 
 const ParFormateur = () => {
     const [formateur, setFormateur] = useState();
@@ -36,11 +39,33 @@ const ParFormateur = () => {
 
     }, [formateur])
 
+    
+    const exportToExcel = () => {
+        const worksheet = XLSX.utils.json_to_sheet(affectations
+        .map((m, index) => ({
+            'Date Affectation': m.module.Id_module,
+            'Filiere': m.module.code_module,
+            'Annee Formation': affectations.find(a => a.Id_module == m.module.Id_module).formateur.Nom_Formateur,
+            'Groupe': m.module.MHP_S1,
+            'Code Module': m.module.MHP_S2,
+            'Module': m.module.MHSYN_S1,
+            'MH Affectee': m.module.MHSYN_S2,
+
+
+        })));
+
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Affecation des modules');
+        XLSX.writeFile(workbook, 'Affecation_des_modules.xlsx');
+    };
+
     return (
         <Layout header={"Affecation des modules Par Formateur"} SuiviPédagogique={"active"} content={
             <div class="contentDashboard">
                 <div className='parGroupe'>
                     <h1>Affecation des modules Par Formateur</h1>
+                    <button className='btnDownload' onClick={exportToExcel}><i class="fa-solid fa-file-csv"></i>  Export to Excel</button>
+
 
                     <div className="choisir_inputs two">
                         <div className="choisir_input_box3 select">
@@ -94,7 +119,7 @@ const ParFormateur = () => {
                                         .map((formateur, index) =>
                                         (
                                             <tr key={index}>
-                                                <td>03/04/2024</td>
+                                                <td>{dateFormat(formateur.created_at, "yyyy-mm-dd")}</td>
                                                 <td>{filiereModules.find(e => e.Id_module == formateur.Id_module)?.Code_Filiere}</td>
                                                 <td>{formateur.module.annee}</td>
                                                 <td>{formateur.Code_Groupe}</td>
@@ -106,7 +131,7 @@ const ParFormateur = () => {
                                     :
                                     affectations.map((formateur, index) => (
                                         <tr key={index}>
-                                            <td>03/04/2024</td>
+                                            <td>{dateFormat(formateur.created_at, "yyyy-mm-dd")}</td>
                                             <td>{filiereModules.find(e => e.Id_module == formateur.Id_module)?.Code_Filiere}</td>
                                             <td>{formateur.module.annee}</td>
                                             <td>{formateur.Code_Groupe}</td>

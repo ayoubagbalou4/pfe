@@ -32,6 +32,7 @@ return new class extends Migration
             $table->time('Horaire_debut');
             $table->time('Horaire_fin');
             $table->enum('Type_seance',['A DISTANCE','PRESENTIEL']);
+            $table->boolean('archive')->default(0);
             $table->timestamps();
         });
     }

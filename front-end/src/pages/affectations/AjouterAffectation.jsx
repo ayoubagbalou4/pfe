@@ -10,7 +10,7 @@ const AjouterAffectation = () => {
 
     const { formateurs, groupes, modules } = useContext(contextProvider);
 
-
+ 
     const navigate = useNavigate()
     const [loadingAddAffectation, setLoadingAddAffectation] = useState(false)
     const [affectationsData, setAffectationsData] = useState({})
@@ -44,7 +44,7 @@ const AjouterAffectation = () => {
 
     return (
         <div>
-            <Layout content={
+            <Layout affectations="active" content={
                 <div class="contentDashboard">
                     <div class="formAdmin">
                         <h1>Ajouter Affectation</h1>

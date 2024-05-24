@@ -26,6 +26,13 @@ import Dashboard from './pages/Dashboard'
 import EditAffectation from './pages/affectations/EditAffectation'
 import Absence from './components/Absence'
 import Login from './Auth/Login'
+import AjouterSemaine from './pages/semaines/AjouterSemaine'
+import Semaines from './pages/semaines/Semaines'
+import EditSemaine from './pages/semaines/EditSemaine'
+import AboutUs from './pages/AboutUs'
+import EmploiSeulForamteur from './pages/EmploiSeulForamteur'
+import Contact from './pages/Contact'
+import Notification from './components/Notification'
 
 const App = () => {
   return (
@@ -33,7 +40,7 @@ const App = () => {
     <BrowserRouter>
         <Context>
             <Routes>
-                <Route path='/' element={<Home />}/>
+                <Route path='/home' element={<Home />}/>
                 <Route path='/suivi/affectation/groupe' element={<ParGroupe />}/>
                 <Route path='/suivi/affectation/groupeModule' element={<ParGroupeModule />}/>
                 <Route path='/suivi/affectation/formateur' element={<ParFormateur />}/>
@@ -54,7 +61,6 @@ const App = () => {
                 <Route path='/affectations/AjouterAffectation' element={<AjouterAffectation/>}/>
                 <Route path='/affectations' element={<Affectations/>}/>
                 <Route path='/affectations/EditAffectation/:Code_Groupe/:Id_module/:formateur_Matricule' element={<EditAffectation/>}/>
-
                 <Route path='/StatistiquesFormateur' element={<StatistiquesFormateur/>}/>
 
                 <Route path='/StatistiquesGroupe' element={<StatistiquesGroupe/>}/>
@@ -62,8 +68,14 @@ const App = () => {
                 <Route path='/Absences' element={<Absence/>}/>
                 <Route path='/Login' element={<Login/>}/>
 
+                <Route path='/semaines/AjouterSemaine' element={<AjouterSemaine/>}/>
+                <Route path='/semaines' element={<Semaines/>}/>
+                <Route path='/semaines/EditSemaine/:id' element={<EditSemaine/>}/>
+                <Route path='/' element={<AboutUs/>}/>
+                <Route path='/emploi-formateur/:matricule' element={<EmploiSeulForamteur/>}/>
 
-
+                <Route path='/Contact' element={<Contact />}/>
+                <Route path='/ContactNotif' element={<Notification />}/>
             </Routes>
         </Context>
     </BrowserRouter>
