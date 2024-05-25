@@ -152,13 +152,12 @@ const Context = ({ children }) => {
     }
     useEffect(() => {
         getSemainesNow()
-    }, [])
+    }, [nSemaine])
 
     const [seancesParSemaine, setSeancesParSemaine] = useState([])
     const [loadingSeancesParSemaine, setLoadingSeancesParSemaine] = useState(false)
     const getSeancesParSemaine = async () => {
         setLoadingSeancesParSemaine(true)
-        
         try {
             if(nSemaine !== undefined){
                 const response = await axios.get(`http://127.0.0.1:8000/api/seancesParSemaine/${nSemaine}`)

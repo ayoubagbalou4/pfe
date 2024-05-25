@@ -110,7 +110,7 @@ const GroupeSeance = (props) => {
                 showCancelButton: true,
                 confirmButtonText: "Dupliquer",
                 denyButtonText: "Remplacer",
-            }).then( async (result) => {
+            }).then(async (result) => {
                 if (result.isConfirmed) {
                     const copiedOldItem = { ...oldItem };
                     copiedOldItem["code_seance"] = newItem["code_seance"];
@@ -174,19 +174,19 @@ const GroupeSeance = (props) => {
                     );
                     setSeancesParSemaine(newSeances);
                 } else if (result.isDenied) {
-                    
+
 
                     const data = {
                         Id_Salle: oldItem.Id_Salle,
                         Code_Groupe: oldItem.Code_Groupe,
-                        formateur_Matricule: oldItem.formateur_Matricule ? oldItem.formateur_Matricule :formateurs.find(formateur => formateur.Abreviation == oldItem.formateur)?.Matricule,
+                        formateur_Matricule: oldItem.formateur_Matricule ? oldItem.formateur_Matricule : formateurs.find(formateur => formateur.Abreviation == oldItem.formateur)?.Matricule,
                         Id_module: oldItem.Id_module,
                         code_seance: oldItem.code_seance,
                         Date: oldItem.Date,
 
                         Id_Salle1: newItem.Id_Salle,
                         Code_Groupe1: newItem.Code_Groupe,
-                        formateur_Matricule1: newItem.formateur_Matricule ? newItem.formateur_Matricule :formateurs.find(formateur => formateur.Abreviation == newItem.formateur)?.Matricule ,
+                        formateur_Matricule1: newItem.formateur_Matricule ? newItem.formateur_Matricule : formateurs.find(formateur => formateur.Abreviation == newItem.formateur)?.Matricule,
                         Id_module1: newItem.Id_module,
                         code_seance1: newItem.code_seance,
                         Date1: newItem.Date
@@ -194,7 +194,7 @@ const GroupeSeance = (props) => {
 
                     console.log(newItem)
                     console.log(oldItem)
-                    console.log(data)
+                    // console.log(data)
 
                     try {
                         const response = await axios.post(`http://127.0.0.1:8000/api/remplacer`,data)
@@ -203,35 +203,41 @@ const GroupeSeance = (props) => {
                         console.log(error)
                     }
 
-                    const oldItemTemp = oldItem["code_seance"];
-                    oldItem["code_seance"] = newItem["code_seance"];
-                    newItem["code_seance"] = oldItemTemp;
 
-                    const oldCodeGroupeTemp = oldItem["Code_Groupe"];
-                    oldItem["Code_Groupe"] = newItem["Code_Groupe"];
-                    newItem["Code_Groupe"] = oldCodeGroupeTemp;
 
-                    const oldDateTemp = oldItem["Date"];
-                    oldItem["Date"] = newItem["Date"];
-                    newItem["Date"] = oldDateTemp;
 
-                    const oldJourTemp = oldItem["Jour_de_semaine"];
-                    oldItem["Jour_de_semaine"] = newItem["Jour_de_semaine"];
-                    newItem["Jour_de_semaine"] = oldJourTemp;
+                    const swapProperties = (oldItem, newItem, property) => {
+                        const temp = oldItem[property];
+                        oldItem[property] = newItem[property];
+                        newItem[property] = temp;
+                    };
 
-                    const oldHDebutTemp = oldItem["Horaire_debut"];
-                    oldItem["Horaire_debut"] = newItem["Horaire_debut"];
-                    newItem["Horaire_debut"] = oldHDebutTemp;
+                    const propertiesToSwap = [
+                        "code_seance",
+                        "Code_Groupe",
+                        "Date",
+                        "Jour_de_semaine",
+                        "Horaire_debut",
+                        "Horaire_fin"
+                    ];
 
-                    const oldHFinTemp = oldItem["Horaire_fin"];
-                    oldItem["Horaire_fin"] = newItem["Horaire_fin"];
-                    newItem["Horaire_fin"] = oldHFinTemp;
+                    propertiesToSwap.forEach(property => {
+                        swapProperties(oldItem, newItem, property);
+                    });
 
                     const newSeances = [...seancesParSemaine];
-                    newSeances.splice(newSeances.indexOf(newItem), 1, oldItem);
-                    newSeances.splice(newSeances.indexOf(oldItem), 1, newItem);
+
+                    const oldItemIndex = newSeances.findIndex(item => item === oldItem);
+                    const newItemIndex = newSeances.findIndex(item => item === newItem);
+
+                    if (oldItemIndex > -1 && newItemIndex > -1) {
+                        newSeances[oldItemIndex] = newItem;
+                        newSeances[newItemIndex] = oldItem;
+                    }
+
                     setSeancesParSemaine(newSeances);
-                    
+
+
                 }
             });
         }
@@ -270,23 +276,24 @@ const GroupeSeance = (props) => {
                     showCancelButton: true,
                 });
                 if (text) {
+
+                    const newSeances = [...seancesParSemaine];
+                    const itemSeance = seancesParSemaine.find(
+                        (item) => item.id == id
+                    );
+                    newSeances.splice(newSeances.indexOf(itemSeance), 1);
+                    setSeancesParSemaine(newSeances);
+
                     const data = {
-                        formateur_Matricule: seance.formateur_Matricule,
+                        formateur_Matricule: seance.formateur_Matricule ? seance.formateur_Matricule : formateurs.find(formateur => formateur.Abreviation == itemSeance.formateur)?.Matricule,
                         justification: text,
-                        jour: seancesParSemaine.find((s) => s.id == id)
-                            ?.Jour_de_semaine,
-                        semaine: seancesParSemaine.find((s) => s.id == id)
-                            ?.No_Semaine_Calendrier,
+                        jour: seancesParSemaine.find((s) => s.id == id)?.Jour_de_semaine,
+                        semaine: seancesParSemaine.find((s) => s.id == id)?.No_Semaine_Calendrier,
                         date: seancesParSemaine.find((s) => s.id == id)?.Date,
-                        codeSeance: seancesParSemaine.find((s) => s.id == id)
-                            ?.code_seance,
+                        codeSeance: seancesParSemaine.find((s) => s.id == id)?.code_seance,
                     };
-                    const codeGroupe = seancesParSemaine.find(
-                        (s) => s.id == id
-                    )?.Code_Groupe;
-                    const codeSeance = seancesParSemaine.find(
-                        (s) => s.id == id
-                    )?.code_seance;
+                    const codeGroupe = seancesParSemaine.find((s) => s.id == id)?.Code_Groupe;
+                    const codeSeance = seancesParSemaine.find((s) => s.id == id)?.code_seance;
                     console.log(data);
                     try {
                         await axios.post(
@@ -299,12 +306,6 @@ const GroupeSeance = (props) => {
                     } catch (error) {
                         console.log(error);
                     }
-                    const newSeances = [...seancesParSemaine];
-                    const itemSeance = seancesParSemaine.find(
-                        (item) => item.id == id
-                    );
-                    newSeances.splice(newSeances.indexOf(itemSeance), 1);
-                    setSeancesParSemaine(newSeances);
                 }
             } else if (result.isDenied) {
                 const newSeances = [...seancesParSemaine];
@@ -317,8 +318,8 @@ const GroupeSeance = (props) => {
                     (s) => s.Abreviation == itemSeance.formateur
                 )?.Matricule
                     ? formateurs.find(
-                          (s) => s.Abreviation == itemSeance.formateur
-                      )?.Matricule
+                        (s) => s.Abreviation == itemSeance.formateur
+                    )?.Matricule
                     : itemSeance.formateur_Matricule;
                 try {
                     await axios.delete(

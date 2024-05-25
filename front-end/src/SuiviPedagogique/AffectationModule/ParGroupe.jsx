@@ -85,12 +85,7 @@ const ParGroupe = () => {
                                 <i class="fa-solid fa-file-csv"></i> Export to
                                 Excel
                             </button>
-                            <select name="" id="">
-                                <option value="" selected disabled>Choisir Annee</option>
-                                {anneeScolaire.map((e) => (
-                                    <option value={e} >{e}</option>
-                                ))}
-                            </select>
+                            
                         </div>
 
                         <div className="choisir_inputs two">
