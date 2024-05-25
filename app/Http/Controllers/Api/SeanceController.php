@@ -97,8 +97,20 @@ class SeanceController extends Controller
         ->where('Date',$request->Date1)->first();
 
 
-        if (!$seance1 || !$seance2) {
-            return response()->json(['message' => 'One or both sessions not found'], 404);
+        if (!$seance1) {
+            return response()->json(['message' => 'seance1 not found'], 404);
+        }
+        if (!$seance2) {
+            $seance1->update([
+                'code_seance' => $request->code_seance1,
+                'Date' => $request->Date1,
+                'Jour_de_semaine' => $request->Jour_de_semaine,
+                'Horaire_debut' => $request->Horaire_debut,
+                'Horaire_fin' => $request->Horaire_fin,
+                'Type_seance' => $request->Type_seance,
+                'Code_Groupe' => $request->Code_Groupe1,
+            ]);
+            return response()->json(['message' => 'Sessions replaced successfully']);
         }
 
         $tempSeance = $seance1->toArray();

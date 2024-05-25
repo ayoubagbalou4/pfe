@@ -63,7 +63,8 @@ const CreerSeance = () => {
             Id_Salle: salle,
             module: module.code_module,
             Id_module:module.Id_module,
-            generate:true
+            generate:true,
+            Type_seance: salle == 'A distance' ? "A DISTANCE" : "PRESENTIEL"
         };
         setSeanceGenerate(x);
     };
@@ -85,7 +86,7 @@ const CreerSeance = () => {
                             <div onClick={() => setAfficherSelect0(!afficherSelect0)} className="select-btn1">
 
                                 {
-                                    nSemaine ? 
+                                    nSemaine ?
                                     <span>{semaine ?  `S - ${semaine.semaine} (${semaine.firstDayOfWeek} - ${semaine.lastDayOfWeek})` :
                                     `S - ${semaines.find(s => s.semaine == nSemaine)?.semaine} (${semaines.find(s => s.semaine == nSemaine)?.firstDayOfWeek} - ${semaines.find(s => s.semaine == nSemaine)?.lastDayOfWeek})`}</span>
                                     :
