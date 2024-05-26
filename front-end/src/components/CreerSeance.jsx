@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { contextProvider } from "../context/Context";
+import axios from "axios";
 
 const CreerSeance = () => {
     const {
@@ -11,7 +12,8 @@ const CreerSeance = () => {
         semaines,
         setNSemaine,
         seances,
-        nSemaine
+        nSemaine,
+        getSeancesParSemaine
     } = useContext(contextProvider);
 
 
@@ -25,6 +27,33 @@ const CreerSeance = () => {
         setAfficherSelect0(false)
         setNSemaine(s.semaine)
     }
+
+    const [nSemaineBase, setNSemaineBase] = useState()
+    const [semaineBase, setSemaineBase] = useState()
+    const [afficherSelect00, setAfficherSelect00] = useState(false)
+    const [searchSemaineBase, setSearchSemaineBase] = useState('')
+
+    const handleSelected00 = async (s) => {
+        setSemaineBase(s)
+        setAfficherSelect00(false)
+        setNSemaineBase(s.semaine)
+    }
+
+    useEffect(() => {
+        const storeFromSemaineBase = async () => {
+            try {
+                if (nSemaine !== undefined && nSemaineBase !== undefined) {
+                    const response = await axios.post(`http://127.0.0.1:8000/api/storeFromSemaineBase/${nSemaine}/${nSemaineBase}`);
+                    console.log(response.data);
+                    getSeancesParSemaine();
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        storeFromSemaineBase();
+    }, [nSemaineBase]);
 
     const [searchFormateur, setSearchFormateur] = useState("");
     const [searchSalle, setSearchSalle] = useState("");
@@ -62,8 +91,8 @@ const CreerSeance = () => {
             bg: formateur.Background_Color,
             Id_Salle: salle,
             module: module.code_module,
-            Id_module:module.Id_module,
-            generate:true,
+            Id_module: module.Id_module,
+            generate: true,
             Type_seance: salle == 'A distance' ? "A DISTANCE" : "PRESENTIEL"
         };
         setSeanceGenerate(x);
@@ -82,37 +111,70 @@ const CreerSeance = () => {
         <div className="choisir_section">
             <div className="choisir_inputs two">
                 <div className="choisir_input_box3 select">
-                            <p>No Semaine Calendrier</p>
-                            <div onClick={() => setAfficherSelect0(!afficherSelect0)} className="select-btn1">
+                    <p>No Semaine Calendrier</p>
+                    <div onClick={() => setAfficherSelect0(!afficherSelect0)} className="select-btn1">
 
-                                {
-                                    nSemaine ?
-                                    <span>{semaine ?  `S - ${semaine.semaine} (${semaine.firstDayOfWeek} - ${semaine.lastDayOfWeek})` :
+                        {
+                            nSemaine ?
+                                <span>{semaine ? `S - ${semaine.semaine} (${semaine.firstDayOfWeek} - ${semaine.lastDayOfWeek})` :
                                     `S - ${semaines.find(s => s.semaine == nSemaine)?.semaine} (${semaines.find(s => s.semaine == nSemaine)?.firstDayOfWeek} - ${semaines.find(s => s.semaine == nSemaine)?.lastDayOfWeek})`}</span>
-                                    :
-                                    <span>Choisir Une Semaine</span>
-                                }
+                                :
+                                <span>Choisir Une Semaine</span>
+                        }
 
-                                <i className="uil uil-angle-down"></i>
+                        <i className="uil uil-angle-down"></i>
+                    </div>
+                    {
+                        afficherSelect0 &&
+                        <div className="content">
+                            <div className="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input onChange={(e) => setSearchSemaine(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
                             </div>
-                            {
-                                afficherSelect0 &&
-                                <div className="content">
-                                    <div className="search">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <input onChange={(e) => setSearchSemaine(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
-                                    </div>
-                                    <ul className="options1">
-                                        {
-                                            semaines.map((s, index) => (
-                                                <li onClick={() => handleSelected0(s)} key={index}>
-                                                    S - {s.semaine} ({s.firstDayOfWeek} - {s.lastDayOfWeek})
-                                                </li>
-                                            ))
-                                        }
-                                    </ul>
-                                </div>
-                            }
+                            <ul className="options1">
+                                {
+                                    semaines.map((s, index) => (
+                                        <li onClick={() => handleSelected0(s)} key={index}>
+                                            S - {s.semaine} ({s.firstDayOfWeek} - {s.lastDayOfWeek})
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+                <div className="choisir_input_box3 select">
+                    <p>Select Semaine Base</p>
+                    <div onClick={() => setAfficherSelect00(!afficherSelect00)} className="select-btn1">
+
+                        {
+                            nSemaineBase ?
+                                <span>{semaineBase ? `S - ${semaineBase.semaine} (${semaineBase.firstDayOfWeek} - ${semaineBase.lastDayOfWeek})` :
+                                    `S - ${semaines.find(s => s.semaine == semaineBase)?.semaine} (${semaines.find(s => s.semaine == semaineBase)?.firstDayOfWeek} - ${semaines.find(s => s.semaine == semaineBase)?.lastDayOfWeek})`}</span>
+                                :
+                                <span>Tableau Vide (Default) </span>
+                        }
+
+                        <i className="uil uil-angle-down"></i>
+                    </div>
+                    {
+                        afficherSelect00 &&
+                        <div className="content">
+                            <div className="search">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input onChange={(e) => setSearchSemaineBase(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                            </div>
+                            <ul className="options1">
+                                {
+                                    semaines.map((s, index) => (
+                                        <li onClick={() => handleSelected00(s)} key={index}>
+                                            S - {s.semaine} ({s.firstDayOfWeek} - {s.lastDayOfWeek})
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    }
                 </div>
             </div>
 

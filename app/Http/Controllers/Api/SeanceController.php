@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Seance;
 use App\Models\Semaine;
+use DateTime;
 use Illuminate\Http\Request;
 
 class SeanceController extends Controller
 {
     public function index()
     {
-        $seances = Seance::with('formateur', 'module')->get();
+        $seances = Seance::
+            with('formateur', 'module')
+            ->get();
         return response()->json([
             'seances' => $seances
         ], 200);
@@ -38,9 +41,9 @@ class SeanceController extends Controller
     public function seancesParSemaine($semaine)
     {
         $seancesParSemaine = Seance::where('No_Semaine_Calendrier', $semaine)
-        ->with('formateur', 'module')
-        ->where('archive', 0)
-        ->get();
+            ->with('formateur', 'module')
+            ->where('archive', 0)
+            ->get();
         return response()->json([
             'seancesParSemaine' => $seancesParSemaine
         ], 200);
@@ -82,19 +85,19 @@ class SeanceController extends Controller
 
     public function remplacer(Request $request)
     {
-        $seance1 = Seance::where('Id_Salle',$request->Id_Salle)
-        ->where('Code_Groupe',$request->Code_Groupe)
-        ->where('formateur_Matricule',$request->formateur_Matricule)
-        ->where('Id_module',$request->Id_module)
-        ->where('code_seance',$request->code_seance)
-        ->where('Date',$request->Date)->first();
+        $seance1 = Seance::where('Id_Salle', $request->Id_Salle)
+            ->where('Code_Groupe', $request->Code_Groupe)
+            ->where('formateur_Matricule', $request->formateur_Matricule)
+            ->where('Id_module', $request->Id_module)
+            ->where('code_seance', $request->code_seance)
+            ->where('Date', $request->Date)->first();
 
-        $seance2 = Seance::where('Id_Salle',$request->Id_Salle1)
-        ->where('Code_Groupe',$request->Code_Groupe1)
-        ->where('formateur_Matricule',$request->formateur_Matricule1)
-        ->where('Id_module',$request->Id_module1)
-        ->where('code_seance',$request->code_seance1)
-        ->where('Date',$request->Date1)->first();
+        $seance2 = Seance::where('Id_Salle', $request->Id_Salle1)
+            ->where('Code_Groupe', $request->Code_Groupe1)
+            ->where('formateur_Matricule', $request->formateur_Matricule1)
+            ->where('Id_module', $request->Id_module1)
+            ->where('code_seance', $request->code_seance1)
+            ->where('Date', $request->Date1)->first();
 
 
         if (!$seance1) {
@@ -200,4 +203,63 @@ class SeanceController extends Controller
             'annees' => $anneesScolaires
         ], 200);
     }
+
+
+    public function storeFromSemaineBase($semaine, $semaineBase)
+    {
+        // Fetch seances from the base week
+        $seancesSemaineBase = Seance::where('No_Semaine_Calendrier', $semaineBase)->get();
+        // Fetch the semaineNow object
+        $semaineNow = Semaine::where('semaine', $semaine)->first();
+
+        // Check if $semaineNow is found
+        if (!$semaineNow) {
+            return response()->json(['message' => 'Semaine not found'], 404);
+        }
+
+        // Initialize the date with the first day of the week
+        $date = new DateTime($semaineNow->firstDayOfWeek);
+
+        // Loop through each seance and create a new one for the target week
+        foreach ($seancesSemaineBase as $seance) {
+            // Clone the date object to avoid modifying the original
+            $seanceDate = clone $date;
+
+            // Modify the date based on the code_seance prefix
+            if (str_starts_with($seance->code_seance, "1")) {
+                // No modification needed, already set to the first day
+            } elseif (str_starts_with($seance->code_seance, "2")) {
+                $seanceDate->modify('+1 day');
+            } elseif (str_starts_with($seance->code_seance, "3")) {
+                $seanceDate->modify('+2 days');
+            } elseif (str_starts_with($seance->code_seance, "4")) {
+                $seanceDate->modify('+3 days');
+            } elseif (str_starts_with($seance->code_seance, "5")) {
+                $seanceDate->modify('+4 days');
+            } elseif (str_starts_with($seance->code_seance, "6")) {
+                $seanceDate->modify('+5 days');
+            }
+
+            // Create new seance with the modified date
+            Seance::create([
+                "Id_Salle" => $seance->Id_Salle,
+                "Code_Groupe" => $seance->Code_Groupe,
+                "formateur_Matricule" => $seance->formateur_Matricule,
+                "Id_module" => $seance->Id_module,
+                "code_seance" => $seance->code_seance,
+                "Date" => $seanceDate->format('Y-m-d'),
+                "Jour_de_semaine" => $seance->Jour_de_semaine,
+                "No_Semaine_Calendrier" => $semaineNow['semaine'],
+                "No_Semaine_DRIF" => $semaineNow['Semaine_DRIF'],
+                "MH" => $seance->MH,
+                "Horaire_debut" => $seance->Horaire_debut,
+                "Horaire_fin" => $seance->Horaire_fin,
+                "Type_seance" => $seance->Type_seance,
+            ]);
+        }
+
+        return response()->json(['message' => 'Seances successfully copied'], 200);
+    }
+
+
 }

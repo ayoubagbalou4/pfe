@@ -30,7 +30,7 @@ const Login = () => {
         <div className="form">
             <div className="empty_side">
            <img src="http://localhost:3000/images/PPI2.png" alt="" />
-                <p>doubleAc est une plateforme web conçue pour simplifier la gestion des emplois du temps et le suivi pédagogique au sein de l'établissement NTIC Tanger. Cette application offre des fonctionnalités avancées pour planifier les cours, gérer les ressources, suivre la présence des étudiants et évaluer leur progression académique. Elle facilite également la communication entre les différents acteurs de l'établissement, notamment les groupes d'étudiants et les formateurs.</p>
+                <p>PPI-NTICT est une plateforme web conçue pour simplifier la gestion des emplois du temps et le suivi pédagogique au sein de l'établissement NTIC Tanger. Cette application offre des fonctionnalités avancées pour planifier les cours, gérer les ressources, suivre la présence des étudiants et évaluer leur progression académique. Elle facilite également la communication entre les différents acteurs de l'établissement, notamment les groupes d'étudiants et les formateurs.</p>
             </div>
             <form onSubmit={handleLogin}>
                 <h1>Login</h1>

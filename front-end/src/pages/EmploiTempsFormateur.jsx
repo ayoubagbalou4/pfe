@@ -21,15 +21,22 @@ const EmploiTempsFormateur = () => {
 
     const calculeMHHebdoGroupe = (formateur) => {
         let count = 0;
-        seancesParSemaine
-            .filter(
-                (seance) => seance.formateur_Matricule == formateur.Matricule
-            )
-            .map((e) => {
-                count += e.MH;
-            });
+        const uniqueSeances = new Set();
+
+        seancesParSemaine.filter((seance) => seance.formateur_Matricule == formateur).forEach((e) => {
+            if (e.Id_Salle === "AMPHI" || e.Id_Salle === "A distance") {
+                const key = `${e.formateur_Matricule}-${e.Date}-${e.code_seance}-${e.Id_Salle}`;
+                if (uniqueSeances.has(key)) {
+                    return;
+                }
+                uniqueSeances.add(key);
+            }
+            count += e.MH;
+        });
+
         return count;
     };
+
 
     const dateOfSemaine = semaines.find(
         (s) => s.semaine == nSemaine
@@ -181,7 +188,7 @@ const EmploiTempsFormateur = () => {
                                         date={dateOfSemaine}
                                         formateur={formateur.Matricule}
                                         masseHoraire={calculeMHHebdoGroupe(
-                                            formateur
+                                            formateur.Matricule
                                         )}
                                         annee={
                                             affectations.find(

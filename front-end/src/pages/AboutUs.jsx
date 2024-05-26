@@ -14,16 +14,16 @@ const AboutUs = () => {
                         <img src="http://localhost:3000/images/work-time-animate.svg" alt="" />
                     </div>
                     <div className="aboutContent">
-                        <h1>Bienvenue sur Double-AC</h1>
+                        <h1>Bienvenue sur PPI-NTICT</h1>
                         <p>
-                            Double-AC, votre solution avancée de gestion
+                            PPI-NTICT, votre solution avancée de gestion
                             des emplois du temps dédiée à l'Institut Spécialisé de
                             Technologie Appliquée NTIC Tanger (ISTA NTIC). Notre objectif
-                            principal chez Double-AC est de simplifier la complexité de
+                            principal chez PPI-NTICT est de simplifier la complexité de
                             la planification des emplois du temps au sein de notre
                             établissement. Grâce à notre interface conviviale, les
                             administrateurs peuvent créer, modifier et gérer
-                            efficacement les horaires des cours. Double-AC propose des
+                            efficacement les horaires des cours. PPI-NTICT propose des
                             fonctionnalités avancées telles que la gestion des
                             ressources et des salles de classe, permettant ainsi
                             d'optimiser l'utilisation des infrastructures et du
@@ -33,7 +33,7 @@ const AboutUs = () => {
                 </div>
             </div>
 
-            <h1 style={{ textAlign: "center", marginBottom: "60px", color: "#566573" }}>Notre Team</h1>
+            <h1 style={{ textAlign: "center", marginBottom: "60px", color: "#566573" }}>DOUBLE-AC Team</h1>
             <div className="row">
                 <div className="column">
                     <div className="card">

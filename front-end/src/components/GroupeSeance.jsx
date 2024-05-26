@@ -68,20 +68,38 @@ const GroupeSeance = (props) => {
                     setSeanceGenerate({
                         generate: true,
                     });
-                    if (
-                        seancesParSemaine.find(
-                            (s) =>
-                                s.code_seance == copiedOldItem.code_seance &&
-                                s.Id_Salle == copiedOldItem.Id_Salle
-                        )
-                    ) {
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: "Salle Deja Occupée!",
-                        });
-                        return;
+
+                    const seanceFind = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle);
+
+                    if (seanceFind.length > 0) {
+                        const amphiCount = seanceFind.filter((s) => s.Id_Salle == "AMPHI").length;
+                        const distanceCount = seanceFind.filter((s) => s.Id_Salle == "A distance").length;
+
+                        if (seanceFind.length == 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Salle Deja Occupée!....",
+                            });
+                            return;
+                        }
+
+                        if (amphiCount > 2) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Limit of AMPHI sessions exceeded!",
+                            });
+                            return;
+                        }
+
+                        if (distanceCount > 2) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Limit of A distance sessions exceeded!",
+                            });
+                            return;
+                        }
                     }
+
                     try {
                         const respone = await axios.post(
                             `http://127.0.0.1:8000/api/dupliquer`,
@@ -160,12 +178,6 @@ const GroupeSeance = (props) => {
                             });
                             return;
                         }
-
-                        // Swal.fire({
-                        //     icon: "error",
-                        //     title: "Salle Deja Occupée!....",
-                        // });
-                        // return;
                     }
 
 

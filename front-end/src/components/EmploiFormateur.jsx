@@ -11,7 +11,7 @@ const EmploiFormateur = (props) => {
 
         if (seanceParCodeSeance) {
             const groupe = seanceParCodeSeance.Code_Groupe;
-            const module = seanceParCodeSeance.module.code_module;
+            const module = seanceParCodeSeance.module?.code_module;
             const salle = seanceParCodeSeance.Id_Salle !== null ? seanceParCodeSeance.Id_Salle : 'A dis';
             const bg = seanceParCodeSeance.formateur.Background_Color;
             const color = seanceParCodeSeance.formateur.Color;
