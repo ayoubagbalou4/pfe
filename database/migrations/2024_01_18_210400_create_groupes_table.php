@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('groupes', function (Blueprint $table) {
             $table->string('Code_Groupe')->primary();
+            $table->string('id');
             $table->string('Mode_de_Formation');
             $table->string('background');
             $table->string('Nombre_Inscrits');

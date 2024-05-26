@@ -11,17 +11,17 @@ class GroupeController extends Controller
 {
     public function index()
     {
-        $groupes = Groupe::all();
+        $groupes = Groupe::orderByRaw("FIELD(Code_Filiere, 'DIA_DEV_TS', 'DIA_DEVOWFS_TS', 'DIA_CMOSE_FQ')")->get();
         return response()->json([
             'groupes' => $groupes
         ], 200);
     }
-    
+
     public function groupeStatistiques($semaine)
     {
         $Seancesgroupe = Seance::selectRaw('SUM(MH) as MHHebdog ,Code_Groupe')
             ->groupBy('Code_Groupe')
-            ->where('No_Semaine_Calendrier',$semaine)
+            ->where('No_Semaine_Calendrier', $semaine)
             ->with('groupe')
             ->get();
         return response()->json([
