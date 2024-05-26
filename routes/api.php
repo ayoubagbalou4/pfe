@@ -66,3 +66,4 @@ Route::get('getSemaineNow', [SeanceController::class,"getSemaineNow"]);
 Route::put('Updatecontacts', [ContactController::class,"Updatecontacts"]);
 
 Route::get('getAnneeScolaires', [SeanceController::class,"getAnneeScolaires"]);
+Route::post('storeFromSemaineBase/{semaine}/{semaineBase}', [SeanceController::class,"storeFromSemaineBase"]);

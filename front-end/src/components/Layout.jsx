@@ -105,7 +105,7 @@ const Layout = (props) => {
     return (
         <div class={`containerDahboard ${smallAside ? 'smallDash' : ''}`}>
             <div class="aside">
-                <div class="brand"  onClick={() => setSmallAside(!smallAside)} ><img src="http://localhost:3000/images/logo4.png" alt="" /></div>
+                <div class="brand"  onClick={() => setSmallAside(!smallAside)} ><img src="http://localhost:3000/images/PPI2.png" alt="" /></div>
                 <div className="linksSide">
                     <Link className={props.Dashboard} to="/Dashboard"><i className="fa-solid fa-house-chimney"></i> <span> Dashboard </span></Link>
                     <a className={props.SuiviPédagogique} onClick={toggleMenu1}><i className="fa-solid fa-user"></i> <span>Suivi Pédagogique {!showAffectation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>

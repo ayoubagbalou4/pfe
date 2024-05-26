@@ -5,7 +5,7 @@ const Navbar2 = () => {
 
     return (
         <header>
-            <div className="logo"><img src="http://localhost:3000/images/logo4.png" alt="navbarDashboard" /></div>
+            <div className="logo"><img src="http://localhost:3000/images/PPI2.png" alt="navbarDashboard" /></div>
             <div className="links">
                 <Link to={"/"}>About Us</Link>
                 <Link to={"/Contact"}>Contact</Link>
