@@ -6,12 +6,12 @@ import * as XLSX from "xlsx";
 import ReactPaginate from "react-paginate";
 
 const AvancementProgramme = () => {
-    
+
     const { affectations, seances, semaineNumber,semaines, groupes } =
         useContext(contextProvider);
     const [groupe, setGroupe] = useState();
     const [afficherSelect, setAfficherSelect] = useState(false);
-    const [searchGroupe, setSearchGroupe] = useState("");
+    const [searchGroupe, setSearchGroupe] = useState('')
     const handleSelected = (groupe) => {
         setGroupe(groupe);
         setAfficherSelect(false);
@@ -112,7 +112,7 @@ const AvancementProgramme = () => {
                                             <i class="fa-solid fa-magnifying-glass"></i>
                                             <input
                                                 onChange={(e) =>
-                                                    setAfficherSelect(
+                                                    setSearchGroupe(
                                                         e.target.value
                                                     )
                                                 }
@@ -121,10 +121,13 @@ const AvancementProgramme = () => {
                                                 type="text"
                                                 placeholder="Search"
                                             />
+
                                         </div>
                                         <ul className="options1">
-                                            {groupes.map((s, index) => (
-                                                <li
+                                            {groupes.map((s, index) => {
+                                                  if (s.Code_Groupe.toLowerCase().includes(searchGroupe.toLowerCase())) {
+                                                    return (
+                                                 <li
                                                     onClick={() =>
                                                         handleSelected(
                                                             s.Code_Groupe
@@ -133,13 +136,31 @@ const AvancementProgramme = () => {
                                                     key={index}
                                                 >
                                                     {s.Code_Groupe}
-                                                </li>
-                                            ))}
+                                                </li>                                                    )
+                                                }
+
+
+                                            })}
                                         </ul>
                                     </div>
                                 )}
                             </div>
                         </div>
+                        {/* //  <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        formateurs.map((e, index) => {
+                                            if (e.Nom_Formateur.toLowerCase().includes(searchFormateur.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected(e)} key={index}>{e.Nom_Formateur}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>// */}
 
                         <ReactPaginate
                             previousLabel={'Previous'}

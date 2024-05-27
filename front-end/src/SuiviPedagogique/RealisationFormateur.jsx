@@ -14,12 +14,14 @@ const RealisationFormateur = () => {
         return count
     }
     const [formateur, setformateur] = useState()
-    const [afficherSelect, setAfficherSelect] = useState(false)
-    const [searchformateur, setSearchformateur] = useState('')
+    const [afficherSelect, setAfficherSelect] = useState(false);
+    const [searchFormateur, setSearchFormateur] = useState('')
+
     const handleSelected = (formateur) => {
         setformateur(formateur)
         setAfficherSelect(false)
     }
+
 
 
     return (
@@ -37,19 +39,21 @@ const RealisationFormateur = () => {
                             {
                                 afficherSelect &&
                                 <div className="content">
-                                    <div className="search">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <input onChange={(e) => setAfficherSelect(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
-                                    </div>
-                                    <ul className="options1">
-                                        {
-                                            formateurs.map((s, index) => (
-                                                <li onClick={() => handleSelected(s)} key={index}>
-                                                    {s.Nom_Formateur}
-                                                </li>
-                                            ))
-                                        }
-                                    </ul>
+                                <div className="search">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input onChange={(e) => setSearchFormateur(e.target.value)} className="input1" spellcheck="false" type="text" placeholder="Search" />
+                                </div>
+                                <ul className="options1">
+                                    {
+                                        formateurs.map((e, index) => {
+                                            if (e.Nom_Formateur.toLowerCase().includes(searchFormateur.toLowerCase())) {
+                                                return (
+                                                    <li onClick={() => handleSelected(e)} key={index}>{e.Nom_Formateur}</li>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </ul>
                                 </div>
                             }
                         </div>

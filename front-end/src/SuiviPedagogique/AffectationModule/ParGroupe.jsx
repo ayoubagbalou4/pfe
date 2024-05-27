@@ -85,7 +85,7 @@ const ParGroupe = () => {
                                 <i class="fa-solid fa-file-csv"></i> Export to
                                 Excel
                             </button>
-                            
+
                         </div>
 
                         <div className="choisir_inputs two">
@@ -177,7 +177,7 @@ const ParGroupe = () => {
                                             />
                                         </div>
                                         <ul className="options1">
-                                            {groupes
+                                            {filiere && groupes
                                                 .filter(
                                                     (e) =>
                                                         e.Code_Filiere ==

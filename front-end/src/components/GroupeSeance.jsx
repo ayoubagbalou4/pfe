@@ -70,43 +70,30 @@ const GroupeSeance = (props) => {
                     });
 
                     const seanceFind = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle);
+                    const seanceFind1 = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == "AMPHI");
+                    const seanceFind2 = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == "A distance");
 
-                    if (seanceFind.length > 0) {
+                    if (seanceFind.length >= 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Salle Deja Occupée!....",
+                        });
+                        return;
+                    }
+                    if (seanceFind1.length > 2) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "AMPHI Deja Occupée!....",
+                        });
+                        return;
+                    }
 
-                        // const formateurMat = formateurs.find((e) => seanceFind[0]?.formateur == e.Abreviation)?.Matricule;
-
-                        const amphiCount = seanceFind.filter((s) => s.Id_Salle == "AMPHI").length;
-                        const distanceCount = seanceFind.filter((s) => s.Id_Salle == "A distance").length;
-
-                        console.log(seanceFind)
-                        console.log(amphiCount)
-                        console.log(distanceCount)
-
-
-                        if (seanceFind.length == 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Salle Deja Occupée!....",
-                            });
-                            return;
-                        }
-
-
-                        if (amphiCount > 3 ) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "AMPHI Deja Occupée!....",
-                            });
-                            return;
-                        }
-
-                        // if (distanceCount > 2 ) {
-                        //     Swal.fire({
-                        //         icon: "error",
-                        //         title: "A distance Deja Occupée!....",
-                        //     });
-                        //     return;
-                        // }
+                    if (seanceFind2.length > 2 && (copiedOldItem.formateur == seanceFind2[0]?.formateur)) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "A Distance Deja Occupée!....",
+                        });
+                        return;
                     }
 
                     try {
@@ -159,34 +146,29 @@ const GroupeSeance = (props) => {
 
 
                     const seanceFind = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle);
+                    const seanceFind1 = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == "AMPHI");
+                    const seanceFind2 = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == "A distance");
 
-                    if (seanceFind.length > 0) {
-                        const amphiCount = seanceFind.filter((s) => s.Id_Salle == "AMPHI").length;
-                        const distanceCount = seanceFind.filter((s) => s.Id_Salle == "A distance").length;
-
-                        if (seanceFind.length == 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Salle Deja Occupée!....",
-                            });
-                            return;
-                        }
-
-                        if (amphiCount > 3) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Amphi Deja Occupée!",
-                            });
-                            return;
-                        }
-
-                        // if (distanceCount > 2) {
-                        //     Swal.fire({
-                        //         icon: "error",
-                        //         title: "Limit of A distance sessions exceeded!",
-                        //     });
-                        //     return;
-                        // }
+                    if (seanceFind.length >= 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Salle Deja Occupée!....",
+                        });
+                        return;
+                    }
+                    if (seanceFind1.length > 2) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "AMPHI Deja Occupée!....",
+                        });
+                        return;
+                    }
+                    if (seanceFind2.length > 2) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "A Distance Deja Occupée!....",
+                        });
+                        return;
                     }
 
 
@@ -244,9 +226,32 @@ const GroupeSeance = (props) => {
                         Type_seance: oldItem.Type_seance,
                     };
 
-                    console.log(newItem)
-                    console.log(oldItem)
-                    console.log(data)
+                    // const seancesFind = seancesParSemaine.filter((s) => s.code_seance == oldItem.code_seance && s.Id_Salle == oldItem.Id_Salle);
+                    // const seancesFind1 = seancesParSemaine.filter((s) => s.code_seance == oldItem.code_seance && s.Id_Salle == "AMPHI");
+                    // const seancesFind2 = seancesParSemaine.filter((s) => s.code_seance == oldItem.code_seance && s.Id_Salle == "A distance");
+
+                    // if (seancesFind.length >= 1 && seancesFind[0].Id_Salle !== "AMPHI" && seancesFind[0].Id_Salle !== "A distance") {
+                    //     Swal.fire({
+                    //         icon: "error",
+                    //         title: "Salle Deja Occupée!....",
+                    //     });
+                    //     return;
+                    // }
+                    // if (seancesFind1.length > 2) {
+                    //     Swal.fire({
+                    //         icon: "error",
+                    //         title: "AMPHI Deja Occupée!....",
+                    //     });
+                    //     return;
+                    // }
+
+                    // if (seancesFind2.length > 2) {
+                    //     Swal.fire({
+                    //         icon: "error",
+                    //         title: "A Distance Deja Occupée !...",
+                    //     });
+                    //     return;
+                    // }
 
                     try {
                         const response = await axios.post(`http://127.0.0.1:8000/api/remplacer`, data)
@@ -254,6 +259,8 @@ const GroupeSeance = (props) => {
                     } catch (error) {
                         console.log(error)
                     }
+
+                    console.log(data)
 
 
 
