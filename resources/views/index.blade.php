@@ -53,12 +53,12 @@
   <div class="container">
     <div class="contain">
       <div class="brand">
-        <img src="{{ $message->embed(public_path('images/logo4.png')) }}" alt="">
+        <img src="{{ $message->embed(public_path('images/PPI-NTIC.png')) }}" alt="">
       </div>
 
       <h2>Hello {{$nomFormateur}}</h2>
       <a href={{$link}}><button>Votre Emploi De Temps</button></a>
-      <p>doubleAc est une plateforme web conçue pour simplifier la gestion des emplois du temps et le suivi pédagogique
+      <p>PPI-NTICT est une plateforme web conçue pour simplifier la gestion des emplois du temps et le suivi pédagogique
         au
         sein de l'établissement NTIC Tanger.</p>
     </div>

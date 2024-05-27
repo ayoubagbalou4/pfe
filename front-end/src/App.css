@@ -163,6 +163,14 @@ header .logo img {
     background-color: white;
     color: #566573;
 }
+.nested_table_td.salle table .green {
+    background-color: green;
+    color: white;
+}
+.nested_table_td.salle table .red {
+    background-color: red;
+    color: white;
+}
 
 .nested_table_td table td:nth-child(1) {
     border-left: 0 !important;
@@ -1153,19 +1161,23 @@ footer {
     float: left;
     width: 33.3%;
     margin-bottom: 16px;
-    padding: 0 8px;
+    padding: 50px 8px;
 }
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
     text-align: center;
+    padding: 50px auto;
 }
 
 .card img {
     width: 200px;
+    height: 200px;
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
+    object-fit: cover;
+    border-radius: 100px;
 }
 
 .about-section {
@@ -1253,20 +1265,20 @@ footer {
     justify-content: center;
     list-style: none;
   }
-  
+
   .pagination li {
     display: inline-block;
     margin-right: 5px;
     cursor: pointer;
   }
-  
+
   .pagination li a {
     color: black;
     padding: 5px 10px;
     border: 1px solid #ccc;
     text-decoration: none;
   }
-  
+
   .pagination li.active a {
     background-color: #566573;
     color: white;

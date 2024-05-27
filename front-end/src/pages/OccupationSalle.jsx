@@ -21,6 +21,18 @@ const OccupationSalle = () => {
         }
     }
 
+    const salleSeancesClass = (salle, codeSeance) => {
+        let occupation = seancesParSemaine.filter(e => e.Id_Salle == salle && e.code_seance == codeSeance)
+        if (occupation.length == 1) {
+            return 'green'
+        }
+        else if (occupation.length > 1) {
+            return 'red'
+        }else{
+            return ''
+        }
+    }
+
 
     console.log(salleSeances('SDD1', '1S1'))
     return (
@@ -120,10 +132,20 @@ const OccupationSalle = () => {
                                                     <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '1S1')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '1S2')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '1S3')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '1S4')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '1S1')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '1S1')} codeSeance={salleSeances(salle.Id_Salle, '1S1')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '1S2')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '1S2')} codeSeance={salleSeances(salle.Id_Salle, '1S2')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '1S3')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '1S3')} codeSeance={salleSeances(salle.Id_Salle, '1S3')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '1S4')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '1S4')} codeSeance={salleSeances(salle.Id_Salle, '1S4')} /></td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td className="nested_table_td salle">
+                                                        <table>
+                                                            <tr>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '2S1')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '2S1')} codeSeance={salleSeances(salle.Id_Salle, '2S1')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '2S2')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '2S2')} codeSeance={salleSeances(salle.Id_Salle, '2S2')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '2S3')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '2S3')} codeSeance={salleSeances(salle.Id_Salle, '2S3')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '2S4')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '2S4')} codeSeance={salleSeances(salle.Id_Salle, '2S4')} /></td>
 
                                                             </tr>
                                                         </table>
@@ -131,10 +153,10 @@ const OccupationSalle = () => {
                                                     <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '2S1')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '2S2')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '2S3')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '2S4')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '3S1')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '3S1')} codeSeance={salleSeances(salle.Id_Salle, '3S1')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '3S2')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '3S2')} codeSeance={salleSeances(salle.Id_Salle, '3S2')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '3S3')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '3S3')} codeSeance={salleSeances(salle.Id_Salle, '3S3')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '3S4')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '3S4')} codeSeance={salleSeances(salle.Id_Salle, '3S4')} /></td>
 
                                                             </tr>
                                                         </table>
@@ -142,10 +164,10 @@ const OccupationSalle = () => {
                                                     <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '3S1')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '3S2')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '3S3')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '3S4')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '4S1')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '4S1')} codeSeance={salleSeances(salle.Id_Salle, '4S1')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '4S2')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '4S2')} codeSeance={salleSeances(salle.Id_Salle, '4S2')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '4S3')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '4S3')} codeSeance={salleSeances(salle.Id_Salle, '4S3')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '4S4')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '4S4')} codeSeance={salleSeances(salle.Id_Salle, '4S4')} /></td>
 
                                                             </tr>
                                                         </table>
@@ -153,10 +175,10 @@ const OccupationSalle = () => {
                                                     <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '4S1')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '4S2')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '4S3')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '4S4')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '5S1')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '5S1')} codeSeance={salleSeances(salle.Id_Salle, '5S1')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '5S2')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '5S2')} codeSeance={salleSeances(salle.Id_Salle, '5S2')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '5S3')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '5S3')} codeSeance={salleSeances(salle.Id_Salle, '5S3')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '5S4')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '5S4')} codeSeance={salleSeances(salle.Id_Salle, '5S4')} /></td>
 
                                                             </tr>
                                                         </table>
@@ -164,21 +186,10 @@ const OccupationSalle = () => {
                                                     <td className="nested_table_td salle">
                                                         <table>
                                                             <tr>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '5S1')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '5S2')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '5S3')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '5S4')} /></td>
-
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                    <td className="nested_table_td salle">
-                                                        <table>
-                                                            <tr>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '6S1')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '6S2')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '6S3')} /></td>
-                                                                <td><SeanceSalle codeSeance={salleSeances(salle.Id_Salle, '6S4')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '6S1')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '6S1')} codeSeance={salleSeances(salle.Id_Salle, '6S1')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '6S2')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '6S2')} codeSeance={salleSeances(salle.Id_Salle, '6S2')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '6S3')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '6S3')} codeSeance={salleSeances(salle.Id_Salle, '6S3')} /></td>
+                                                                <td className={salleSeancesClass(salle.Id_Salle, '6S4')}><SeanceSalle class={salleSeancesClass(salle.Id_Salle, '6S4')} codeSeance={salleSeances(salle.Id_Salle, '6S4')} /></td>
 
                                                             </tr>
                                                         </table>

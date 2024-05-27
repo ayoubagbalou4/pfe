@@ -6,6 +6,8 @@ import EmploiFormateur from "../components/EmploiFormateur";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import Navbar2 from "../components/Navbar2";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const EmploiTempsFormateur = () => {
     const pdfRef = useRef();
@@ -83,8 +85,37 @@ const EmploiTempsFormateur = () => {
         setScroll(!scroll)
     }
 
+    const envoyerEmploi = async () => {
+        try {
+            const respone = await axios.get(
+                `http://127.0.0.1:8000/api/sendEmail`
+            );
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Signed in successfully"
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const [admin, setAdmin] = useState(localStorage.getItem('admin'));
+
     return (
         <>
+
             <Navbar />
             <div className="parGroupe">
                 <div className="choisir_inputs two">
@@ -176,6 +207,9 @@ const EmploiTempsFormateur = () => {
                 <button className="btnDownload" onClick={downloadPDF}>
                     <i className="fa fa-download"> Telecharger</i>
                 </button>
+                <button className="btnDownload" onClick={envoyerEmploi}>
+                    <i class="fa-solid fa-paper-plane"></i> Envoyer les emplois
+                </button>
                 <div >
                     {loadingSeancesParSemaine ? (
                         <Loader />
@@ -236,7 +270,7 @@ const EmploiTempsFormateur = () => {
                         </div>
                     )}
                 </div>
-            </div>
+            </div >
         </>
     );
 };

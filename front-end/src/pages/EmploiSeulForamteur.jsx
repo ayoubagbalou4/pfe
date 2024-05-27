@@ -6,6 +6,7 @@ import EmploiFormateur from "../components/EmploiFormateur";
 import Loader from "../components/Loader";
 import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
+import Navbar2 from "../components/Navbar2";
 
 const EmploiSeulForamteur = () => {
 
@@ -44,10 +45,16 @@ const EmploiSeulForamteur = () => {
 
     };
 
+    const [admin, setAdmin] = useState(localStorage.getItem('admin'));
+
 
     return (
         <>
-            <Navbar />
+            {
+                admin ?
+                    <Navbar />
+                    :
+                    <Navbar2 />}
             <div className="parGroupe">
 
                 <button className="btnDownload" onClick={downloadPDF}>

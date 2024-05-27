@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const Layout = (props) => {
 
-    const [smallAside,setSmallAside] = useState(false)
+    const [smallAside, setSmallAside] = useState(false)
 
     const [showAffectation, setshowAffectation] = useState(false);
     const [showFormateur, setshowFormateur] = useState(false);
@@ -53,26 +53,72 @@ const Layout = (props) => {
 
     const toggleMenu1 = () => {
         setshowAffectation(!showAffectation);
+        setshowFormateur(false)
+        setshowStatistiques(false)
+        setshowRealisation(false)
+        setshowSemaine(false)
+        setshowAffectation1(false)
+        setshowEmploi(false)
     };
-    const toggleMenu7 = () => {
-        setshowEmploi(!showEmploi);
-    };
-
     const toggleMenu2 = () => {
         setshowFormateur(!showFormateur);
+        setshowAffectation(false)
+        setshowStatistiques(false)
+        setshowRealisation(false)
+        setshowSemaine(false)
+        setshowAffectation1(false)
+        setshowEmploi(false)
     };
     const toggleMenu3 = () => {
         setshowStatistiques(!showStatistiques);
+        setshowAffectation(false)
+        setshowFormateur(false)
+        setshowRealisation(false)
+        setshowSemaine(false)
+        setshowAffectation1(false)
+        setshowEmploi(false)
     };
     const toggleMenu4 = () => {
         setshowRealisation(!showRealisation);
+
+        setshowAffectation(false)
+        setshowFormateur(false)
+        setshowStatistiques(false)
+        setshowSemaine(false)
+        setshowAffectation1(false)
+        setshowEmploi(false)
     };
     const toggleMenu5 = () => {
         setshowSemaine(!showSemaine);
+
+        setshowAffectation(false)
+        setshowFormateur(false)
+        setshowStatistiques(false)
+        setshowRealisation(false)
+        setshowAffectation1(false)
+        setshowEmploi(false)
     };
     const toggleMenu6 = () => {
         setshowAffectation1(!showAfectation1);
+
+        setshowAffectation(false)
+        setshowFormateur(false)
+        setshowStatistiques(false)
+        setshowRealisation(false)
+        setshowSemaine(false)
+        setshowEmploi(false)
     };
+    const toggleMenu7 = () => {
+        setshowEmploi(!showEmploi);
+
+        setshowAffectation(false)
+        setshowFormateur(false)
+        setshowStatistiques(false)
+        setshowRealisation(false)
+        setshowSemaine(false)
+        setshowAffectation1(false)
+    };
+
     const handleLogout = () => {
         Swal.fire({
             title: "Êtes-vous sûr(e) de vouloir vous déconnecter ?",
@@ -105,7 +151,7 @@ const Layout = (props) => {
     return (
         <div class={`containerDahboard ${smallAside ? 'smallDash' : ''}`}>
             <div class="aside">
-                <div class="brand"  onClick={() => setSmallAside(!smallAside)} ><img src="http://localhost:3000/images/PPI2.png" alt="" /></div>
+                <div class="brand" onClick={() => setSmallAside(!smallAside)} ><img src="http://localhost:3000/images/PPI2.png" alt="" /></div>
                 <div className="linksSide">
                     <Link className={props.Dashboard} to="/Dashboard"><i className="fa-solid fa-house-chimney"></i> <span> Dashboard </span></Link>
                     <a className={props.SuiviPédagogique} onClick={toggleMenu1}><i className="fa-solid fa-user"></i> <span>Suivi Pédagogique {!showAffectation ? <i class="fa-solid fa-angle-right" id='arrowRight'></i> : <i class="fa-solid fa-angle-down" id='arrowRight'></i>} </span></a>

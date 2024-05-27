@@ -2,7 +2,7 @@ import React from 'react'
 
 const SeanceSalle = (props) => {
   return (
-    <td>{props.codeSeance}</td>
+    <td className={props.class}>{props.codeSeance}</td>
   )
 }
 

@@ -72,8 +72,16 @@ const GroupeSeance = (props) => {
                     const seanceFind = seancesParSemaine.filter((s) => s.code_seance == copiedOldItem.code_seance && s.Id_Salle == copiedOldItem.Id_Salle);
 
                     if (seanceFind.length > 0) {
+
+                        // const formateurMat = formateurs.find((e) => seanceFind[0]?.formateur == e.Abreviation)?.Matricule;
+
                         const amphiCount = seanceFind.filter((s) => s.Id_Salle == "AMPHI").length;
                         const distanceCount = seanceFind.filter((s) => s.Id_Salle == "A distance").length;
+
+                        console.log(seanceFind)
+                        console.log(amphiCount)
+                        console.log(distanceCount)
+
 
                         if (seanceFind.length == 1 && seanceFind[0].Id_Salle !== "AMPHI" && seanceFind[0].Id_Salle !== "A distance") {
                             Swal.fire({
@@ -83,21 +91,22 @@ const GroupeSeance = (props) => {
                             return;
                         }
 
-                        if (amphiCount > 2) {
+
+                        if (amphiCount > 3 ) {
                             Swal.fire({
                                 icon: "error",
-                                title: "Limit of AMPHI sessions exceeded!",
+                                title: "AMPHI Deja Occupée!....",
                             });
                             return;
                         }
 
-                        if (distanceCount > 2) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Limit of A distance sessions exceeded!",
-                            });
-                            return;
-                        }
+                        // if (distanceCount > 2 ) {
+                        //     Swal.fire({
+                        //         icon: "error",
+                        //         title: "A distance Deja Occupée!....",
+                        //     });
+                        //     return;
+                        // }
                     }
 
                     try {
@@ -163,21 +172,21 @@ const GroupeSeance = (props) => {
                             return;
                         }
 
-                        if (amphiCount > 2) {
+                        if (amphiCount > 3) {
                             Swal.fire({
                                 icon: "error",
-                                title: "Limit of AMPHI sessions exceeded!",
+                                title: "Amphi Deja Occupée!",
                             });
                             return;
                         }
 
-                        if (distanceCount > 2) {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Limit of A distance sessions exceeded!",
-                            });
-                            return;
-                        }
+                        // if (distanceCount > 2) {
+                        //     Swal.fire({
+                        //         icon: "error",
+                        //         title: "Limit of A distance sessions exceeded!",
+                        //     });
+                        //     return;
+                        // }
                     }
 
 

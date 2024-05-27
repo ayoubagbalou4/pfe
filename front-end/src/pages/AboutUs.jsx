@@ -38,7 +38,7 @@ const AboutUs = () => {
                 <div className="column">
                     <div className="card">
                         <img
-                            src="http://localhost:3000/images/chaymae.jpg"
+                            src="http://localhost:3000/images/chel.jpeg"
                             alt="Jane"
                         />
                         <div className="container">
@@ -57,7 +57,7 @@ const AboutUs = () => {
                 <div className="column">
                     <div className="card">
                         <img
-                            src="http://localhost:3000/images/ayoub.jpg"
+                            src="http://localhost:3000/images/agha.jpeg"
                             alt="Mike"
                         />
                         <div className="container">
@@ -75,7 +75,7 @@ const AboutUs = () => {
                 <div className="column">
                     <div className="card">
                         <img
-                            src="http://localhost:3000/images/aya.jpg"
+                            src="http://localhost:3000/images/ayaEl.jpeg"
                             alt="John"
                         />
                         <div className="container">

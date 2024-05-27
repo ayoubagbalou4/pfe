@@ -6,7 +6,8 @@ import * as XLSX from "xlsx";
 import ReactPaginate from "react-paginate";
 
 const AvancementProgramme = () => {
-    const { affectations, seances, semaineNumber, groupes } =
+    
+    const { affectations, seances, semaineNumber,semaines, groupes } =
         useContext(contextProvider);
     const [groupe, setGroupe] = useState();
     const [afficherSelect, setAfficherSelect] = useState(false);
@@ -68,14 +69,14 @@ const AvancementProgramme = () => {
 
     const [pageNumber, setPageNumber] = useState(0);
     const itemsPerPage = 3;
-    const pageCount = Math.ceil(semaineNumber.length / itemsPerPage);
+    const pageCount = Math.ceil(semaines.length / itemsPerPage);
 
     const handlePageChange = ({ selected }) => {
         setPageNumber(selected);
     };
 
     const offset = pageNumber * itemsPerPage;
-    const paginatedData = semaineNumber.slice(offset, offset + itemsPerPage);
+    const paginatedData = semaines.slice(offset, offset + itemsPerPage);
 
     const groupeFilter = affectations.find((e) => e.Code_Groupe == groupe);
     return (
@@ -157,8 +158,8 @@ const AvancementProgramme = () => {
                                 <tr>
                                     <th>Annee</th>
                                     <th>Groupe</th>
-                                    {paginatedData.map((semaine) => (
-                                        <th> MH Hebdo -S {semaine.number}</th>
+                                    {paginatedData.map((s) => (
+                                        <th> MH Hebdo -S {s.semaine}</th>
                                     ))}
                                 </tr>
                             </thead>
@@ -167,11 +168,11 @@ const AvancementProgramme = () => {
                                     <tr>
                                         <td>{groupeFilter.module.annee}</td>
                                         <td>{groupeFilter.Code_Groupe}</td>
-                                        {paginatedData.map((semaine) => (
+                                        {paginatedData.map((s) => (
                                             <td>
                                                 {calculeMHHebdoGroupe(
                                                     groupeFilter.Code_Groupe,
-                                                    semaine.number
+                                                    s.semaine
                                                 )}
                                             </td>
                                         ))}
@@ -189,11 +190,11 @@ const AvancementProgramme = () => {
                                                 }
                                             </td>
                                             <td>{groupe.Code_Groupe}</td>
-                                            {paginatedData.map((semaine) => (
+                                            {paginatedData.map((s) => (
                                                 <td>
                                                     {calculeMHHebdoGroupe(
                                                         groupe.Code_Groupe,
-                                                        semaine.number
+                                                        s.semaine
                                                     )}
                                                 </td>
                                             ))}
@@ -203,7 +204,7 @@ const AvancementProgramme = () => {
                             </tbody>
                         </table>
 
-                        
+
                     </div>
                 </div>
             }

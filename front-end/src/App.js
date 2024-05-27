@@ -35,6 +35,8 @@ import Contact from './pages/Contact'
 import Notification from './components/Notification'
 
 const App = () => {
+
+
   return (
     <>
     <BrowserRouter>
